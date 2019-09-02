@@ -14,6 +14,10 @@ const NotFoundPage: React.FC<Props> = ({ data }) => (
     <SEO title="Blog" />
     <h1>Blog</h1>
     <p>Welcome to the Blog-Overview!</p>
+    <p>The Posts here are <em>ordered by date</em> --- newest first.</p>
+    <p>Have fun!</p>
+    <br></br>
+    <br></br>
     {data.allMarkdownRemark.edges.map(post => (
       <BlogPreview
         title={post.node.frontmatter.title}
