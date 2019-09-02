@@ -1,4 +1,9 @@
 .nav {
+  position: sticky;
+  top:0px;
+  padding: .35em;
+  background-color: white;
+  opacity: .75;
   li {
     display: inline-block;
     margin-right: 1em;  
