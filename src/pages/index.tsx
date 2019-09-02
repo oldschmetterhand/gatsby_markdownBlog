@@ -8,38 +8,17 @@ import SEO from "../components/seo"
 
 
 
-const IndexPage: React.FC = ({data}) => (
+const IndexPage: React.FC = () => (
   <Layout>
     <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
+    <h1>Welcome</h1>
+    <p>This blog template is based on Gatsby.js.</p>
     <p>Now go build something great.</p>
     <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
       <Image />
     </div>
-    <Link to="/page-2/">Go to page 2</Link>
-    {data.allMarkdownRemark.edges.map(post => (
-  
-        <p>{post.node.frontmatter.title}</p>
-       
-      ))}
+    <Link to="/page-2/">Go to page 2</Link>  
   </Layout>
 )
 
 export default IndexPage
-
-export const IndexQuery = graphql`
-  query IndexQuery {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      edges {
-        node {
-          frontmatter {
-            title
-            date(formatString: "DD.MM.YYYY")
-          }
-          excerpt(pruneLength: 200)
-        }
-      }
-    }
-  }
-`;
