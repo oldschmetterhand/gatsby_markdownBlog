@@ -9,10 +9,16 @@ module.exports = {
     `gatsby-plugin-typescript`,
     {
       resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
+      options: [
+        {
+          name: `images`,
+          path: `${__dirname}/src/images`,
+        },
+        {
+          name:`markdown-pages`,
+          path: `${__dirname}/src/markdown-pages`,
+        }
+      ],
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
