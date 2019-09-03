@@ -27,9 +27,7 @@ const Layout: React.FC = ({ children }) => {
     <>
       <Header siteTitle={data.site.siteMetadata.title} />
       <Nav />
-      <div
-        className={styles.defaultContainer}
-      >
+      <div className={styles.defaultContainer}>
         <ScrollToTop showUnder={160}>
           <span>Nach Oben</span>
         </ScrollToTop>
