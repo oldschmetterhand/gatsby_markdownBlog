@@ -1,6 +1,4 @@
-import { Link } from "gatsby"
 import React from "react"
-import styles from "./styles.module.scss"
 
 interface Props {
   siteTitle: string
