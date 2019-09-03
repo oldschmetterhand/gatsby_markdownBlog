@@ -11,8 +11,8 @@ const Header: React.FC<Props> = ({ siteTitle = `` }) => (
     <section className="hero is-medium is-primary is-bold">
       <div className="hero-body">
         <div className="container">
-          <h1 className="title">NAMPI</h1>
-          <h2 className="subtitle">Nuns and Monks Prosopographical Interfaces</h2>
+          <h1 className="title">{siteTitle}</h1>
+          <h2 className="subtitle">React/Gatsby, Bulma, </h2>
         </div>
       </div>
     </section>
