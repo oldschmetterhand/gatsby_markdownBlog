@@ -11,6 +11,7 @@ import Nav from "../Nav"
 import Header from "../Header"
 import ScrollToTop from "react-scroll-up"
 import styles from "./styles.module.scss";
+import 'bulma/css/bulma.css'
 
 const Layout: React.FC = ({ children }) => {
   const data = useStaticQuery(graphql`
