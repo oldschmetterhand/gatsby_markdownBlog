@@ -9,6 +9,7 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Nav from "../Nav"
 import Header from "../Header"
+import ScrollToTop from "react-scroll-up"
 
 const Layout: React.FC = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -24,7 +25,7 @@ const Layout: React.FC = ({ children }) => {
   return (
     <>
       <Header siteTitle={data.site.siteMetadata.title} />
-      <Nav/>
+      <Nav />
       <div
         style={{
           margin: `0 auto`,
@@ -33,6 +34,9 @@ const Layout: React.FC = ({ children }) => {
           paddingTop: 0,
         }}
       >
+        <ScrollToTop showUnder={160}>
+          <span>Nach Oben</span>
+        </ScrollToTop>
         <main>{children}</main>
         <footer>
           © {new Date().getFullYear()}, Built with
