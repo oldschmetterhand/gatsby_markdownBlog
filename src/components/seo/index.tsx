@@ -71,7 +71,9 @@ function SEO({
           content: metaDescription,
         },
       ].concat(meta)}
-    />
+    >
+      <html className="has-navbar-fixed-top"></html>
+    </Helmet>
   )
 }
 

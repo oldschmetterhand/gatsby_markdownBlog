@@ -4,7 +4,7 @@ import styles from "./styles.module.scss"
 
 const Nav: React.FC = () => {
   return (
-    <nav className={["navbar", styles.navSticky].join(" ")} role="navigation" aria-label="main navigation">
+    <nav className={["navbar", "is-fixed-top"].join(" ")} role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
         <a className="navbar-item" href="https://bulma.io">
           {/* <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"> */}
