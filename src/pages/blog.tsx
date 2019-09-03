@@ -11,27 +11,31 @@ interface Props {
 }
 
 const NotFoundPage: React.FC<Props> = ({ data }) => {
-
-  return (<Layout>
-    <SEO title="Blog" />
-    <h1>Blog</h1>
-    <p>Welcome to the Blog-Overview!</p>
-    <p>The Posts here are <em>ordered by date</em> --- newest first.</p>
-    <p>Have fun!</p>
-    <br></br>
-    <br></br>
-    {data.allMarkdownRemark.edges.map(post => (
-      <>
-        <BlogPreview
-          title={post.node.frontmatter.title}
-          date={post.node.frontmatter.date}
-          author={post.node.frontmatter.author}
-          path={post.node.frontmatter.path}
-        ></BlogPreview> 
-        <Img fixed={post.node.frontmatter.featuredImage.childImageSharp.fixed}/> 
-      </>
-    ))}
-  </Layout>)
+  return (
+    <Layout>
+      <SEO title="Blog" />
+      <h1>Blog</h1>
+      <p>Welcome to the Blog-Overview!</p>
+      <p>
+        The Posts here are <em>ordered by date</em> --- newest first.
+      </p>
+      <p>Have fun!</p>
+      <br></br>
+      <br></br>
+      {data.allMarkdownRemark.edges.map(post => (
+        <>
+          <BlogPreview
+            title={post.node.frontmatter.title}
+            date={post.node.frontmatter.date}
+            author={post.node.frontmatter.author}
+            path={post.node.frontmatter.path}
+            fixedImageGraphQl = {post.node.frontmatter.featuredImage.childImageSharp.fixed}
+          >
+          </BlogPreview>
+        </>
+      ))}
+    </Layout>
+  )
 }
 
 export default NotFoundPage
