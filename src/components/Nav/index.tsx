@@ -1,15 +1,16 @@
 import React from "react"
 import { Link } from "gatsby"
 import styles from "./styles.module.scss"
+import Image from "../image"
 
 const Nav: React.FC = () => {
   return (
-    <nav className={["navbar", "is-fixed-top"].join(" ")} role="navigation" aria-label="main navigation">
+    <nav className={["navbar", "is-fixed-top", styles.navFixed].join(" ")} role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
         <a className="navbar-item" href="https://bulma.io">
-          {/* <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"> */}
-          Logo here
+        <Image/>
         </a>
+        
 
         <a
           role="button"
@@ -49,6 +50,9 @@ const Nav: React.FC = () => {
               </a>
               <a className="button is-light">Log in</a>
             </div>
+          </div>
+          <div className="navbar-item has-text-left">
+            <Image/>
           </div>
         </div>
       </div>
