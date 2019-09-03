@@ -5,9 +5,9 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import React from "./node_modules/react"
+import PropTypes from "./node_modules/prop-types"
+import { useStaticQuery, graphql } from "./node_modules/gatsby"
 
 import Nav from "../Nav"
 import Header from "../Header"
