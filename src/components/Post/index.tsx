@@ -1,6 +1,6 @@
 import React from "react"
 import Layout from "../Layout"
-import SEO from "../seo"
+import SEO from "../Seo"
 
 interface Props {
     title:string,
