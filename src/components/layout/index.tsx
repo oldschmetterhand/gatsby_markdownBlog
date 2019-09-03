@@ -5,10 +5,8 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "./node_modules/react"
-import PropTypes from "./node_modules/prop-types"
-import { useStaticQuery, graphql } from "./node_modules/gatsby"
-
+import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
 import Nav from "../Nav"
 import Header from "../Header"
 
@@ -44,10 +42,6 @@ const Layout: React.FC = ({ children }) => {
       </div>
     </>
   )
-}
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
 }
 
 export default Layout

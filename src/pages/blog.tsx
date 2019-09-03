@@ -4,13 +4,12 @@ import Layout from "../components/Layout"
 import SEO from "../components/seo"
 import BlogPreview from "../components/BlogPreview"
 import { graphql } from "gatsby"
-import Img from "gatsby-image"
 
 interface Props {
   data: any //from GraphQl
 }
 
-const NotFoundPage: React.FC<Props> = ({ data }) => {
+const blog: React.FC<Props> = ({ data }) => {
   return (
     <Layout>
       <SEO title="Blog" />
@@ -38,7 +37,7 @@ const NotFoundPage: React.FC<Props> = ({ data }) => {
   )
 }
 
-export default NotFoundPage
+export default blog
 
 export const IndexQuery = graphql`
   query IndexQuery {

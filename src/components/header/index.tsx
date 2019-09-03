@@ -1,5 +1,5 @@
-import { Link } from "./node_modules/gatsby"
-import React from "./node_modules/react"
+import { Link } from "gatsby"
+import React from "react"
 import { Stream } from "stream";
 
 interface Props {
