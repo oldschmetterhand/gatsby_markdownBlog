@@ -6,3 +6,6 @@ author: "Gustav Gans"
 featuredImage: ../../images/cat_unsplash.jpg
 ---
 
+# This is just some sample content
+
+Written in markdown, used to content to the page quickly.

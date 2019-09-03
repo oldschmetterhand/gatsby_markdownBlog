@@ -5,4 +5,3 @@ title: "How to"
 author: "Max Mustermann"
 featuredImage: ../images/gatsby-astronaut.png
 ---
-
