@@ -25,7 +25,7 @@ const Nav: React.FC = () => {
         </a>
       </div>
       <div id="navbarBasicExample" className="navbar-menu">
-        <div className="navbar-start">
+        <div className="navbar-end">
           <Link to="/" className="navbar-item">Home</Link>
           <Link to="/blog" className="navbar-item">Blog</Link>
           <Link to="/about" className="navbar-item">About</Link>
@@ -42,7 +42,7 @@ const Nav: React.FC = () => {
           </div>
         </div>
 
-        <div className="navbar-end">
+        {/* <div className="navbar-end">
           <div className="navbar-item">
             <div className="buttons">
               <a className="button is-primary">
@@ -54,7 +54,7 @@ const Nav: React.FC = () => {
           <div className="navbar-item has-text-left">
             <Image/>
           </div>
-        </div>
+        </div> */}
       </div>
     </nav>
   )
