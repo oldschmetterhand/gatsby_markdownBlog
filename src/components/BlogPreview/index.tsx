@@ -26,6 +26,8 @@ const BlogPreview: React.FC<Props> = ({
       {children}
       <br></br>
       <hr></hr>
+      <br></br>
+      <br></br>
     </div>
   )
 }
