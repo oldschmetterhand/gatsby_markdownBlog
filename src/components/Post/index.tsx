@@ -19,9 +19,10 @@ const Post: React.FC<Props> = ({
       <SEO title={title}></SEO>
       <div className="blog-post-container">
       <div className="blog-post">
-        <h1>{title}</h1>
-        <h2>{date}</h2>
-        <h3>{author}</h3>
+        <h3>{title}</h3>
+        <h4>{date}</h4>
+        <h5>{author}</h5>
+        <hr></hr>
         {children}
       </div>
     </div>  
