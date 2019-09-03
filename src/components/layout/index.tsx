@@ -10,7 +10,6 @@ import { useStaticQuery, graphql } from "gatsby"
 import Nav from "../Nav"
 import Header from "../Header"
 import ScrollToTop from "react-scroll-up"
-import styles from "./styles.module.scss";
 import 'bulma/css/bulma.css'
 
 const Layout: React.FC = ({ children }) => {
@@ -28,7 +27,7 @@ const Layout: React.FC = ({ children }) => {
     <>
       <Header siteTitle={data.site.siteMetadata.title} />
       <Nav />
-      <div className={styles.defaultContainer}>
+      <div className="container">
         <ScrollToTop showUnder={160}>
           <span>Nach Oben</span>
         </ScrollToTop>
