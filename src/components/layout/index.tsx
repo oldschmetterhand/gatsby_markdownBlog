@@ -10,6 +10,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Nav from "../Nav"
 import Header from "../Header"
 import ScrollToTop from "react-scroll-up"
+import styles from "./styles.module.scss";
 
 const Layout: React.FC = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -27,12 +28,7 @@ const Layout: React.FC = ({ children }) => {
       <Header siteTitle={data.site.siteMetadata.title} />
       <Nav />
       <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0px 1.0875rem 1.45rem`,
-          paddingTop: 0,
-        }}
+        className={styles.defaultContainer}
       >
         <ScrollToTop showUnder={160}>
           <span>Nach Oben</span>
