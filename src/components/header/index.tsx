@@ -8,7 +8,7 @@ interface Props {
 
 const Header: React.FC<Props> = ({ siteTitle = `` }) => (
   <header>
-    <section className="hero is-medium is-primary is-bold">
+    <section className={["hero is-medium is-primary is-bold", styles.header].join(" ")}>
       <div className="hero-body">
         <div className="container">
           <h1 className="title">{siteTitle}</h1>
