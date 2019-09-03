@@ -22,16 +22,15 @@ const blog: React.FC<Props> = ({ data }) => {
       <br></br>
       <br></br>
       {data.allMarkdownRemark.edges.map(post => (
-        <>
           <BlogPreview
             title={post.node.frontmatter.title}
             date={post.node.frontmatter.date}
             author={post.node.frontmatter.author}
             path={post.node.frontmatter.path}
             fixedImageGraphQl = {post.node.frontmatter.featuredImage.childImageSharp.fixed}
+            key={post.node.frontmatter.path}
           >
           </BlogPreview>
-        </>
       ))}
     </Layout>
   )
