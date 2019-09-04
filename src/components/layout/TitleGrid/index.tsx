@@ -1,6 +1,6 @@
 import React from "react"
 
-const TitleGrid = () => {
+const TitleGrid:React.FC = ({children}) => {
   return (
     <div className="tile is-ancestor">
       <div className="tile is-8 is-vertical is-parent">
@@ -11,6 +11,7 @@ const TitleGrid = () => {
             ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas
             non massa sem. Etiam finibus odio quis feugiat facilisis.
           </p>
+          {children}  
         </div>
         
       </div>
