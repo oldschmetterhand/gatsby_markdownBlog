@@ -13,13 +13,19 @@ interface Props {
 const blog: React.FC<Props> = ({ data }) => {
   let getPostOverview = () => {
     return (
-      <ul className="list">
-        {data.allMarkdownRemark.edges.map(post => (
-          <li className="list-item" key={post.node.frontmatter.title + "_overview"}>
-            {post.node.frontmatter.title} -- {post.node.frontmatter.path}
-          </li>
-        ))}
-      </ul>
+      <>
+        <p className="title">Overview</p>
+        <ul className="list">
+          {data.allMarkdownRemark.edges.map(post => (
+            <li
+              className="list-item"
+              key={post.node.frontmatter.title + "_overview"}
+            >
+              {post.node.frontmatter.title} -- {post.node.frontmatter.path}
+            </li>
+          ))}
+        </ul>
+      </>
     )
   }
 
