@@ -16,7 +16,7 @@ const Header: React.FC<Props> = ({
     <header className={styles.baseHeader}>
       <section className="hero has-text-centered">
         <div className="hero-body">
-          <div className="container">
+          <div className={["container", styles.heroEnd].join(" ")}>
             <h1 className="title">ZIM Blog</h1>
             <h2 className="subtitle">Based on React/Gatsby and Bulma</h2>
           </div>
