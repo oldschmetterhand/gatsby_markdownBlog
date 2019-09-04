@@ -3,33 +3,25 @@ import Layout from "../Layout"
 import SEO from "../Seo"
 
 interface Props {
-    title:string,
-    date: string,
-    author: string,
+  title: string
+  date: string
+  author: string
 }
 
-const Post: React.FC<Props> = ({
-    title,
-    date,
-    author,
-    children
-}) => {
+const Post: React.FC<Props> = ({ title, date, author, children }) => {
   return (
-  <Layout>
+    <Layout>
       <SEO title={title}></SEO>
       <div className="blog-post-container">
-      <div className="blog-post">
-        <h3>{title}</h3>
-        <h4>{date}</h4>
-        <h5>{author}</h5>
-        <hr></hr>
-        <div className="content">
-        {children}
+        <div className="blog-post">
+          <h3>{title}</h3>
+          <h4>{date}</h4>
+          <h5>{author}</h5>
+          <hr></hr>
+          <div className="content">{children}</div>
         </div>
       </div>
-    </div>  
-
-  </Layout>
+    </Layout>
   )
 }
 
