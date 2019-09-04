@@ -14,7 +14,7 @@ const Header: React.FC<Props> = ({
 
   const baseHeader = (
     <header className={styles.baseHeader}>
-      <section className="hero">
+      <section className="hero has-text-centered">
         <div className="hero-body">
           <div className="container">
             <h1 className="title">ZIM Blog</h1>
