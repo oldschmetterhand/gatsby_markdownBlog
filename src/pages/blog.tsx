@@ -15,7 +15,7 @@ const blog: React.FC<Props> = ({ data }) => {
     return (
       <ul>
         {data.allMarkdownRemark.edges.map(post => (
-          <li>
+          <li key={post.node.frontmatter.title + "_overview"}>
             {post.node.frontmatter.title} -- {post.node.frontmatter.path}
           </li>
         ))}
