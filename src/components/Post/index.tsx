@@ -10,7 +10,7 @@ interface Props {
 
 const Post: React.FC<Props> = ({ title, date, author, children }) => {
   return (
-    <Layout>
+    <Layout showHeader={false}>
       <SEO title={title}></SEO>
       <div className="blog-post-container">
         <div className="blog-post">

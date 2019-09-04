@@ -15,9 +15,14 @@ import "bulma/css/bulma.css"
 
 interface Props {
   showTeaser?: boolean
+  showHeader?: boolean
 }
 
-const Layout: React.FC<Props> = ({ children, showTeaser = false }) => {
+const Layout: React.FC<Props> = ({
+  children,
+  showTeaser = false,
+  showHeader = true,
+}) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -28,12 +33,13 @@ const Layout: React.FC<Props> = ({ children, showTeaser = false }) => {
     }
   `)
 
+  const header = showHeader ? (
+    <Header siteTitle={data.site.siteMetadata.title} showTeaser={showTeaser} />
+  ) : null
+
   return (
     <>
-      <Header
-        siteTitle={data.site.siteMetadata.title}
-        showTeaser={showTeaser}
-      />
+      {header}
       <Nav />
       <div className="container">
         <main className={["section", styles.main].join(" ")}>
