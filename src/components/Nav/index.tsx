@@ -9,7 +9,7 @@ const Nav: React.FC = () => {
     <nav className={["navbar", "is-fixed-top", styles.navFixed].join(" ")} role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
         <a className="navbar-item" href="https://bulma.io">
-        <Image/>
+        {/* <Image/> */}
         </a>
         
 
@@ -31,8 +31,8 @@ const Nav: React.FC = () => {
           <AniLink fade duration={1} to="/blog" className="navbar-item">Blog</AniLink>
           <AniLink fade duration={1} to="/about" className="navbar-item">About</AniLink>
         </div>
-        <div className="navbar-start">
-          <div className={["navbar-item has-text-left"].join(" ")}>
+        <div className="navbar-end">
+          <div className={["navbar-item has-text-left"].join(" ")} style={{marginRight:"1.5em"}}>
             <Image/>
           </div>
         </div>

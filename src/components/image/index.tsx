@@ -26,7 +26,7 @@ const Image: React.FC = () => {
     }
   `)
 
-  return <Img fluid={data.placeholderImage.childImageSharp.fluid} />
+  return <Img fluid={data.placeholderImage.childImageSharp.fluid} style={{position:"initial"}} imgStyle={{margin: ".75em"}}/>
 }
 
 export default Image
