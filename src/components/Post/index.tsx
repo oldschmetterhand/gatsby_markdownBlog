@@ -23,7 +23,9 @@ const Post: React.FC<Props> = ({
         <h4>{date}</h4>
         <h5>{author}</h5>
         <hr></hr>
+        <div className="content">
         {children}
+        </div>
       </div>
     </div>  
 
