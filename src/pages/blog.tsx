@@ -14,7 +14,7 @@ interface Props {
 const blog: React.FC<Props> = ({ data }) => {
 
   let postsArray = data.allMarkdownRemark.edges.map(post=>{
-    return {text: post.node.frontmatter.title, path: post.node.frontmatter.path}
+    return {text: post.node.frontmatter.title, path: post.node.frontmatter.path, date: post.node.frontmatter.date}
   })
 
   return (
