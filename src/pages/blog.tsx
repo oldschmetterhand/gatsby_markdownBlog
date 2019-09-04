@@ -12,24 +12,27 @@ interface Props {
 }
 
 const blog: React.FC<Props> = ({ data }) => {
-
-  let postsArray = data.allMarkdownRemark.edges.map(post=>{
-    return {text: post.node.frontmatter.title, path: post.node.frontmatter.path, date: post.node.frontmatter.date}
+  let postsArray = data.allMarkdownRemark.edges.map(post => {
+    return {
+      text: post.node.frontmatter.title,
+      path: post.node.frontmatter.path,
+      date: post.node.frontmatter.date,
+    }
   })
 
   return (
     <Layout>
       <SEO title="Blog" />
-      <h1>Blog</h1>
-      <p>Welcome to the Blog-Overview!</p>
-      <p>
-        The Posts here are <em>ordered by date</em> --- newest first.
-      </p>
-      <p>Have fun!</p>
-      <br></br>
-      <br></br>
-
-      <TitleGrid rightTop={<PostsSummary posts={postsArray}/>}>
+      <TitleGrid rightTop={<PostsSummary posts={postsArray} />}>
+        <h1 className="is-2">Blog</h1>
+        <p>Welcome to the Blog-Overview! Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+        <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+        <p>
+          The Posts here are <em>ordered by date</em> --- newest first.
+        </p>
+        <p>Have fun!</p>
+        <hr></hr>
+        <br></br>
         <p className="title is-3">Overview</p>
         {data.allMarkdownRemark.edges.map(post => (
           <BlogPreview
