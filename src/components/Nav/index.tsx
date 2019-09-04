@@ -30,7 +30,7 @@ const Nav: React.FC = () => {
           <AniLink fade duration={1} to="/" className="navbar-item">Home</AniLink>
           <AniLink fade duration={1} to="/blog" className="navbar-item">Blog</AniLink>
           <AniLink fade duration={1} to="/about" className="navbar-item">About</AniLink>
-          <div className="navbar-item has-dropdown is-hoverable">
+          {/* <div className="navbar-item has-dropdown is-hoverable">
             <a className="navbar-link">More</a>
 
             <div className="navbar-dropdown">
@@ -40,7 +40,7 @@ const Nav: React.FC = () => {
               <hr className="navbar-divider" />
               <a className="navbar-item">Report an issue</a>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* <div className="navbar-end">
