@@ -12,9 +12,8 @@ const PostsSummary: React.FC<Props> = ({ posts }) => {
       <p className="title is-4">Zusammenfassung</p>
       <ul className="">
         {posts.map(post => (
-          <li className={styles.li}>
+          <li className={styles.li} key={`summary_${post.text}`}>
             <AniLink
-              key={`summary_${post.path}`}
               fade
               duration={1}
               to={post.path}
