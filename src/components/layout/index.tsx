@@ -36,7 +36,7 @@ const Layout: React.FC<Props> = ({ children, showTeaser = false }) => {
       />
       <Nav />
       <div className="container">
-        <main className={["section is-medium", styles.main].join(" ")}>
+        <main className={["section", styles.main].join(" ")}>
           <ScrollToTop showUnder={160}>
             <span>Nach Oben</span>
           </ScrollToTop>
