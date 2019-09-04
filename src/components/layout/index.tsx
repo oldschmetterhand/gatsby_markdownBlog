@@ -10,16 +10,14 @@ import { useStaticQuery, graphql } from "gatsby"
 import Nav from "../Nav"
 import Header from "../Header"
 import ScrollToTop from "react-scroll-up"
-import 'bulma/css/bulma.css'
+import styles from "./styles.module.scss"
+import "bulma/css/bulma.css"
 
 interface Props {
   showTeaser?: boolean
 }
 
-const Layout: React.FC<Props> = ({ 
-  children,
-  showTeaser = false
- }) => {
+const Layout: React.FC<Props> = ({ children, showTeaser = false }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -32,13 +30,18 @@ const Layout: React.FC<Props> = ({
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} showTeaser={showTeaser} />
+      <Header
+        siteTitle={data.site.siteMetadata.title}
+        showTeaser={showTeaser}
+      />
       <Nav />
       <div className="container">
-        <ScrollToTop showUnder={160}>
-          <span>Nach Oben</span>
-        </ScrollToTop>
-        <main>{children}</main>
+        <main className={["section is-medium", styles.main].join(" ")}>
+          <ScrollToTop showUnder={160}>
+            <span>Nach Oben</span>
+          </ScrollToTop>
+          <main>{children}</main>
+        </main>
         <footer>
           © {new Date().getFullYear()}, Built with
           {` `}
