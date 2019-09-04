@@ -15,7 +15,7 @@ const TitleGrid: React.FC<Props> = ({
   return (
     <div className="tile is-ancestor">
       <div className={["tile is-8 is-vertical is-parent", styles.titleBox].join(" ")}>
-        <div className="tile is-child content">{children}</div>
+        <div className={["tile is-child content", styles.contentBox].join(" ")}>{children}</div>
       </div>
       <div className="tile is-parent is-vertical">
         <div className={["tile is-child", styles.rightTop].join(" ")}>{rightTop}</div>
