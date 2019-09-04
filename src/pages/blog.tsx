@@ -3,6 +3,7 @@ import React from "react"
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
 import BlogPreview from "../components/BlogPreview"
+import TitleGrid from "../components/Layout/TitleGrid"
 import { graphql } from "gatsby"
 
 interface Props {
@@ -32,6 +33,9 @@ const blog: React.FC<Props> = ({ data }) => {
           >
           </BlogPreview>
       ))}
+      
+        <TitleGrid></TitleGrid>
+
     </Layout>
   )
 }
