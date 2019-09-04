@@ -26,7 +26,7 @@ const Nav: React.FC = () => {
         </a>
       </div>
       <div id="navbarBasicExample" className="navbar-menu">
-        <div className="navbar-end">
+        <div className={["navbar-end", styles.navBorder].join(" ")}>
           <AniLink fade duration={1} to="/" className="navbar-item">Home</AniLink>
           <AniLink fade duration={1} to="/blog" className="navbar-item">Blog</AniLink>
           <AniLink fade duration={1} to="/about" className="navbar-item">About</AniLink>
