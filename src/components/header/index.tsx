@@ -40,9 +40,8 @@ const Header: React.FC<Props> = ({
             </h2>
             <br></br>
             <div
-              className={["container is-fluid", styles.imageHolder].join(" ")}
+              className={["container is-fluid"].join(" ")}
             >
-              <Image></Image>
             </div>
           </div>
         </div>
