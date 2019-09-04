@@ -30,19 +30,7 @@ const Nav: React.FC = () => {
           <AniLink fade duration={1} to="/" className="navbar-item">Home</AniLink>
           <AniLink fade duration={1} to="/blog" className="navbar-item">Blog</AniLink>
           <AniLink fade duration={1} to="/about" className="navbar-item">About</AniLink>
-          {/* <div className="navbar-item has-dropdown is-hoverable">
-            <a className="navbar-link">More</a>
-
-            <div className="navbar-dropdown">
-              <a className="navbar-item">About</a>
-              <a className="navbar-item">Jobs</a>
-              <a className="navbar-item">Contact</a>
-              <hr className="navbar-divider" />
-              <a className="navbar-item">Report an issue</a>
-            </div>
-          </div> */}
         </div>
-
         {/* <div className="navbar-end">
           <div className="navbar-item">
             <div className="buttons">
