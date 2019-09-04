@@ -47,9 +47,9 @@ const Header: React.FC<Props> = ({
           </div>
         </div>
       </section>
-      <section>
+      {/* <section>
         <EntryGrid></EntryGrid>
-      </section>
+      </section> */}
     </header>
   )
 
