@@ -1,5 +1,7 @@
 import React from "react"
 
+import styles from "./styles.module.scss"
+
 interface Props {
   rightTop?: any
   rightBottom?: any
@@ -12,7 +14,7 @@ const TitleGrid: React.FC<Props> = ({
 }) => {
   return (
     <div className="tile is-ancestor">
-      <div className="tile is-8 is-vertical is-parent">
+      <div className={["tile is-8 is-vertical is-parent", styles.titleBox].join(" ")}>
         <div className="tile is-child">{children}</div>
       </div>
       <div className="tile is-parent is-vertical">
