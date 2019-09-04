@@ -11,6 +11,18 @@ interface Props {
 }
 
 const blog: React.FC<Props> = ({ data }) => {
+  let getPostOverview = () => {
+    return (
+      <ul>
+        {data.allMarkdownRemark.edges.map(post => (
+          <li>
+            {post.node.frontmatter.title} -- {post.node.frontmatter.path}
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
   return (
     <Layout>
       <SEO title="Blog" />
@@ -22,20 +34,21 @@ const blog: React.FC<Props> = ({ data }) => {
       <p>Have fun!</p>
       <br></br>
       <br></br>
-      {data.allMarkdownRemark.edges.map(post => (
+
+      <TitleGrid rightTop={getPostOverview()}>
+        {data.allMarkdownRemark.edges.map(post => (
           <BlogPreview
             title={post.node.frontmatter.title}
             date={post.node.frontmatter.date}
             author={post.node.frontmatter.author}
             path={post.node.frontmatter.path}
-            fixedImageGraphQl = {post.node.frontmatter.featuredImage.childImageSharp.fixed}
+            fixedImageGraphQl={
+              post.node.frontmatter.featuredImage.childImageSharp.fixed
+            }
             key={post.node.frontmatter.path}
-          >
-          </BlogPreview>
-      ))}
-      
-        <TitleGrid></TitleGrid>
-
+          ></BlogPreview>
+        ))}
+      </TitleGrid>
     </Layout>
   )
 }
