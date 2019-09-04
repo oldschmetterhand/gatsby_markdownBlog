@@ -14,7 +14,7 @@ const blog: React.FC<Props> = ({ data }) => {
   let getPostOverview = () => {
     return (
       <>
-        <p className="title">Overview</p>
+        <p className="title is-5">Summary</p>
         <ul className="list">
           {data.allMarkdownRemark.edges.map(post => (
             <li
@@ -42,6 +42,7 @@ const blog: React.FC<Props> = ({ data }) => {
       <br></br>
 
       <TitleGrid rightTop={getPostOverview()}>
+        <p className="title is-3">Overview</p>
         {data.allMarkdownRemark.edges.map(post => (
           <BlogPreview
             title={post.node.frontmatter.title}
