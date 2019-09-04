@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import Image from "../image"
 import styles from "./styles.module.scss"
+import EntryGrid from "../Layout/EntryGrid"
 
 interface Props {
   siteTitle: string
@@ -28,7 +29,7 @@ const Header: React.FC<Props> = ({
   const teaserHeader = (
     <header>
       <section
-        className={["hero is-medium is-primary is-bold", styles.header].join(
+        className={["hero is-medium is-bold", styles.header].join(
           " "
         )}
       >
@@ -45,6 +46,9 @@ const Header: React.FC<Props> = ({
             </div>
           </div>
         </div>
+      </section>
+      <section>
+        <EntryGrid></EntryGrid>
       </section>
     </header>
   )
