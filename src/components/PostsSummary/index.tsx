@@ -11,7 +11,7 @@ const PostsSummary: React.FC<Props> = ({
     return (
         <ul className="list">
             {posts.map(post=>(
-                <AniLink fade duration={1} to={post.path} className="list-item">{post.text}</AniLink>
+                <AniLink key={`summary_${post.path}`} fade duration={1} to={post.path} className="list-item">{post.text}</AniLink>
             ))}
         </ul>
     )

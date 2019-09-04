@@ -5,29 +5,17 @@ import SEO from "../components/Seo"
 import BlogPreview from "../components/BlogPreview"
 import TitleGrid from "../components/Layout/TitleGrid"
 import { graphql } from "gatsby"
+import PostsSummary from "../components/PostsSummary"
 
 interface Props {
   data: any //from GraphQl
 }
 
 const blog: React.FC<Props> = ({ data }) => {
-  let getPostOverview = () => {
-    return (
-      <>
-        <p className="title is-5">Summary</p>
-        <ul className="list">
-          {data.allMarkdownRemark.edges.map(post => (
-            <li
-              className="list-item"
-              key={post.node.frontmatter.title + "_overview"}
-            >
-              {post.node.frontmatter.title} -- {post.node.frontmatter.path}
-            </li>
-          ))}
-        </ul>
-      </>
-    )
-  }
+
+  let postsArray = data.allMarkdownRemark.edges.map(post=>{
+    return {text: post.node.frontmatter.title, path: post.node.frontmatter.path}
+  })
 
   return (
     <Layout>
@@ -41,7 +29,7 @@ const blog: React.FC<Props> = ({ data }) => {
       <br></br>
       <br></br>
 
-      <TitleGrid rightTop={getPostOverview()}>
+      <TitleGrid rightTop={<PostsSummary posts={postsArray}/>}>
         <p className="title is-3">Overview</p>
         {data.allMarkdownRemark.edges.map(post => (
           <BlogPreview
