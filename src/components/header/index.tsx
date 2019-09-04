@@ -13,7 +13,7 @@ const Header: React.FC<Props> = ({
 }) => {
 
   const baseHeader = (
-    <header>
+    <header className={styles.baseHeader}>
       <section className="hero">
         <div className="hero-body">
           <div className="container">
