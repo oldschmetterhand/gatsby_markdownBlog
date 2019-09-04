@@ -31,19 +31,11 @@ const Nav: React.FC = () => {
           <AniLink fade duration={1} to="/blog" className="navbar-item">Blog</AniLink>
           <AniLink fade duration={1} to="/about" className="navbar-item">About</AniLink>
         </div>
-        {/* <div className="navbar-end">
-          <div className="navbar-item">
-            <div className="buttons">
-              <a className="button is-primary">
-                <strong>Sign up</strong>
-              </a>
-              <a className="button is-light">Log in</a>
-            </div>
-          </div>
-          <div className="navbar-item has-text-left">
+        <div className="navbar-start">
+          <div className={["navbar-item has-text-left"].join(" ")}>
             <Image/>
           </div>
-        </div> */}
+        </div>
       </div>
     </nav>
   )
