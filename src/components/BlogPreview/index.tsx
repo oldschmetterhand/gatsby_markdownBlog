@@ -21,7 +21,7 @@ const BlogPreview: React.FC<Props> = ({
   return (
     <div>
       <h3 className="title is-5">{title}</h3>
-      <h4 className="subtitle is-6">Von: {author} - {date}</h4>
+      <h4 className={["subtitle is-6", styles.subTitle].join(" ")}> - {author} / {date}</h4>
       <br></br>
       <div className={styles.textContainer}>
         {children}
