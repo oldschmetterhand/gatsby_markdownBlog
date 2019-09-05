@@ -25,6 +25,7 @@ const PostsSummary: React.FC<Props> = ({ posts }) => {
           </li>
         ))}
       </ul>
+      <hr className={styles.hr}></hr>
     </>
   )
 }
