@@ -9,7 +9,6 @@
     top:0;
     left:0;
     background-color: lightgrey;
-
     p {
         writing-mode: vertical-lr;
         text-orientation: upright; 
@@ -18,5 +17,8 @@
 
 .iconHolder {
     display: block;
-    margin-bottom: .5em;    
+    margin-bottom: 1em;
+    &:first-child {
+        margin-top: 10em;
+    }    
 }
