@@ -26,7 +26,7 @@ const blog: React.FC<Props> = ({ data }) => {
       <TitleGrid rightTop={<PostsSummary posts={postsArray} />}>
         <h3 className="is-2">Blog</h3>
         <hr></hr>
-        <p>Welcome to the Blog-Overview! Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+        <p><em>Welcome to the Blog-Overview!</em> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
         <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
         <p>
           The Posts here are <em>ordered by date</em> --- newest first.
