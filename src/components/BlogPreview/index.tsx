@@ -19,7 +19,7 @@ const BlogPreview: React.FC<Props> = ({
   fixedImageGraphQl = null
 }) => {
   return (
-    <div>
+    <div className={styles.mainContainer}>
       <h3 className="title is-5">{title}</h3>
       <h4 className={["subtitle is-6", styles.subTitle].join(" ")}> - {author} / {date}</h4>
       <br></br>
@@ -30,6 +30,8 @@ const BlogPreview: React.FC<Props> = ({
       <Img fixed={fixedImageGraphQl}/>
       <br></br>
       <a className={styles.link} href={path}>Zum Beitrag | ooo></a>
+      <br></br>
+      <br></br>
       <br></br>
       <hr></hr>
       <br></br>
