@@ -1,6 +1,6 @@
 import React from "react"
 import styles from "./styles.module.scss"
-import { FaFacebook, FaTwitterSquare } from "react-icons/fa"
+import { FaFacebook, FaTwitterSquare, FaPinterestP } from "react-icons/fa"
 
 const IconBar: React.FC = () => {
   return (
@@ -11,6 +11,9 @@ const IconBar: React.FC = () => {
         </span>
         <span className={styles.iconHolder}>
           <FaTwitterSquare size="1.25em"/>
+        </span>
+        <span className={styles.iconHolder}>
+          <FaPinterestP size="1.25em"/>
         </span>
       </div>
     </div>
