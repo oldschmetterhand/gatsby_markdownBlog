@@ -15,6 +15,8 @@ const IconBar: React.FC = () => {
         <span className={styles.iconHolder}>
           <FaPinterestP size="1.25em"/>
         </span>
+        <hr></hr>
+        <p>ZIM Blog</p>
       </div>
     </div>
   )

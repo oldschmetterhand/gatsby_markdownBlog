@@ -9,6 +9,11 @@
     top:0;
     left:0;
     background-color: lightgrey;
+
+    p {
+        writing-mode: vertical-lr;
+        text-orientation: upright; 
+    }
 }
 
 .iconHolder {
