@@ -48,6 +48,11 @@ const Layout: React.FC<Props> = ({
           </ScrollToTop>
           <main>{children}</main>
         </main>
+        <aside className={styles.aside}>
+          <p>Facebook</p>
+          <p>KFU</p>
+          <p>Twitter</p>
+        </aside>
         <footer>
           © {new Date().getFullYear()}, Built with
           {` `}
