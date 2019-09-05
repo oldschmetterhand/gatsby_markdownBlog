@@ -24,19 +24,7 @@ const blog: React.FC<Props> = ({ data }) => {
     <Layout>
       <SEO title="Blog" />
       <TitleGrid rightTop={<PostsSummary posts={postsArray} />}>
-        <h3 className="is-2">Blog</h3>
-        <hr></hr>
-        <p><em>Welcome to the Blog-Overview!</em> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
-        <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
-        <p>
-          The Posts here are <em>ordered by date</em> --- newest first.
-        </p>
-        <p>Have fun!</p>
-        <hr></hr>
-        <br></br>
-        <br></br>
-        <p className="title is-3">Overview</p>
-        <hr></hr>
+        
         {data.allMarkdownRemark.edges.map(post => (
           <BlogPreview
             title={post.node.frontmatter.title}
@@ -47,7 +35,9 @@ const blog: React.FC<Props> = ({ data }) => {
               post.node.frontmatter.featuredImage.childImageSharp.fixed
             }
             key={post.node.frontmatter.path}
-          ></BlogPreview>
+          >
+            {post.node.frontmatter.summary}
+          </BlogPreview>
         ))}
       </TitleGrid>
     </Layout>
@@ -66,6 +56,7 @@ export const IndexQuery = graphql`
             date(formatString: "DD.MM.YYYY")
             path
             author
+            summary
             featuredImage {
               childImageSharp {
                 fixed {
