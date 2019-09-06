@@ -16,7 +16,7 @@ const PostsSummary: React.FC<Props> = ({ posts }) => {
             <AniLink
               fade
               duration={1}
-              to={`gatsby_markdownBlog/${post.path}`}
+              to={post.path}
               className=""
             >
               <h3 className=" title is-6">{post.text}</h3>
