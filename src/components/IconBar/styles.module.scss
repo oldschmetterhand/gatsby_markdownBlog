@@ -1,24 +1,30 @@
-
-
 .iconBar {
+  text-align: center;
+  @media (min-width: 768px) {
+    text-align: initial;
     border-right: 1px solid black;
-    height:100vh;
-    padding: .5em;
+    height: 100vh;
+    padding: 0.5em;
     margin: 0;
     position: fixed;
-    top:0;
-    left:0;
+    top: 0;
+    left: 0;
     background-color: lightgrey;
     p {
-        writing-mode: vertical-lr;
-        text-orientation: upright; 
+      writing-mode: vertical-lr;
+      text-orientation: upright;
     }
+  }
 }
 
 .iconHolder {
+  margin-right: 1em;
+  @media (min-width: 768px) {
+    margin-right:initial;  
     display: block;
     margin-bottom: 1em;
     &:first-child {
-        margin-top: 10em;
-    }    
+      margin-top: 10em;
+    }
+  }
 }
