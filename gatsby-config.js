@@ -17,12 +17,12 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-web-font-loader',
+      resolve: "gatsby-plugin-web-font-loader",
       options: {
         google: {
-          families: ['Raleway','Cinzel']
-        }
-      }
+          families: ["Raleway", "Cinzel"],
+        },
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
@@ -38,6 +38,11 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          // gatsby-remark-relative-images must
+          // go before gatsby-remark-images
+          {
+            resolve: `gatsby-remark-relative-images`,
+          },
           {
             resolve: `gatsby-remark-images`,
             options: {
@@ -63,7 +68,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-offline`,
-    
+
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
