@@ -1,7 +1,20 @@
 .navFixed {
   background: rgba(248, 237, 233, 0.1) !important;
   font-family: 'Cinzel', 'Times New Roman', Times, serif;
+  max-height: 20vh;
 }
+
+.navbarBasicExample {
+  max-height: 50vh;
+  top: 0vh;
+  position: fixed;
+  @media (min-width: 1024px) {
+    max-height: initial;
+    top: initial;
+    position: initial;
+  }
+}
+
 
 .navBorder {
   border-bottom: 1.5px solid lightgrey;

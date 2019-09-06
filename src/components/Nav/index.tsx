@@ -32,7 +32,7 @@ const Nav: React.FC = () => {
           <span aria-hidden="true"></span>
         </a>
       </div>
-      <div id="navbarBasicExample" className={`navbar-menu ${isActive ? "is-active" : ""}`}>
+      <div id="navbarBasicExample" className={`navbar-menu ${styles.navbarBasicExample} ${isActive ? "is-active" : ""}`}>
         <div className={["navbar-end", styles.navBorder].join(" ")}>
           <Link activeStyle={{textDecoration:"underline"}} to="/" className="navbar-item">Home</Link>
           <Link activeStyle={{textDecoration:"underline"}} to="/blog" className="navbar-item">Blog</Link>
