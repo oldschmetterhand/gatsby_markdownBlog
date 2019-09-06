@@ -1,6 +1,5 @@
 import React from "react"
 import { Link } from "gatsby"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
 import styles from "./styles.module.scss"
 import Image from "../image"
 
@@ -27,9 +26,9 @@ const Nav: React.FC = () => {
       </div>
       <div id="navbarBasicExample" className="navbar-menu">
         <div className={["navbar-end", styles.navBorder].join(" ")}>
-          <AniLink fade duration={1} to="/" className="navbar-item">Home</AniLink>
-          <AniLink fade duration={1} to="/blog" className="navbar-item">Blog</AniLink>
-          <AniLink fade duration={1} to="/about" className="navbar-item">About</AniLink>
+          <Link activeStyle={{textDecoration:"underline"}} to="/" className="navbar-item">Home</Link>
+          <Link activeStyle={{textDecoration:"underline"}} to="/blog" className="navbar-item">Blog</Link>
+          <Link activeStyle={{textDecoration:"underline"}} to="/about" className="navbar-item">About</Link>
         </div>
         <div className="navbar-end">
           <div className={["navbar-item has-text-left"].join(" ")} style={{marginRight:"1.5em"}}>

@@ -1,7 +1,7 @@
 import React from "react"
 import Img from "gatsby-image"
 import styles from "./styles.module.scss"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
+import { Link } from "gatsby"
 
 interface Props { 
   title: string
@@ -30,7 +30,7 @@ const BlogPreview: React.FC<Props> = ({
       <br></br>
       <Img fixed={fixedImageGraphQl}/>
       <br></br>
-      <AniLink fade duration={1} className={styles.link} to={path}>Zum Beitrag | ooo></AniLink>
+      <Link className={styles.link} to={path}>Zum Beitrag | ooo></Link>
       <br></br>
       <br></br>
       <br></br>
