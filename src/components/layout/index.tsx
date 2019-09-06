@@ -13,6 +13,7 @@ import ScrollToTop from "react-scroll-up"
 import styles from "./styles.module.scss"
 import IconBar from "../IconBar"
 import "bulma/css/bulma.css"
+import TransitionLink from 'gatsby-plugin-transition-link'
 
 interface Props {
   showTeaser?: boolean
