@@ -1,15 +1,24 @@
-
-
 .titleBox {
-    border-right: .15em solid rgb(235, 233, 233);
+  img {
+    max-width: 75%;
+    z-index: -1;
+  }
+  @media (min-width: 768px) {
+    border-right: 0.15em solid rgb(235, 233, 233);
     margin-right: 3em;
+    img {
+        max-width: initial;
+      }
+  }
 }
 
 .rightTop {
-    border-bottom: 2px solid lightgrey;
+  border-bottom: 2px solid lightgrey;
 }
 
 .contentBox {
+  text-align: justify;
+  @media (min-width: 768px) {
     padding-right: 7em;
-    text-align: justify;
+  }
 }
