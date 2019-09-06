@@ -3,7 +3,7 @@ path: "/blog/my-third-post"
 date: "2019-07-04"
 title: "My third blog post"
 author: "Gustav Gans"
-featuredImage: ../../images/cat_unsplash.jpg
+featuredImage: ../../images/cat_unsplash_.jpg
 summary: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd"
 ---
 
