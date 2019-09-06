@@ -57,8 +57,8 @@ module.exports = {
         name: `Zim Blog Template`,
         short_name: `ZIM|Blog`,
         start_url: `/gatsby_markdownBlog`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#0C7F06`,
+        theme_color: `#0C7F06`,
         display: `standalone`,
         icon: `src/images/gams_example.png`, // This path is relative to the root of the site.
       },
