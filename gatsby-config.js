@@ -6,9 +6,6 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
-    `gatsby-transformer-remark`,
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-typescript`,
@@ -34,6 +31,8 @@ module.exports = {
         },
       },
     },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
