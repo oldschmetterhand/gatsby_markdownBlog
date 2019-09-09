@@ -44,7 +44,7 @@ const Layout: React.FC<Props> = ({
       <Nav />
       <div className="container">
         <main className={["section", styles.main].join(" ")}>
-          <ScrollToTop showUnder={160} style={{right: window.innerWidth < 768 ? "40vw" : "10vw"}}>
+          <ScrollToTop showUnder={160} style={{right: "45vw"}}>
             <span>Nach Oben</span>
           </ScrollToTop>
           <main>{children}</main>
