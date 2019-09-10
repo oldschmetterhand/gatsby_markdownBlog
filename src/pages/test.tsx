@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
 import Helmet from "react-helmet"
+import Leaflet from "../components/Leaflet"
 
 const IndexPage: React.FC = () => {
   const [loadGapi, setLoadGapi] = useState<Boolean>(true)
@@ -103,7 +104,7 @@ const IndexPage: React.FC = () => {
         <h1>Loading...</h1>
       )}
       <br></br>
-      <div id="mapid" style={{height:"180px"}}></div>
+      <Leaflet></Leaflet>
     </Layout>
   )
 }
