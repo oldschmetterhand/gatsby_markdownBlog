@@ -56,8 +56,8 @@ const IndexPage: React.FC = () => {
       .init({
         apiKey: "",
         clientId: "",
-        discoveryDocs: [""],
-        scope: "",
+        discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
+        scope: "https://www.googleapis.com/auth/spreadsheets.readonly",
       })
       .then(
         function() {
