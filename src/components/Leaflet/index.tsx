@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react"
 
 interface Props {
-  coordArray?: Array<number[]>
+  coordArray?: Array<number[] | undefined>
 }
 
 const Leaflet: React.FC<Props> = ({
-  coordArray = [[51.5, -0.09],[51.5, -0.05]]
+  coordArray
 }) => {
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const Leaflet: React.FC<Props> = ({
       //console.debug(`window.L not defined`);
 
     }
-  }, [(window as any).L])
+  }, [coordArray])
 
   const initMap = (map) => {
     window.L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {

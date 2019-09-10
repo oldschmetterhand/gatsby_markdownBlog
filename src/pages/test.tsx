@@ -7,6 +7,7 @@ import Leaflet from "../components/Leaflet"
 const IndexPage: React.FC = () => {
   const [loadGapi, setLoadGapi] = useState<Boolean>(true)
   const [rows, setRows] = useState<Array<string[]>>(undefined)
+  const [markerData, setMarkerData] = useState<Array<number[]>>(undefined);
 
   useEffect(() => {
     console.info(
@@ -46,7 +47,17 @@ const IndexPage: React.FC = () => {
       .then(response => {
         var result = response.result
         var numRows = result.values ? result.values.length : 0
-        setRows(result.values)
+        setRows(result.values);
+        
+        let data = result.values.map((row,i)=>{
+          if(i>0){
+            return [parseInt(row[3]),parseInt(row[4])];
+          } else {
+            return [1,2]
+          }
+        });
+        setMarkerData(data);
+        console.log(data);
       })
   }
 
@@ -104,7 +115,7 @@ const IndexPage: React.FC = () => {
         <h1>Loading...</h1>
       )}
       <br></br>
-      <Leaflet></Leaflet>
+      <Leaflet coordArray={markerData}></Leaflet>
     </Layout>
   )
 }
