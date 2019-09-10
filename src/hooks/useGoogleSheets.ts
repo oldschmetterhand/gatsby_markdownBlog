@@ -75,4 +75,6 @@ export const useGoogleSheets = () => {
         }
       )
   }
+
+  return rows
 }
