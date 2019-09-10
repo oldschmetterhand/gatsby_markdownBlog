@@ -1,33 +1,37 @@
 import React, { useEffect, useState } from "react"
 
-interface Props {}
+interface Props {
+  coordArray?: Array<number[]>
+}
 
-const Leaflet: React.FC = () => {
+const Leaflet: React.FC<Props> = ({
+  coordArray = [[51.5, -0.09],[51.5, -0.05]]
+}) => {
 
   useEffect(() => {
-    console.info(`%c Run useEffect on didMount.`)
     try {
       let sample = window.L.map;
       let map = window.L.map("map").setView([51.505, -0.09], 13);
       initMap(map);
-      console.info(`%c Leaflet map succesfully initialized`, 'color:green')
+      //console.info(`%c Leaflet map succesfully initialized`, 'color:green')
     } catch {
-      console.debug(`There was an error`);
+      //console.debug(`window.L not defined`);
 
     }
   }, [(window as any).L])
 
   const initMap = (map) => {
-    console.info("Running initMap()")
     window.L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map)
 
-    window.L.marker([51.5, -0.09])
+    //adding the markers
+    coordArray.forEach((coordPair) => {
+      window.L.marker(coordPair)
       .addTo(map)
-      .bindPopup("A pretty CSS3 popup.<br> Easily customizable.")
-      .openPopup()
+      .bindPopup(`Verwendete Koordinaten: ${coordPair.toString()}`)
+    })
   }
 
   return <div id="map" style={{ height: "360px" }}></div>
