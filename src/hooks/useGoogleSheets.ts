@@ -76,5 +76,5 @@ export const useGoogleSheets = () => {
       )
   }
 
-  return rows
+  return {rows,refreshTable:loadTable}
 }
