@@ -59,8 +59,8 @@ export const useGoogleSheets = () => {
     console.info("initializing the client", "color:rebeccapurple")
     window.gapi.client
       .init({
-        apiKey: "AIzaSyCY7enosFaJopqF2qru-0EeKYssIRAZrkQ",
-        clientId: "383473142454-c3t14qm9v17jsm7omdmpucnfiklrbp41.apps.googleusercontent.com",
+        apiKey: "",
+        clientId: "",
         discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
         scope: "https://www.googleapis.com/auth/spreadsheets.readonly",
       })
