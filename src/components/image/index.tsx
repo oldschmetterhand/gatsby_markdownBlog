@@ -1,4 +1,4 @@
-import React from "react"
+import React, { StyleHTMLAttributes } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 
@@ -13,10 +13,15 @@ import Img from "gatsby-image"
  * - `useStaticQuery`: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-const Image: React.FC = () => {
+interface Props {
+  imgStyle?: Object
+  style?: Object
+}
+
+const Image: React.FC<Props> = ({ style, imgStyle }) => {
   const data = useStaticQuery(graphql`
     query {
-      placeholderImage: file(relativePath: { eq: "gams_example.png" }) {
+      placeholderImage: file(relativePath: { eq: "nampi1-largetext-bw.png" }) {
         childImageSharp {
           fluid(maxWidth: 300) {
             ...GatsbyImageSharpFluid
@@ -26,7 +31,13 @@ const Image: React.FC = () => {
     }
   `)
 
-  return <Img fluid={data.placeholderImage.childImageSharp.fluid} style={{position:"initial"}} imgStyle={{margin: ".75em"}}/>
+  return (
+    <Img
+      fluid={data.placeholderImage.childImageSharp.fluid}
+      style={style}
+      imgStyle={imgStyle}
+    />
+  )
 }
 
 export default Image
