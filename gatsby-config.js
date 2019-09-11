@@ -63,7 +63,7 @@ module.exports = {
         background_color: `#0C7F06`,
         theme_color: `#0C7F06`,
         display: `standalone`,
-        icon: `src/images/nampi-largetext-bw.png`, // This path is relative to the root of the site.
+        icon: `src/images/nampi1-largetext-bw.png`, // This path is relative to the root of the site.
       },
     },
     `gatsby-plugin-offline`,
