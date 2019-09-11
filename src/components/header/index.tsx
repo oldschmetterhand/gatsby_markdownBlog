@@ -18,7 +18,7 @@ const Header: React.FC<Props> = ({
       <section className="hero has-text-centered">
         <div className="hero-body">
           <div className={["container", styles.heroEnd].join(" ")}>
-            <h1 className="title">ZIM Blog</h1>
+            <h1 className="title">NAMPI Blog</h1>
             <h2 className="subtitle">Based on React/Gatsby and Bulma</h2>
           </div>
         </div>
@@ -35,9 +35,12 @@ const Header: React.FC<Props> = ({
       >
         <div className="hero-body">
           <div className="container">
+            <div style={{maxWidth:"100px", maxHeight:"100px"}}>
+              <Image/>
+            </div>
             <h1 className="title has-text-black">{siteTitle}</h1>
             <h2 className="subtitle has-text-white-ter">
-              React/Gatsby, Bulma,{" "}
+              Prosopographical Interfaces
             </h2>
             <br></br>
             <div
