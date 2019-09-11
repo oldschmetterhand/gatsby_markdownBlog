@@ -57,13 +57,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Zim Blog Template`,
-        short_name: `ZIM|Blog`,
+        name: `NAMPI Blog`,
+        short_name: `NAMPI|Blog`,
         start_url: `/gatsby_markdownBlog`,
         background_color: `#0C7F06`,
         theme_color: `#0C7F06`,
         display: `standalone`,
-        icon: `src/images/gams_example.png`, // This path is relative to the root of the site.
+        icon: `src/images/nampi-largetext-bw.png`, // This path is relative to the root of the site.
       },
     },
     `gatsby-plugin-offline`,
