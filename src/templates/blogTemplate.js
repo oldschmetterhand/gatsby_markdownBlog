@@ -12,6 +12,7 @@ export default function Template({
       title={frontmatter.title}
       date={frontmatter.date}
       author={frontmatter.author}
+      previewImage={frontmatter.featuredImage.childImageSharp.fixed}
     >
       <div
         className="blog-post-content"
@@ -30,6 +31,13 @@ export const pageQuery = graphql`
         path
         title
         author
+        featuredImage {
+          childImageSharp {
+            fixed {
+              ...GatsbyImageSharpFixed
+            }
+          }
+        }
       }
     }
   }
