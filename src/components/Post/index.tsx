@@ -32,7 +32,7 @@ const Post: React.FC<Props> = ({ title, date, author, children, previewImage }) 
     <Layout>
       <SEO title={title}></SEO>
       <TitleGrid rightTop={metaData} rightBottom={null}>
-        <div className="content">{children}</div>
+        <div className={styles.articleFull}>{children}</div>
       </TitleGrid>
     </Layout>
   )

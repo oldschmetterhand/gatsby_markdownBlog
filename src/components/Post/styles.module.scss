@@ -1,5 +1,31 @@
 
 .articleInfo {
-    background-color:lightgrey;
+    background-color:whitesmoke;
     padding: .5em;
+}
+
+.articleFull {
+    font-family: 'Raleway', 'Times New Roman', Times, serif;
+    line-height: 2;
+    font-size: 16px;
+    text-align: left;
+    h1 {
+        text-shadow: 1px 1px lightgrey;
+        //margin-bottom: .5em;
+        font-size: 1.75em;
+    }
+    h2,h3,h4 {
+        color:grey;
+        padding-top: 1em;
+        text-decoration: underline;
+    }
+    h2 {
+        font-size: 1.25em;
+    }
+    h3 {
+        font-size: 1.15em;
+    }
+    h4 {
+        font-size: 1.075em;
+    }
 }
