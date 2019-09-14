@@ -1,31 +1,62 @@
 
 .articleInfo {
-    background-color:whitesmoke;
+    //background-color:whitesmoke;
     padding: .5em;
+    margin-top: 5em;
 }
 
 .articleFull {
     font-family: 'Raleway', 'Times New Roman', Times, serif;
     line-height: 2;
     font-size: 16px;
-    text-align: left;
+    text-align: justify;
     h1 {
         text-shadow: 1px 1px lightgrey;
         //margin-bottom: .5em;
         font-size: 1.75em;
+        border-bottom: 1em solid whitesmoke;
+        &::first-letter {
+            color:black;
+            font-size: 2.5em;
+            font-weight: bold;
+            line-height: 0;
+        }
     }
     h2,h3,h4 {
         color:grey;
         padding-top: 1em;
-        text-decoration: underline;
+        //text-decoration: underline;
     }
     h2 {
         font-size: 1.25em;
+        border-bottom: 1em solid whitesmoke;
+        &::first-letter {
+            color:black;
+            font-size: 1.5em;
+            font-weight: bold;
+            line-height: 0;
+            text-decoration: none;
+        }
     }
     h3 {
         font-size: 1.15em;
+        &::first-letter {
+            color:black;
+            font-size: 1.25em;
+            font-weight: bold;
+            line-height: 0;
+            text-decoration: none;
+        }
     }
     h4 {
         font-size: 1.075em;
+        &::first-letter {
+            color:black;
+            font-size: 1.125em;
+            font-weight: bold;
+            line-height: 0;
+            text-decoration: none;
+        }
     }
+    
 }
