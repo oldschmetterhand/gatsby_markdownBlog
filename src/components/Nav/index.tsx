@@ -40,7 +40,7 @@ const Nav: React.FC = () => {
         </div>
         <div className="navbar-end">
           <div className={["navbar-item has-text-left"].join(" ")} style={{marginRight:"1.5em"}}>
-            <Image/>
+            <Image style={{position:"initial"}} imgStyle={{marginRight:".75em"}}/>
           </div>
         </div>
       </div>
