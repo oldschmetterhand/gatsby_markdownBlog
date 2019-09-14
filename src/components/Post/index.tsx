@@ -3,6 +3,7 @@ import Layout from "../Layout"
 import TitleGrid from "../layout/TitleGrid"
 import SEO from "../Seo"
 import Img from "gatsby-image"
+import styles from "./styles.module.scss"
 
 interface Props {
   title: string
@@ -13,14 +14,15 @@ interface Props {
 
 const Post: React.FC<Props> = ({ title, date, author, children, previewImage }) => {
   const metaData = (
-    <div className="blog-post">
-      <h2>Article Info</h2>
+    <div className={styles.articleInfo}>
+      <h2 className="is-size-6">Article Info</h2>
       <br></br>
       <Img fixed={previewImage}></Img>
       <hr></hr>
       <h3>{title}</h3>
-      <h4>{date}</h4>
-      <h5>{author}</h5>
+      <h3>{date}</h3>
+      <h3>{author}</h3>
+      <br></br>
     </div>
   )
 
