@@ -29,9 +29,9 @@ const Post: React.FC<Props> = ({ title, date, author, children, previewImage }) 
   )
 
   return (
-    <Layout>
+    <Layout showHeader={false}>
       <SEO title={title}></SEO>
-      <TitleGrid rightTop={metaData} rightBottom={null}>
+      <TitleGrid rightTop={null} rightBottom={null}>
         <div className={styles.articleFull}>{children}</div>
       </TitleGrid>
     </Layout>
