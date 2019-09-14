@@ -1,0 +1,11 @@
+
+.backButton {
+    font-size: 2em;
+    color: black;
+    transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
+    &:hover {
+        color:grey;
+        cursor: pointer;
+        font-size: 2.5em;
+    }
+}
