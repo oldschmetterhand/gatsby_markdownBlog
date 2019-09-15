@@ -26,25 +26,25 @@ workbox.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-16aed036d9da3f638c05.js"
+    "url": "webpack-runtime-e37eb4894ec5b73855ed.js"
   },
   {
-    "url": "app-20ceee876c1e5f8ba7f8.js"
+    "url": "app-ad2bd16420b78a29a7a2.js"
   },
   {
     "url": "component---node-modules-gatsby-plugin-offline-app-shell-js-ed6845c261e5f8a06912.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "91f9fb1806b7522c77585a7485831cde"
+    "revision": "8550049ba228c38b1a7d003174747179"
   },
   {
     "url": "page-data/offline-plugin-app-shell-fallback/page-data.json",
-    "revision": "ef527b18377c9af91e32bb6edcfdda4e"
+    "revision": "9784e2cfd6e3a9950f9db1e3795373d2"
   },
   {
     "url": "manifest.webmanifest",
-    "revision": "3a0161c664578fdc9874d1a0a359168e"
+    "revision": "7b1d6d41e196fd0cb2a32a720866e800"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
@@ -63,12 +63,12 @@ const { NavigationRoute } = workbox.routing
 
 const navigationRoute = new NavigationRoute(async ({ event }) => {
   let { pathname } = new URL(event.request.url)
-  pathname = pathname.replace(new RegExp(`^/gatsby_markdownBlog`), ``)
+  pathname = pathname.replace(new RegExp(`^`), ``)
 
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/gatsby_markdownBlog/app-20ceee876c1e5f8ba7f8.js`))) {
+  if (!resources || !(await caches.match(`/app-ad2bd16420b78a29a7a2.js`))) {
     return await fetch(event.request)
   }
 
@@ -81,7 +81,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
     }
   }
 
-  const offlineShell = `/gatsby_markdownBlog/offline-plugin-app-shell-fallback/index.html`
+  const offlineShell = `/offline-plugin-app-shell-fallback/index.html`
   return await caches.match(offlineShell)
 })
 
