@@ -12,7 +12,7 @@ export default function Template({
       title={frontmatter.title}
       date={frontmatter.date}
       author={frontmatter.author}
-      previewImage={frontmatter.featuredImage.childImageSharp.fixed}
+    previewImage={frontmatter.featuredImage ? frontmatter.featuredImage.childImageSharp.fixed : undefined}
     >
       <div
         className="blog-post-content"

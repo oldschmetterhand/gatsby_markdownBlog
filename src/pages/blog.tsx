@@ -32,7 +32,7 @@ const blog: React.FC<Props> = ({ data }) => {
             author={post.node.frontmatter.author}
             path={post.node.frontmatter.path}
             fixedImageGraphQl={
-              post.node.frontmatter.featuredImage.childImageSharp.fixed
+              post.node.frontmatter.featuredImage ? post.node.frontmatter.featuredImage.childImageSharp.fixed : undefined
             }
             key={post.node.frontmatter.path}
           >

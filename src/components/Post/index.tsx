@@ -13,12 +13,12 @@ interface Props {
   previewImage?: any
 }
 
-const Post: React.FC<Props> = ({ title, date, author, children, previewImage }) => {
+const Post: React.FC<Props> = ({ title, date, author, children, previewImage = undefined }) => {
   const metaData = (
     <div className={styles.articleInfo}>
       <h2 className="is-size-6">Article Info</h2>
       <br></br>
-      <Img fixed={previewImage}></Img>
+      {previewImage ? <Img fixed={previewImage}></Img> : null}
       <hr></hr>
       <h3>{title}</h3>
       <h3>{date}</h3>

@@ -28,7 +28,7 @@ const BlogPreview: React.FC<Props> = ({
         {children}
       </div>
       <br></br>
-      <Img fixed={fixedImageGraphQl}/>
+      {fixedImageGraphQl ? <Img fixed={fixedImageGraphQl}/> : null}
       <br></br>
       <Link className={styles.link} to={path}>Zum Beitrag | ooo></Link>
       <br></br>
