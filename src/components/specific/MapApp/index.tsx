@@ -8,8 +8,11 @@ interface Props {
 
 
 interface VizEvent {
+    title: string,
     date: string | undefined,
-    lMaker: LeafletMarker
+    lMaker: LeafletMarker | undefined,
+    primSource: string,
+    secSource: string,
 }
 
 const MapApp: React.FC<Props> = ({vizEvents = undefined}) => {
