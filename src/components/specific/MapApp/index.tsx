@@ -1,11 +1,18 @@
 
 import React from 'react';
+import { LeafletMarker } from '../../common/Leaflet'
 
 interface Props {
-    
+    vizEvents?: VizEvent[]
 }
 
-const MapApp: React.FC<Props> = () => {
+
+interface VizEvent {
+    date: string | undefined,
+    lMaker: LeafletMarker
+}
+
+const MapApp: React.FC<Props> = ({vizEvents = undefined}) => {
     return <></>
 }
 
