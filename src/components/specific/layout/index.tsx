@@ -7,11 +7,11 @@
 
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Nav from "../specific/Nav"
-import Header from "../Header"
+import Nav from "../Nav"
+import Header from "../../Header"
 import ScrollToTop from "react-scroll-up"
 import styles from "./styles.module.scss"
-import IconBar from "../IconBar"
+import IconBar from "../../IconBar"
 import "bulma/css/bulma.css"
 
 interface Props {

@@ -1,9 +1,9 @@
 import React from "react"
 
-import Layout from "../components/Layout"
+import Layout from "../components/specific/Layout"
 import SEO from "../components/Blog/SEO"
 import BlogPreview from "../components/Blog/BlogPreview"
-import TitleGrid from "../components/Layout/TitleGrid"
+import TitleGrid from "../components/specific/Layout/TitleGrid"
 import { graphql } from "gatsby"
 import PostsSummary from "../components/Blog/PostsSummary"
 
