@@ -5,7 +5,7 @@ import SEO from "../components/Seo"
 import BlogPreview from "../components/Blog/BlogPreview"
 import TitleGrid from "../components/Layout/TitleGrid"
 import { graphql } from "gatsby"
-import PostsSummary from "../components/PostsSummary"
+import PostsSummary from "../components/Blog/PostsSummary"
 
 interface Props {
   data: any //from GraphQl
