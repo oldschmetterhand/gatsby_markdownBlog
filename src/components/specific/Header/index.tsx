@@ -39,7 +39,7 @@ const Header: React.FC<Props> = ({
         <div className="hero-body">
           <div className="container">
             <h1 className="title has-text-black">{siteTitle}</h1>
-            <h2 className="subtitle has-text-white-ter">
+            <h2 className="subtitle">
               {SUB_TITLE}
             </h2>
             <br></br>
