@@ -2,34 +2,28 @@ import React, { useState } from "react"
 import styles from "./styles.module.scss"
 import { VizEvent } from "../index"
 
-export interface TLEvent {
-  head?: string
-  content?: string
-  date?: string
-  eventStyle?: React.CSSProperties
-  boundTo?: any,
-}
-
 interface Props {
-  TLEvents?: Array<TLEvent>
+  TLEvents?: Array<VizEvent>
   TLStyle?: React.CSSProperties
-  handleClick?: (TLEvent?: TLEvent) => void,
+  handleClick?: (TLEvent?: VizEvent) => void,
 }
 
 export const Timeline: React.FC<Props> = ({
   TLEvents = [
     {
-      head: "Test01",
-      content: "Hi there!",
-      date: "12-45-2010",
-      eventStyle: { fontSize: ".75em" },
+      title: "Test01",
+      date: "Hi there!",
+      lMarker: undefined,
+      primSource:"Augustus",
+      secSource:"asd"
       
     },
     {
-      head: "Test02",
-      content: "Hi there! 02",
-      date: "12-45-2060",
-      eventStyle: { fontSize: ".75em" },
+      title: "Test01",
+      date: "Hi there!",
+      lMarker: undefined,
+      primSource:"Hebrius",
+      secSource:"Kuffla"
     },
   ],
   TLStyle = { borderLeft: "1em solid whitesmoke" },
@@ -37,22 +31,22 @@ export const Timeline: React.FC<Props> = ({
 }) => {
 
   const [lastSelected, setLastSelected] = useState<HTMLDivElement | undefined>(undefined)
-  const [curSelected, setCurSelected] = useState<TLEvent | undefined>(undefined)
+  const [curSelected, setCurSelected] = useState<VizEvent | undefined>(undefined)
 
 
-  const eventClick = (evt, clickCallback: (linkedTLEvent: TLEvent) => void = undefined) => {
+  const eventClick = (evt, clickCallback: (linkedTLEvent: VizEvent) => void = undefined) => {
     let selDiv: HTMLDivElement = evt.currentTarget;
 
     // saving reference to one timeline-event-object
     let arrayPos:number = parseInt(selDiv.getAttribute('data-arraypos'))
-    let linkedTLEvent: TLEvent = TLEvents[arrayPos]
+    let linkedTLEvent: VizEvent = TLEvents[arrayPos]
     setCurSelected(linkedTLEvent) 
     
     handleSelDivMark(selDiv)
     if(clickCallback)clickCallback(linkedTLEvent);
     setLastSelected(selDiv);
 
-    console.log(linkedTLEvent.boundTo)
+    console.log(linkedTLEvent)
   }
 
   const handleSelDivMark = (div: HTMLDivElement) => {
@@ -65,19 +59,18 @@ export const Timeline: React.FC<Props> = ({
   const renderTimeline = () => {
     return (
       <div className={styles.container} style={TLStyle}>
-        {TLEvents.map((TLEvent: TLEvent, index) => {
+        {TLEvents.map((TLEvent: VizEvent, index) => {
           return (
             <div
               className={styles.timelineItem}
               date-is={TLEvent.date}
-              style={TLEvent.eventStyle}
               onClick={(evt) => eventClick(evt, handleClick)}
               data-arraypos={index}
             >
               <p>
-                {index + 1} - {TLEvent.head}
+                {index + 1} - {TLEvent.title}
               </p>
-              <p>{TLEvent.content}</p>
+              <p>{TLEvent.primSource}</p>
             </div>
           )
         })}
