@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import Helmet from "react-helmet"
 
-interface LeafletMarker {
+export interface LeafletMarker {
   x: number
   y: number
   popUpContent: string
