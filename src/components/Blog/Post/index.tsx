@@ -1,7 +1,7 @@
 import React from "react"
 import Layout from "../../Layout"
 import TitleGrid from "../../layout/TitleGrid"
-import SEO from "../../Seo"
+import SEO from "../SEO"
 import Img from "gatsby-image"
 import styles from "./styles.module.scss"
 

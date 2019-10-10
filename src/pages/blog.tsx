@@ -1,7 +1,7 @@
 import React from "react"
 
 import Layout from "../components/Layout"
-import SEO from "../components/Seo"
+import SEO from "../components/Blog/SEO"
 import BlogPreview from "../components/Blog/BlogPreview"
 import TitleGrid from "../components/Layout/TitleGrid"
 import { graphql } from "gatsby"
