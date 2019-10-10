@@ -35,7 +35,7 @@ const Layout: React.FC<Props> = ({
   `)
 
   const header = showHeader ? (
-    <Header siteTitle={data.site.siteMetadata.title} showTeaser={showTeaser} />
+    <Header siteTitle={data.site.siteMetadata.title} showTeaser={showTeaser} subTitle={'Based on the Factoid Model'} />
   ) : null
 
   return (
