@@ -50,7 +50,7 @@ _Based on Gatsby and Bulma. [Link to Gatsby starte template](https://www.gatsbyj
 
 2. **Production / Deployment**
 
-    REQUIRED:
+    ***Deploy to Gamsdev*** 
 
     You need to FIRST specify the relative paths for the production environment - then run:
     (otherwise assets won't work)
@@ -63,17 +63,19 @@ _Based on Gatsby and Bulma. [Link to Gatsby starte template](https://www.gatsbyj
       1. module.exports.pathPrefix = /Path/to/folder/of/indexHtml/
       2. gatsby-plugin-manifest: option object: option.start_url = /Path/to/folder/of/indexHtml/ 
 
+    So if you application lies at: "https:glossa.uni-graz.at/gamsdev/xyz/erla/app/" set both paths to:
+    /gamsdev/xyz/erla/app/
+
 
     ***Deploy to Github Pages***
 
-    If your github pages lies at page "XYZ" set both paths (see above)
+    If your github pages lies at page "XYZ" set both paths (described in "Deploy to Gamsdev")
     to "/XYZ"
 
-
-    ***Deploy to Gamsdev*** 
-
-    If you application lies at: "https:glossa.uni-graz.at/gamsdev/xyz/erla/app/" set both paths to:
-    /gamsdev/xyz/erla/app/
+    Then run:
+    ```sh
+    npm deploy
+    ```
 
 
 ----------------------------------
