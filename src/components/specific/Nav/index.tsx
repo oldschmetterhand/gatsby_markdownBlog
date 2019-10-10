@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import { Link } from "gatsby"
 import styles from "./styles.module.scss"
-import Image from "../image"
 
 const Nav: React.FC = () => {
 
@@ -40,7 +39,7 @@ const Nav: React.FC = () => {
         </div>
         <div className="navbar-end">
           <div className={["navbar-item has-text-left"].join(" ")} style={{marginRight:"1.5em"}}>
-            <Image style={{position:"initial"}} imgStyle={{marginRight:".75em"}}/>
+            
           </div>
         </div>
       </div>

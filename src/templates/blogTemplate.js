@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Post from "../components/Post"
+import Post from "../components/Blog/Post"
 
 export default function Template({
   data, // this prop will be injected by the GraphQL query below.
@@ -12,7 +12,7 @@ export default function Template({
       title={frontmatter.title}
       date={frontmatter.date}
       author={frontmatter.author}
-      previewImage={frontmatter.featuredImage.childImageSharp.fixed}
+    previewImage={frontmatter.featuredImage ? frontmatter.featuredImage.childImageSharp.fixed : undefined}
     >
       <div
         className="blog-post-content"

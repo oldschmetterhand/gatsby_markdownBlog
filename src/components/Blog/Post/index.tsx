@@ -1,10 +1,9 @@
 import React from "react"
-import Layout from "../Layout"
-import TitleGrid from "../layout/TitleGrid"
-import SEO from "../Seo"
+import Layout from "../../specific/Layout"
+import TitleGrid from "../../specific/layout/TitleGrid"
+import SEO from "../SEO"
 import Img from "gatsby-image"
 import styles from "./styles.module.scss"
-import BackButton from "../BackButton"
 
 interface Props {
   title: string
@@ -13,18 +12,17 @@ interface Props {
   previewImage?: any
 }
 
-const Post: React.FC<Props> = ({ title, date, author, children, previewImage }) => {
+const Post: React.FC<Props> = ({ title, date, author, children, previewImage = undefined }) => {
   const metaData = (
     <div className={styles.articleInfo}>
       <h2 className="is-size-6">Article Info</h2>
       <br></br>
-      <Img fixed={previewImage}></Img>
+      {previewImage ? <Img fixed={previewImage}></Img> : null}
       <hr></hr>
       <h3>{title}</h3>
       <h3>{date}</h3>
       <h3>{author}</h3>
       <br></br>
-      <BackButton/>
     </div>
   )
 

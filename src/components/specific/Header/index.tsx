@@ -1,7 +1,5 @@
 import React, { useState } from "react"
-import Image from "../image"
 import styles from "./styles.module.scss"
-import EntryGrid from "../Layout/EntryGrid"
 
 interface Props {
   siteTitle: string
@@ -47,9 +45,6 @@ const Header: React.FC<Props> = ({
           </div>
         </div>
       </section>
-      {/* <section>
-        <EntryGrid></EntryGrid>
-      </section> */}
     </header>
   )
 

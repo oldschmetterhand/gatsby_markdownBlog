@@ -1,11 +1,11 @@
 import React from "react"
 
-import Layout from "../components/Layout"
-import SEO from "../components/Seo"
-import BlogPreview from "../components/BlogPreview"
-import TitleGrid from "../components/Layout/TitleGrid"
+import Layout from "../components/specific/Layout"
+import SEO from "../components/Blog/SEO"
+import BlogPreview from "../components/Blog/BlogPreview"
+import TitleGrid from "../components/specific/Layout/TitleGrid"
 import { graphql } from "gatsby"
-import PostsSummary from "../components/PostsSummary"
+import PostsSummary from "../components/Blog/PostsSummary"
 
 interface Props {
   data: any //from GraphQl
@@ -32,7 +32,7 @@ const blog: React.FC<Props> = ({ data }) => {
             author={post.node.frontmatter.author}
             path={post.node.frontmatter.path}
             fixedImageGraphQl={
-              post.node.frontmatter.featuredImage.childImageSharp.fixed
+              post.node.frontmatter.featuredImage ? post.node.frontmatter.featuredImage.childImageSharp.fixed : undefined
             }
             key={post.node.frontmatter.path}
           >
