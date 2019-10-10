@@ -34,7 +34,7 @@ const Nav: React.FC = () => {
       <div id="navbarBasicExample" className={`navbar-menu ${styles.navbarBasicExample} ${isActive ? "is-active" : ""}`}>
         <div className={["navbar-end", styles.navBorder].join(" ")}>
           <Link activeStyle={{textDecoration:"underline"}} to="/" className="navbar-item">Home</Link>
-          <Link activeStyle={{textDecoration:"underline"}} to="/blog" className="navbar-item">Blog</Link>
+          <Link activeStyle={{textDecoration:"underline"}} to="/map" className="navbar-item">Karte</Link>
           <Link activeStyle={{textDecoration:"underline"}} to="/about" className="navbar-item">About</Link>
         </div>
         <div className="navbar-end">
