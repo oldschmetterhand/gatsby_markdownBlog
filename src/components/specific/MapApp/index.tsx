@@ -7,10 +7,10 @@ interface Props {
 }
 
 
-interface VizEvent {
+export interface VizEvent {
     title: string,
     date: string | undefined,
-    lMaker: LeafletMarker | undefined,
+    lMarker: LeafletMarker | undefined,
     primSource: string,
     secSource: string,
 }
