@@ -1,10 +1,10 @@
 import React from "react"
-import Layout from "../Layout"
-import TitleGrid from "../layout/TitleGrid"
-import SEO from "../Seo"
+import Layout from "../../Layout"
+import TitleGrid from "../../layout/TitleGrid"
+import SEO from "../../Seo"
 import Img from "gatsby-image"
 import styles from "./styles.module.scss"
-import BackButton from "../BackButton"
+import BackButton from "../../BackButton"
 
 interface Props {
   title: string

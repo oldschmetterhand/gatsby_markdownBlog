@@ -2,7 +2,7 @@ import React from "react"
 
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
-import BlogPreview from "../components/BlogPreview"
+import BlogPreview from "../components/Blog/BlogPreview"
 import TitleGrid from "../components/Layout/TitleGrid"
 import { graphql } from "gatsby"
 import PostsSummary from "../components/PostsSummary"
