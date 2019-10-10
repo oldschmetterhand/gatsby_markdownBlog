@@ -43,11 +43,37 @@ _Based on Gatsby and Bulma. [Link to Gatsby starte template](https://www.gatsbyj
     gatsby develop  //or "npm start"
     ```
 
-1.  **Open the source code and start editing!**
-
     Your site is now running at `http://localhost:8000`!
 
     _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
+
+
+2. **Production / Deployment**
+
+REQUIRED:
+
+You need to FIRST specify the relative paths for the production environment - then run:
+(otherwise assets won't work)
+
+ ```sh
+ gatsby build --prefix-paths
+ ```
+
+In gatsby-config.js you have to define the relative path prefix -> where your application lies.
+  1. module.exports.pathPrefix = /Path/to/folder/of/indexHtml/
+  2. gatsby-plugin-manifest: option object: option.start_url = /Path/to/folder/of/indexHtml/ 
+
+
+***Deploy to Github Pages***
+
+If your github pages lies at page "XYZ" set both paths (see above)
+to "/XYZ"
+
+
+***Deploy to Gamsdev*** 
+
+If you application lies at: "https:glossa.uni-graz.at/gamsdev/xyz/erla/app/" set both paths to:
+/gamsdev/xyz/erla/app/
 
 
 ## What's inside? (from gatsby site)
