@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import styles from "./styles.module.scss"
-import { VizEvent } from "../index"
+import { VizEvent } from "../../index"
 
 interface Props {
   TLEvents?: Array<VizEvent>
