@@ -3,9 +3,18 @@ import React from "react";
 
 const AppTopBar = () => {
 
-    return <>
-    <p>AppTopBar</p>
-    </>
+    return <section className="hero is-primary">
+    <div className="hero-body">
+      <div className="container">
+        <h1 className="title">
+          Prosop |Viz
+        </h1>
+        <h2 className="subtitle">
+            Based on the Factoid Model
+        </h2>
+      </div>
+    </div>
+  </section>
 
 }
 
