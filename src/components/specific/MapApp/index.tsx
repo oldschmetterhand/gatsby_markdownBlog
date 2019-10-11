@@ -1,6 +1,6 @@
 
 import React from 'react';
-import Timeline from './Timeline'
+import Timeline from './VizController/Timeline'
 
 export interface LeafletMarker {
     x: number
