@@ -1,12 +1,15 @@
 import React from "react"
 import TimeLine from "./Timeline"
 import LeafletMap from "./LeafletMap"
+import AppLayout from "./AppLayout"
 
 const VizController = () => {
   return (
     <>
-      <TimeLine></TimeLine>
-      <LeafletMap></LeafletMap>
+      <AppLayout
+        leftCol={<TimeLine></TimeLine>}
+        middleCol={<LeafletMap></LeafletMap>}
+      ></AppLayout>
     </>
   )
 }
