@@ -1,13 +1,5 @@
 import React, { useEffect, useState } from "react"
-
-interface LeafletMarker {
-  x: number
-  y: number
-  popUpContent: string
-  group: string
-  boundTo?: any
-  lMarkerRef?: any
-}
+import { LeafletMarker } from "../../index"
 
 interface Props {
   leafletMarkers?: Array<LeafletMarker>
