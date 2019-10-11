@@ -164,6 +164,7 @@ const VizController: React.FC<Props> = ({ vizEvents = dummyData }) => {
             selected={selVizEvent}
             TLEvents={vizEvents}
             handleClickSelection={handleSelVizEvent}
+            TLStyle={{fontSize:'.75em', marginLeft:'5em'}}
           ></TimeLine>
         }
         middleCol={
