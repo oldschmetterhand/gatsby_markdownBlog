@@ -2,14 +2,12 @@ import React, { useEffect, useState } from "react"
 import { LeafletMarker, VizEvent } from "../../index"
 
 interface Props {
-  leafletMarkers?: Array<VizEvent>
   layerToDraw?: any,
   tellLStatus?: (mapInitialized: boolean, dataLoaded: boolean) => void, 
   onMapClick?: (evt: any) => void | undefined
 }
 
 const LeafletMap: React.FC<Props> = ({
-  leafletMarkers,
   onMapClick = undefined,
   tellLStatus = undefined,
   layerToDraw = undefined
