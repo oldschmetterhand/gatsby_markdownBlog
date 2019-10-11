@@ -91,7 +91,7 @@ const VizController: React.FC<Props> = ({vizEvents = dummyData}) => {
       }
     });
 
-    setRefVizEvents(() => lodash.cloneDeep(vizEvents))
+    setRefVizEvents(() => (vizEvents))
     setLayer(layer);
   }
 
@@ -105,14 +105,27 @@ const VizController: React.FC<Props> = ({vizEvents = dummyData}) => {
     return leafletMarker;
   }
 
+  const handleClickSync = (vizEvent: VizEvent, arrayPos: number) => {
+    let linkedLMarker = vizEvent.lMarker.lMarkerRef;
+        if(linkedLMarker){
+            linkedLMarker.openPopup()
+        } else {
+            alert(`Keine gültigen Geodaten vorhanden.`)
+        }
+  }
+
   return (
     <>
       <AppLayout
-        leftCol={<TimeLine TLEvents={refVizEvents}></TimeLine>}
+        leftCol={
+            <TimeLine 
+                TLEvents={refVizEvents}
+                handleClick={handleClickSync}
+                ></TimeLine>
+        }
         middleCol={
         <LeafletMap
             layerToDraw={layer}
-            //leafletMarkers={vizEvents}
             tellLStatus={getLeafletStatus}
         ></LeafletMap>}
       ></AppLayout>
