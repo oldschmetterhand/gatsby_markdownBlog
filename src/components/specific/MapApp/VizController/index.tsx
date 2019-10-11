@@ -34,13 +34,15 @@ const dummyData: VizEvent[] = [
 
 
 interface Props {
-    vizEvents: VizEvent[]
+    vizEvents?: VizEvent[]
 }
 
 const VizController: React.FC<Props> = ({vizEvents = dummyData}) => {
 
   const [leafletInitialized, setLeafletInitialized] = useState<boolean>(false);
-  const [refVizEvents, setRefVizEvents] = useState<VizEvent[] | undefined>(undefined)
+  const [refVizEvents, setRefVizEvents] = useState<VizEvent[] | undefined>(undefined);
+
+  const [layer, setLayer] = useState<any | undefined>(undefined)
 
   const getLeafletStatus = (mapInitialized: boolean, dataLoaded: boolean): void => {
     let isInitialized = mapInitialized && dataLoaded;
@@ -51,7 +53,7 @@ const VizController: React.FC<Props> = ({vizEvents = dummyData}) => {
     if(leafletInitialized){
 
         //Start operations here -- create Leaflet markers! // then draw markers to map?
-        
+        generateMapLayer()
 
 
     }
@@ -61,24 +63,24 @@ const VizController: React.FC<Props> = ({vizEvents = dummyData}) => {
     let layer = window.L.layerGroup();
     
     vizEvents.forEach((vizEvent: VizEvent, index) => {
-
+      let marker = vizEvent.lMarker  
       try {
-        let leafletMarker = createLMarker(vizEvent)
+        let leafletMarker = generateLMarker(vizEvent)
       
         //references
         vizEvent.lMarker.lMarkerRef = leafletMarker;
         leafletMarker.boundTo = marker; 
 
         leafletMarker.addTo(layer)
-      } catch {
-        console.debug("error in generating a marker.")
+      } catch(e) {
+        console.error("error in generating a marker.")
+        console.error(e);
         //TODO better error handling!
-        //
       }
     });
 
     setRefVizEvents(() => lodash.cloneDeep(vizEvents))
-
+    setLayer(layer);
   }
 
   const generateLMarker = (vizEvent: VizEvent): any => {
@@ -97,8 +99,9 @@ const VizController: React.FC<Props> = ({vizEvents = dummyData}) => {
         leftCol={<TimeLine></TimeLine>}
         middleCol={
         <LeafletMap
-            leafletMarkers={vizEvents}
-            //tellLStatus={refVizEvents}
+            layerToDraw={layer}
+            //leafletMarkers={vizEvents}
+            tellLStatus={getLeafletStatus}
         ></LeafletMap>}
       ></AppLayout>
     </>
