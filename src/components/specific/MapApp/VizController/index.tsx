@@ -14,8 +14,7 @@ const VizController = () => {
   useEffect( () =>{
     if(leafletInitialized){
 
-        //Start operations
-        console.log("LEAFLET NOW INITED");
+        //Start operations here
 
     }
   },[leafletInitialized])
