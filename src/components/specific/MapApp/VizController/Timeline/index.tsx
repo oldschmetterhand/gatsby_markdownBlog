@@ -45,8 +45,6 @@ export const Timeline: React.FC<Props> = ({
     handleSelDivMark(selDiv)
     if(clickCallback)clickCallback(linkedTLEvent);
     setLastSelected(selDiv);
-
-    console.log(linkedTLEvent)
   }
 
   const handleSelDivMark = (div: HTMLDivElement) => {
