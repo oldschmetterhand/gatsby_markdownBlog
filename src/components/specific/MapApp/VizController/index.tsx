@@ -29,6 +29,18 @@ const dummyData: VizEvent[] = [
         },
         primSource: "Augustus",
         secSource: "Rostovzef"
+    },
+    {
+        title: "test03",
+        date: undefined,
+        lMarker: {
+            x:6,
+            y:8,
+            popUpContent: "hi",
+            group: "deserteure"
+        },
+        primSource: "Augustus",
+        secSource: "Rostovzef"
     }
 ] 
 
@@ -96,7 +108,7 @@ const VizController: React.FC<Props> = ({vizEvents = dummyData}) => {
   return (
     <>
       <AppLayout
-        leftCol={<TimeLine></TimeLine>}
+        leftCol={<TimeLine TLEvents={refVizEvents}></TimeLine>}
         middleCol={
         <LeafletMap
             layerToDraw={layer}
