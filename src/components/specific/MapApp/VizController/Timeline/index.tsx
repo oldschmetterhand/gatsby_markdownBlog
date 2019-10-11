@@ -63,7 +63,7 @@ export const Timeline: React.FC<Props> = ({
       lastSelected.style.borderLeft = ''
       lastSelected.style.background = ''
     }
-    div.style.borderLeft = '1em solid grey'
+    div.style.borderLeft = '1em solid #41b7d8'
     div.style.background = 'whitesmoke'
     setLastSelected(div);
   }
