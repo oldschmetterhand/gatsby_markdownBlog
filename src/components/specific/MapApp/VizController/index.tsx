@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import TimeLine from "./Timeline"
 import LeafletMap from "./LeafletMap"
 import AppLayout from "./AppLayout"
+import Summary from "./Summary"
 import { VizEvent, LeafletMarker } from "../index"
 
 const dummyData: VizEvent[] = [
@@ -171,6 +172,11 @@ const VizController: React.FC<Props> = ({ vizEvents = dummyData }) => {
             layerToDraw={layer}
             tellLStatus={getLeafletStatus}
           ></LeafletMap>
+        }
+        rightCol={
+          <Summary
+            vizEvent={selVizEvent}
+          ></Summary>
         }
       ></AppLayout>
     </>
