@@ -2,7 +2,8 @@ import React, {useState, useEffect} from "react"
 import TimeLine from "./Timeline"
 import LeafletMap from "./LeafletMap"
 import AppLayout from "./AppLayout"
-import {VizEvent } from "../index"
+import lodash from "lodash"
+import {VizEvent, LeafletMarker } from "../index"
 
 const dummyData: VizEvent[] = [
     {
@@ -39,6 +40,7 @@ interface Props {
 const VizController: React.FC<Props> = ({vizEvents = dummyData}) => {
 
   const [leafletInitialized, setLeafletInitialized] = useState<boolean>(false);
+  const [refVizEvents, setRefVizEvents] = useState<VizEvent[] | undefined>(undefined)
 
   const getLeafletStatus = (mapInitialized: boolean, dataLoaded: boolean): void => {
     let isInitialized = mapInitialized && dataLoaded;
@@ -55,6 +57,40 @@ const VizController: React.FC<Props> = ({vizEvents = dummyData}) => {
     }
   },[leafletInitialized])
 
+  const createMapLayer = () => {
+    let layer = window.L.layerGroup();
+    
+    vizEvents.forEach((vizEvent: VizEvent, index) => {
+
+      try {
+        let leafletMarker = createLMarker(vizEvent)
+      
+        //references
+        vizEvent.lMarker.lMarkerRef = leafletMarker;
+        leafletMarker.boundTo = marker; 
+
+        leafletMarker.addTo(layer)
+      } catch {
+        console.debug("error in generating a marker.")
+        //TODO better error handling!
+        //
+      }
+    });
+
+    setRefVizEvents(() => lodash.cloneDeep(vizEvents))
+
+  }
+
+  const createLMarker = (vizEvent: VizEvent): any => {
+    let marker = vizEvent.lMarker;
+    let leafletMarker = window.L.marker([marker.x, marker.y]).bindPopup(
+        `<em>Kurztitel</em>: ${
+          marker.popUpContent
+        }.<br>Gruppe: ${marker.group}<hr> (Verwendete Koordinaten: Längengrad: ${marker.x.toString()}, Breitengrad: ${marker.y.toString()})`
+      )
+    return leafletMarker;
+  }
+
   return (
     <>
       <AppLayout
@@ -62,7 +98,7 @@ const VizController: React.FC<Props> = ({vizEvents = dummyData}) => {
         middleCol={
         <LeafletMap
             leafletMarkers={undefined}
-            tellLStatus={getLeafletStatus}
+            //tellLStatus={refVizEvents}
         ></LeafletMap>}
       ></AppLayout>
     </>
