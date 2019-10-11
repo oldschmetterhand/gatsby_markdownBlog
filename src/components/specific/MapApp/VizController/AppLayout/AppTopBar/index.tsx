@@ -3,7 +3,7 @@ import React from "react";
 
 const AppTopBar = () => {
 
-    return <section className="hero is-primary">
+    return <section className="hero">
     <div className="hero-body">
       <div className="container">
         <h1 className="title">
