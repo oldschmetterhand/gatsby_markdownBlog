@@ -57,7 +57,7 @@ const VizController: React.FC<Props> = ({vizEvents = dummyData}) => {
     }
   },[leafletInitialized])
 
-  const createMapLayer = () => {
+  const generateMapLayer = () => {
     let layer = window.L.layerGroup();
     
     vizEvents.forEach((vizEvent: VizEvent, index) => {
@@ -81,7 +81,7 @@ const VizController: React.FC<Props> = ({vizEvents = dummyData}) => {
 
   }
 
-  const createLMarker = (vizEvent: VizEvent): any => {
+  const generateLMarker = (vizEvent: VizEvent): any => {
     let marker = vizEvent.lMarker;
     let leafletMarker = window.L.marker([marker.x, marker.y]).bindPopup(
         `<em>Kurztitel</em>: ${
@@ -97,7 +97,7 @@ const VizController: React.FC<Props> = ({vizEvents = dummyData}) => {
         leftCol={<TimeLine></TimeLine>}
         middleCol={
         <LeafletMap
-            leafletMarkers={undefined}
+            leafletMarkers={vizEvents}
             //tellLStatus={refVizEvents}
         ></LeafletMap>}
       ></AppLayout>
