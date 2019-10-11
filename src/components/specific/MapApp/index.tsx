@@ -7,7 +7,7 @@ export interface LeafletMarker {
   y: number
   popUpContent: string
   group: string
-  boundTo?: any
+  boundTo?: VizEvent
   lMarkerRef?: any
 }
 

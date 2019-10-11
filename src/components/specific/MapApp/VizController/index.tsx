@@ -53,6 +53,7 @@ const VizController: React.FC<Props> = ({vizEvents = dummyData}) => {
 
   const [leafletInitialized, setLeafletInitialized] = useState<boolean>(false);
   const [refVizEvents, setRefVizEvents] = useState<VizEvent[] | undefined>(undefined);
+  const [selVizEvent, setSelVizEvent] = useState<VizEvent | undefined>(undefined);
 
   const [layer, setLayer] = useState<any | undefined>(undefined)
 
@@ -71,6 +72,13 @@ const VizController: React.FC<Props> = ({vizEvents = dummyData}) => {
     }
   },[leafletInitialized])
 
+  useEffect( () => {
+    if(!selVizEvent)return;
+    syncDisplay();  //only needed for the leaflet markers
+
+
+  }, [selVizEvent])
+
   const generateMapLayer = () => {
     let layer = window.L.layerGroup();
     
@@ -81,7 +89,7 @@ const VizController: React.FC<Props> = ({vizEvents = dummyData}) => {
       
         //references
         vizEvent.lMarker.lMarkerRef = leafletMarker;
-        leafletMarker.boundTo = marker; 
+        leafletMarker.boundTo = vizEvent; 
 
         leafletMarker.addTo(layer)
       } catch(e) {
@@ -102,11 +110,24 @@ const VizController: React.FC<Props> = ({vizEvents = dummyData}) => {
           marker.popUpContent
         }.<br>Gruppe: ${marker.group}<hr> (Verwendete Koordinaten: Längengrad: ${marker.x.toString()}, Breitengrad: ${marker.y.toString()})`
       )
+
+    leafletMarker.on('click', (evt) => {
+        let selVizEvent: VizEvent = evt.sourceTarget.boundTo;
+        //console.log(evt.sourceTarget.boundTo);
+        handleSelVizEvent(selVizEvent)
+    })
+    
     return leafletMarker;
   }
 
-  const handleClickSync = (vizEvent: VizEvent, arrayPos: number) => {
-    let linkedLMarker = vizEvent.lMarker.lMarkerRef;
+  const handleSelVizEvent = (vizEvent: VizEvent) => {
+    setSelVizEvent(vizEvent)
+  }
+
+
+  const syncDisplay = () => {
+    if(!selVizEvent.lMarker)return;
+    let linkedLMarker = selVizEvent.lMarker.lMarkerRef;
         if(linkedLMarker){
             linkedLMarker.openPopup()
         } else {
@@ -119,12 +140,14 @@ const VizController: React.FC<Props> = ({vizEvents = dummyData}) => {
       <AppLayout
         leftCol={
             <TimeLine 
+                selected={selVizEvent}
                 TLEvents={refVizEvents}
-                handleClick={handleClickSync}
-                ></TimeLine>
+                handleClickSelection={handleSelVizEvent}
+            ></TimeLine>
         }
         middleCol={
         <LeafletMap
+            onMapClick={handleSelVizEvent}
             layerToDraw={layer}
             tellLStatus={getLeafletStatus}
         ></LeafletMap>}

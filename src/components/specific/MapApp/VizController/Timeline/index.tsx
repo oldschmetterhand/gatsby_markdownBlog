@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import styles from "./styles.module.scss"
 import { VizEvent } from "../../index"
 
@@ -6,6 +6,7 @@ interface Props {
   TLEvents?: Array<VizEvent>
   TLStyle?: React.CSSProperties
   handleClickSelection?: (TLEvent?: VizEvent) => void,
+  selected?: VizEvent
 }
 
 export const Timeline: React.FC<Props> = ({
@@ -27,12 +28,21 @@ export const Timeline: React.FC<Props> = ({
     },
   ],
   TLStyle = { borderLeft: "1em solid whitesmoke" },
-  handleClickSelection = undefined
+  handleClickSelection = undefined,
+  selected = undefined
 }) => {
 
   const [lastSelected, setLastSelected] = useState<HTMLDivElement | undefined>(undefined)
-  const [curSelected, setCurSelected] = useState<VizEvent | undefined>(undefined)
+  const [curSelected, setCurSelected] = useState<VizEvent | undefined>(selected)
 
+  useEffect(()=>{
+    if(!selected)return;
+    console.log("selection updated")
+    let arrayPos = TLEvents.indexOf(selected)
+    let div: any = document.querySelectorAll('.timelineItem')[arrayPos]
+    console.log(div)
+    handleSelDiv(div)
+  }, [selected])
 
   const eventClick = (evt, clickCallback: (linkedTLEvent: VizEvent) => void = undefined) => {
     let selDiv: HTMLDivElement = evt.currentTarget;
@@ -42,16 +52,18 @@ export const Timeline: React.FC<Props> = ({
     let linkedTLEvent: VizEvent = TLEvents[arrayPos]
     setCurSelected(linkedTLEvent) 
     
-    handleSelDivMark(selDiv)
+    handleSelDiv(selDiv)
     if(clickCallback)clickCallback(linkedTLEvent);
-    setLastSelected(selDiv);
+    //setLastSelected(selDiv);
   }
 
-  const handleSelDivMark = (div: HTMLDivElement) => {
+  const handleSelDiv = (div: HTMLDivElement) => {
+    if(!div)return;
     if(lastSelected){
       lastSelected.style.borderLeft = ''
     }
     div.style.borderLeft = '1em solid grey'
+    setLastSelected(div);
   }
 
   const renderTimeline = () => {
@@ -60,7 +72,7 @@ export const Timeline: React.FC<Props> = ({
         {TLEvents.map((TLEvent: VizEvent, index) => {
           return (
             <div
-              className={styles.timelineItem}
+              className={[styles.timelineItem, 'timelineItem'].join(" ")}
               date-is={TLEvent.date}
               onClick={(evt) => eventClick(evt, handleClickSelection)}
               data-arraypos={index}
