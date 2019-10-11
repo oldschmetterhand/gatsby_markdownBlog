@@ -1,10 +1,11 @@
 import React from "react";
+import styles from "./styles.module.scss"
 
 
 const AppTopBar = () => {
 
-    return <section className="hero">
-    <div className="hero-body">
+    return <section className="hero is-small">
+    <div className={["hero-body", styles.appTopBar].join(" ")}>
       <div className="container">
         <h1 className="title">
           Prosop |Viz
