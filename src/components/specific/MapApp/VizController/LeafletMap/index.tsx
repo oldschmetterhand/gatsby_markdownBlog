@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 
-export interface LeafletMarker {
+interface LeafletMarker {
   x: number
   y: number
   popUpContent: string
@@ -11,34 +11,37 @@ export interface LeafletMarker {
 
 interface Props {
   leafletMarkers?: Array<LeafletMarker>
+  tellLStatus?: (mapInitialized: boolean, dataLoaded: boolean) => void, 
   onMapClick?: (evt: any) => void | undefined
 }
 
 const Leaflet: React.FC<Props> = ({
   leafletMarkers,
   onMapClick = undefined,
+  tellLStatus = undefined
 }) => {
   const [laefletMap, setLeafletMap] = useState<any | undefined>(undefined)
   const [dataLoaded, setDataLoaded] = useState<boolean>(false)
   const [markerLayer, setMarkerLayer] = useState<any>(undefined)
 
   useEffect(() => {
-    console.info(`Start initialization process of the leaflet map.`)
+    console.info(`%cStart initialization process of the leaflet map.`, `color:green`)
     if(markerLayer)return drawMarkerLayer(laefletMap)
     try {
       let sample = window.L.map
       let map = window.L.map("map").setView([51.505, -0.09], 4)
       setLeafletMap(map)
+      if(tellLStatus)tellLStatus(true, false);
       initMap(map)
       //console.info(`%c Leaflet map succesfully initialized`, 'color:green')
     } catch {
-      //console.debug(`window.L not defined`);
+      console.debug(`%cwindow.L not defined. Abort drawing of the map.`,`color:green`);
     }
   }, [laefletMap])
 
   useEffect(() => {
-    console.info(`%cData changed or map was succesfully initialized. Hooking data-drawing process...`, `color:green`)
-    if(leafletMarkers && laefletMap && dataLoaded){//
+    if(leafletMarkers && laefletMap && dataLoaded){
+      console.info(`%cData changed or map was succesfully initialized. Hooking data-drawing process...`, `color:green`)
       drawMarkerLayer(laefletMap)
     }
   }, [leafletMarkers, dataLoaded])  // run once map is initialized -> if data was given intially
@@ -52,6 +55,7 @@ const Leaflet: React.FC<Props> = ({
     }).addTo(map)
     // need to do before for each.
     setDataLoaded(true)
+    if(tellLStatus)tellLStatus(true, true);
   }
 
   const drawMarkerLayer = (map) => {
