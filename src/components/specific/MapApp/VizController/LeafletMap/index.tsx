@@ -62,6 +62,8 @@ const LeafletMap: React.FC<Props> = ({
   }
 
   const drawLayer = () => {
+    console.info('%c Drawing new layer...','color:green')
+
     //adding the markers
     if(layerToDraw){
       //laefletMap.removeLayer(layerToDraw)
