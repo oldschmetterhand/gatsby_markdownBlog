@@ -1,12 +1,15 @@
 
 import React from 'react';
-import { LeafletMarker } from '../../common/Leaflet'
 import Timeline from './Timeline'
 
-interface Props {
-    vizEvents?: VizEvent[]
-}
-
+export interface LeafletMarker {
+    x: number
+    y: number
+    popUpContent: string
+    group: string
+    boundTo?: any
+    lMarkerRef?: any
+  }
 
 export interface VizEvent {
     title: string,
@@ -15,6 +18,11 @@ export interface VizEvent {
     primSource: string,
     secSource: string,
 }
+
+interface Props {
+    vizEvents?: VizEvent[]
+}
+
 
 const MapApp: React.FC<Props> = ({vizEvents = undefined}) => {
     return <><Timeline></Timeline></>
