@@ -5,7 +5,7 @@ import { VizEvent } from "../../index"
 interface Props {
   TLEvents?: Array<VizEvent>
   TLStyle?: React.CSSProperties
-  handleClick?: (TLEvent?: VizEvent) => void,
+  handleClickSelection?: (TLEvent?: VizEvent) => void,
 }
 
 export const Timeline: React.FC<Props> = ({
@@ -27,7 +27,7 @@ export const Timeline: React.FC<Props> = ({
     },
   ],
   TLStyle = { borderLeft: "1em solid whitesmoke" },
-  handleClick = undefined
+  handleClickSelection = undefined
 }) => {
 
   const [lastSelected, setLastSelected] = useState<HTMLDivElement | undefined>(undefined)
@@ -62,7 +62,7 @@ export const Timeline: React.FC<Props> = ({
             <div
               className={styles.timelineItem}
               date-is={TLEvent.date}
-              onClick={(evt) => eventClick(evt, handleClick)}
+              onClick={(evt) => eventClick(evt, handleClickSelection)}
               data-arraypos={index}
             >
               <p>
