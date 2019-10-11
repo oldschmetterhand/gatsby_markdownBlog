@@ -1,6 +1,6 @@
 
 import React from 'react';
-import Timeline from './VizController/Timeline'
+import VizController from './VizController'
 
 export interface LeafletMarker {
     x: number
@@ -25,7 +25,9 @@ interface Props {
 
 
 const MapApp: React.FC<Props> = ({vizEvents = undefined}) => {
-    return <><Timeline></Timeline></>
+    return <>
+        <VizController></VizController>
+    </>
 }
 
 export default MapApp;
