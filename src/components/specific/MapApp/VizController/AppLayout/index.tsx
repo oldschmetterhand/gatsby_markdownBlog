@@ -1,4 +1,5 @@
 import React from "react"
+import AppTopBar from "./AppTopBar"
 
 interface Props {
   topBar?: any
@@ -15,11 +16,9 @@ const MAppLayout: React.FC<Props> = ({
 }) => {
   return (
     <>
-      <div>{ topBar }This will be the top bar</div>
-      <br></br>
-      <br></br>
-      <br></br>
-
+      <div>
+        <AppTopBar></AppTopBar>
+      </div>
       <div className="columns is-gapless">
         <div className="column is-2">{leftCol}</div>
         <div className="column">{middleCol}</div>
