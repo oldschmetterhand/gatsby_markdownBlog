@@ -8,14 +8,24 @@ const dummyData: VizEvent[] = [
     {
         title: "test01",
         date: undefined,
-        lMarker: undefined,
+        lMarker: {
+            x:1,
+            y:2,
+            popUpContent: "hi",
+            group: "deserteure"
+        },
         primSource: "Augustus",
         secSource: "Rostovzef"
     },
     {
         title: "test02",
         date: undefined,
-        lMarker: undefined,
+        lMarker: {
+            x:4,
+            y:5,
+            popUpContent: "hi",
+            group: "deserteure"
+        },
         primSource: "Augustus",
         secSource: "Rostovzef"
     }
@@ -51,6 +61,7 @@ const VizController: React.FC<Props> = ({vizEvents = dummyData}) => {
         leftCol={<TimeLine></TimeLine>}
         middleCol={
         <LeafletMap
+            leafletMarkers={undefined}
             tellLStatus={getLeafletStatus}
         ></LeafletMap>}
       ></AppLayout>
