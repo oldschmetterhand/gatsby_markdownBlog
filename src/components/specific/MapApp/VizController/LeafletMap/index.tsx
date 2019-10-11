@@ -15,7 +15,7 @@ interface Props {
   onMapClick?: (evt: any) => void | undefined
 }
 
-const Leaflet: React.FC<Props> = ({
+const LeafletMap: React.FC<Props> = ({
   leafletMarkers,
   onMapClick = undefined,
   tellLStatus = undefined
@@ -107,4 +107,4 @@ const Leaflet: React.FC<Props> = ({
   return <div id="map" style={{ minHeight: "75vh" }}></div>
 }
 
-export default Leaflet
+export default LeafletMap
