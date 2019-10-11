@@ -80,7 +80,7 @@ const LeafletMap: React.FC<Props> = ({
     }
   }, [dataLoaded]);
   
-  return <div id="map" style={{ minHeight: "75vh" }}></div>
+  return <div id="map" style={{ minHeight: "85vh" }}></div>
 }
 
 export default LeafletMap
