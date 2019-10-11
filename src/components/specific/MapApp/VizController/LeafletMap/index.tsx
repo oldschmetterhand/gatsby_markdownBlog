@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react"
-import { LeafletMarker } from "../../index"
+import { LeafletMarker, VizEvent } from "../../index"
 
 interface Props {
-  leafletMarkers?: Array<LeafletMarker>
+  leafletMarkers?: Array<VizEvent>
   tellLStatus?: (mapInitialized: boolean, dataLoaded: boolean) => void, 
   onMapClick?: (evt: any) => void | undefined
 }
@@ -67,7 +67,8 @@ const LeafletMap: React.FC<Props> = ({
     }
     let layer = window.L.layerGroup();
     
-    leafletMarkers.forEach((marker, index) => {
+    leafletMarkers.forEach((vizEvent, index) => {
+      let marker = vizEvent.lMarker
       try {
       let leafletMarker = window.L.marker([marker.x, marker.y]).bindPopup(
         `<em>Kurztitel</em>: ${
