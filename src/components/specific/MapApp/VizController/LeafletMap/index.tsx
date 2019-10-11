@@ -16,13 +16,9 @@ const LeafletMap: React.FC<Props> = ({
 }) => {
   const [laefletMap, setLeafletMap] = useState<any | undefined>(undefined)
   const [dataLoaded, setDataLoaded] = useState<boolean>(false)
-  const [markerLayer, setMarkerLayer] = useState<any>(undefined)
-
-  //const [layerToDraw, setLayerToDraw] = useState<undefined | any>(layer)
 
   useEffect(() => {
     console.info(`%cStart initialization process of the leaflet map.`, `color:green`)
-    if(markerLayer)return drawLayer()
     if(laefletMap)return; //no redraw if map already initialized
     try {
         let interval = setInterval(()=>{
