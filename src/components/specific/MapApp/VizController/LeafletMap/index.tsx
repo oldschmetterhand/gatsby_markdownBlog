@@ -27,12 +27,19 @@ const LeafletMap: React.FC<Props> = ({
   useEffect(() => {
     console.info(`%cStart initialization process of the leaflet map.`, `color:green`)
     if(markerLayer)return drawMarkerLayer(laefletMap)
+    if(laefletMap)return; //no redraw if map already initialized
     try {
-      let sample = window.L.map
-      let map = window.L.map("map").setView([51.505, -0.09], 4)
-      setLeafletMap(map)
-      if(tellLStatus)tellLStatus(true, false);
-      initMap(map)
+        let interval = setInterval(()=>{
+          // first test if leaflet is initialized
+          let test = window.L.map
+          clearInterval(interval)
+
+          //works only if initialized
+          let map = window.L.map("map").setView([51.505, -0.09], 4)
+          setLeafletMap(map)
+          if(tellLStatus)tellLStatus(true, false);
+          initMap(map)
+      }, 500)
       //console.info(`%c Leaflet map succesfully initialized`, 'color:green')
     } catch {
       console.debug(`%cwindow.L not defined. Abort drawing of the map.`,`color:green`);
