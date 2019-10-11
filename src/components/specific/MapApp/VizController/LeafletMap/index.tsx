@@ -3,6 +3,7 @@ import { LeafletMarker, VizEvent } from "../../index"
 
 interface Props {
   leafletMarkers?: Array<VizEvent>
+  layerToDraw?: any,
   tellLStatus?: (mapInitialized: boolean, dataLoaded: boolean) => void, 
   onMapClick?: (evt: any) => void | undefined
 }
@@ -10,15 +11,18 @@ interface Props {
 const LeafletMap: React.FC<Props> = ({
   leafletMarkers,
   onMapClick = undefined,
-  tellLStatus = undefined
+  tellLStatus = undefined,
+  layerToDraw = undefined
 }) => {
   const [laefletMap, setLeafletMap] = useState<any | undefined>(undefined)
   const [dataLoaded, setDataLoaded] = useState<boolean>(false)
   const [markerLayer, setMarkerLayer] = useState<any>(undefined)
 
+  //const [layerToDraw, setLayerToDraw] = useState<undefined | any>(layer)
+
   useEffect(() => {
     console.info(`%cStart initialization process of the leaflet map.`, `color:green`)
-    if(markerLayer)return drawMarkerLayer(laefletMap)
+    if(markerLayer)return drawLayer()
     if(laefletMap)return; //no redraw if map already initialized
     try {
         let interval = setInterval(()=>{
@@ -39,11 +43,11 @@ const LeafletMap: React.FC<Props> = ({
   }, [laefletMap])
 
   useEffect(() => {
-    if(leafletMarkers && laefletMap && dataLoaded){
+    if(layerToDraw && laefletMap && dataLoaded){
       console.info(`%cData changed or map was succesfully initialized. Hooking data-drawing process...`, `color:green`)
-      drawMarkerLayer(laefletMap)
+      drawLayer()
     }
-  }, [leafletMarkers, dataLoaded])  // run once map is initialized -> if data was given intially
+  }, [layerToDraw])  // run once map is initialized -> if data was given intially
                                     // AND when leafletMarkers were changed.
 
   const initMap = map => {
@@ -57,43 +61,19 @@ const LeafletMap: React.FC<Props> = ({
     if(tellLStatus)tellLStatus(true, true);
   }
 
-  const drawMarkerLayer = (map) => {
+  const drawLayer = () => {
     //adding the markers
-    //let layer = new window.L.layerGroup
-    console.info("%cDrawing provided Data onto the map...",'color:green');
-    if(markerLayer){
-      laefletMap.removeLayer(markerLayer)
-      console.info("remove layer")
+    if(layerToDraw){
+      //laefletMap.removeLayer(layerToDraw)
+      //console.info("removed old layer")
     }
-    let layer = window.L.layerGroup();
-    
-    leafletMarkers.forEach((vizEvent, index) => {
-      let marker = vizEvent.lMarker
-      try {
-      let leafletMarker = window.L.marker([marker.x, marker.y]).bindPopup(
-        `<em>Kurztitel</em>: ${
-          marker.popUpContent
-        }.<br>Gruppe: ${marker.group}<hr> (Verwendete Koordinaten: Längengrad: ${marker.x.toString()}, Breitengrad: ${marker.y.toString()})`
-      )
-      marker.lMarkerRef = leafletMarker;
-      leafletMarker.boundTo = marker; 
 
-      leafletMarker.addTo(layer)
-      } catch {
-        //console.debug("error in generating a marker.")
-        //TODO better error handling!
-        //
-      }
-    });
-
-    
     try {
-      layer.addTo(map);
+      layerToDraw.addTo(laefletMap);
     } catch(e){
       console.error(e)
       //TODO better error handling here!
     }
-    setMarkerLayer(layer);
   }
 
   //registering events
