@@ -2,7 +2,6 @@ import React, {useState, useEffect} from "react"
 import TimeLine from "./Timeline"
 import LeafletMap from "./LeafletMap"
 import AppLayout from "./AppLayout"
-import lodash from "lodash"
 import {VizEvent, LeafletMarker } from "../index"
 
 const dummyData: VizEvent[] = [
@@ -52,7 +51,6 @@ interface Props {
 const VizController: React.FC<Props> = ({vizEvents = dummyData}) => {
 
   const [leafletInitialized, setLeafletInitialized] = useState<boolean>(false);
-  const [refVizEvents, setRefVizEvents] = useState<VizEvent[] | undefined>(undefined);
   const [selVizEvent, setSelVizEvent] = useState<VizEvent | undefined>(undefined);
 
   const [layer, setLayer] = useState<any | undefined>(undefined)
@@ -67,8 +65,6 @@ const VizController: React.FC<Props> = ({vizEvents = dummyData}) => {
 
         //Start operations here -- create Leaflet markers! // then draw markers to map?
         generateMapLayer()
-
-
     }
   },[leafletInitialized])
 
@@ -98,8 +94,6 @@ const VizController: React.FC<Props> = ({vizEvents = dummyData}) => {
         //TODO better error handling!
       }
     });
-
-    setRefVizEvents(() => (vizEvents))
     setLayer(layer);
   }
 
@@ -141,7 +135,7 @@ const VizController: React.FC<Props> = ({vizEvents = dummyData}) => {
         leftCol={
             <TimeLine 
                 selected={selVizEvent}
-                TLEvents={refVizEvents}
+                TLEvents={vizEvents}
                 handleClickSelection={handleSelVizEvent}
             ></TimeLine>
         }
