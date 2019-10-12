@@ -3,6 +3,7 @@ import TimeLine from "./Timeline"
 import LeafletMap from "./LeafletMap"
 import AppLayout from "./AppLayout"
 import SearchNView from "./SearchNView"
+import FactoidList from "./FactoidList"
 import { VizEvent, LeafletMarker } from "../index"
 
 const dummyData: VizEvent[] = [
@@ -178,6 +179,8 @@ const VizController: React.FC<Props> = ({ vizEvents = dummyData,handleQueryBuild
           ></TimeLine>
           
         }
+        botLeftCol={<FactoidList></FactoidList>}
+        botRightCol={undefined}
       ></AppLayout>
     </>
   )
