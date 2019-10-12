@@ -25,7 +25,7 @@ const LeafletMap: React.FC<Props> = ({
           clearInterval(interval)
 
           //works only if initialized
-          let map = window.L.map("map").setView([51.505, -0.09], 4)
+          let map = window.L.map("map", { zoomControl: false }).setView([51.505, -0.09], 4)
           setLeafletMap(map)
           if(tellLStatus)tellLStatus(true, false);
           initMap(map)
