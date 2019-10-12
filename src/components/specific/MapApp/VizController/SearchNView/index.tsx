@@ -22,7 +22,7 @@ const SearchNView:React.FC<Props> = ({vizEvent = undefined, handleQueryBuilding 
   return (
     <div className={["container", styles.mainContainer].join(" ")}>
       <Tabs
-        tabs={["Search", "Result Details", "Factoids"]}
+        tabs={["Search", "Result Details", "Factoids", "API"]}
         tellTabSelected={handleTabChange}
       ></Tabs>
       <div className={styles.mainContent}>
