@@ -1,5 +1,5 @@
 module.exports = {
-  pathPrefix: "/gatsby_markdownBlog",
+  pathPrefix: "/gamsdev/stoffse/erla/mapp/",
   siteMetadata: {
     title: `Prosop|Viz`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
@@ -59,7 +59,7 @@ module.exports = {
       options: {
         name: `Zim Blog Template`,
         short_name: `ZIM|Blog`,
-        start_url: `/gatsby_markdownBlog`,
+        start_url: `/gamsdev/stoffse/erla/app/`,
         background_color: `#0C7F06`,
         theme_color: `#0C7F06`,
         display: `standalone`,
