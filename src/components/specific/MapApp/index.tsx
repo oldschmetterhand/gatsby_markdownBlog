@@ -121,8 +121,8 @@ const MapApp: React.FC<Props> = ({ vizEvents = undefined }) => {
     let url = `https://ginko.uni-graz.at/illurk/api/factoids?personId=${personQuery}`
     axios.get(url)
       .then(response => {
-        console.log(response.data)
         setProsopApiFactoids(response.data.factoids)
+        alert(`Query Abfrage: ${url}`)
       })
       .catch(error => {
         alert('Ajax Call failed. Bitte versuchen Sie eine andere ID.')
