@@ -14,6 +14,7 @@ const LeafletMap: React.FC<Props> = ({
 }) => {
   const [laefletMap, setLeafletMap] = useState<any | undefined>(undefined)
   const [dataLoaded, setDataLoaded] = useState<boolean>(false)
+  const [lastLayer, setLastLayer] = useState<any | undefined>(undefined)
 
   useEffect(() => {
     console.info(`%cStart initialization process of the leaflet map.`, `color:green`)
@@ -59,13 +60,20 @@ const LeafletMap: React.FC<Props> = ({
     console.info('%c Drawing new layer...','color:green')
 
     //adding the markers
-    if(layerToDraw){
-      //laefletMap.removeLayer(layerToDraw)
-      //console.info("removed old layer")
+    if(lastLayer){
+
+      try {
+        laefletMap.removeLayer(lastLayer);
+      } catch(e) {
+        console.error("Error on removing the lastLayer")
+        console.error(e)
+      }
+
     }
 
     try {
       layerToDraw.addTo(laefletMap);
+      setLastLayer(layerToDraw);
     } catch(e){
       console.error(e)
       //TODO better error handling here!

@@ -77,7 +77,7 @@ const VizController: React.FC<Props> = ({ vizEvents = dummyData,handleQueryBuild
     if (leafletInitialized) {
       generateMapLayer()
     }
-  }, [leafletInitialized])
+  }, [leafletInitialized, vizEvents])
 
   /**
    * When selected VizEvent changes / synchronize all visualiations.
