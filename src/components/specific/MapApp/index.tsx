@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react"
 import VizController from "./VizController"
 import Helmet from "react-helmet"
-import { factoidResponse } from "../../../data/factoid"
+import { singlePersonResponse } from "../../../data/factoid"
 
 export interface LeafletMarker {
   x: number
@@ -75,19 +75,20 @@ const MapApp: React.FC<Props> = ({ vizEvents = undefined }) => {
   const [genVizEvents, setGenVizEvents] = useState<VizEvent[]>(undefined)
 
   useEffect(()=>{
-    let factoids = factoidResponse.factoids;
+    let factoids = singlePersonResponse.factoids;
     let vizEvents: VizEvent[] = []; 
     factoids.forEach((factoid: ProsopApiFactoid)=>{
-      if(!factoid.statement || !factoid.statement.place)return;
+      if(!factoid.statement)return;
 
       let vizEvent: VizEvent = {
         title: factoid.statement.statmentContent ? factoid.statement.statmentContent : factoid.statement["@id"],
         date: factoid.statement.date ? factoid.statement.date.label : 'Kein Datum vorhanden',
-        lMarker: {
+        lMarker: factoid.statement.place ? {
           x: Math.random()*50 - Math.random()*10,
           y: Math.random()*50 - Math.random()*10,
           popUpContent: factoid.statement.statmentContent ? factoid.statement.statmentContent : factoid.statement["@id"]
-        }
+        } : undefined,
+        primSource: factoid.source.label ? factoid.source.label : factoid.source["@id"]  
       }
       vizEvents.push(vizEvent);
     });
