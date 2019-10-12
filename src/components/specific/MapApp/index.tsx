@@ -76,17 +76,20 @@ const MapApp: React.FC<Props> = ({ vizEvents = undefined }) => {
 
   useEffect(()=>{
     let factoids = factoidResponse.factoids;
-    let vizEvents: VizEvent[] = factoids.map((factoid: ProsopApiFactoid)=>{
+    let vizEvents: VizEvent[] = []; 
+    factoids.forEach((factoid: ProsopApiFactoid)=>{
+      if(!factoid.statement || factoid.statement.place)return;
+
       let vizEvent: VizEvent = {
-        title: factoid['@id'],
-        date: factoid.createdWhen ? factoid.createdWhen : undefined,
-        lMarker: factoid.statement.place ? {
-          x: Math.random()*10,
-          y: Math.random()*10,
-          popUpContent: factoid["@id"]
-        } : undefined
+        title: factoid.statement.statmentContent ? factoid.statement.statmentContent : factoid.statement["@id"],
+        date: factoid.statement.date ? factoid.statement.date.label : undefined,
+        lMarker: {
+          x: Math.random()*50 - Math.random()*10,
+          y: Math.random()*50 - Math.random()*10,
+          popUpContent: factoid.statement.statmentContent ? factoid.statement.statmentContent : factoid.statement["@id"]
+        }
       }
-      return vizEvent
+      vizEvents.push(vizEvent);
     });
 
     setGenVizEvents(vizEvents)
