@@ -16,6 +16,7 @@ export interface VizEvent {
   title: string
   date?: string
   lMarker?: LeafletMarker
+  factoid?: ProsopApiFactoid
   primSource?: string
   secSource?: string
 }
@@ -100,6 +101,7 @@ const MapApp: React.FC<Props> = ({ vizEvents = undefined }) => {
       let vizEvent: VizEvent = {
         title: factoid.statement.statmentContent ? factoid.statement.statmentContent : factoid.statement["@id"],
         date: factoid.statement.date ? factoid.statement.date.label : 'Kein Datum vorhanden',
+        factoid:factoid,
         lMarker: factoid.statement.place ? {
           x: Math.random()*50 - Math.random()*10,
           y: Math.random()*50 - Math.random()*10,
