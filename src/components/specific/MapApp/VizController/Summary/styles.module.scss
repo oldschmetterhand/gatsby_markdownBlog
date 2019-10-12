@@ -1,10 +1,13 @@
 
 .summaryContainer {
-    padding: 5em;
     border-left: .15em solid lightgrey;
     min-height: 85vh;
-    overflow-y: scroll;
     h2 {
         border-bottom: 2px solid #f36;
     }
+    .summaryContent {
+        padding: 5em;
+        overflow-y: scroll;
+    }
 }
+
