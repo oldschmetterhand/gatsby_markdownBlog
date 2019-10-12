@@ -143,6 +143,7 @@ const VizController: React.FC<Props> = ({ vizEvents = dummyData,handleQueryBuild
    * Handler function to set currently displayed VizEvent Object
    */
   const handleSelVizEvent = (vizEvent: VizEvent) => {
+    if(!vizEvent)setSelVizEvent(undefined);
     setSelVizEvent(vizEvent)
   }
 
