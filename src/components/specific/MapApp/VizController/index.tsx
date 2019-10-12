@@ -32,7 +32,7 @@ const dummyData: VizEvent[] = [
   },
   {
     title: "test03",
-    date: "08.05.2019",
+    date: undefined,
     lMarker: {
       x: 6,
       y: 8,
