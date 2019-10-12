@@ -77,7 +77,7 @@ const MapApp: React.FC<Props> = ({ vizEvents = undefined }) => {
   const [genVizEvents, setGenVizEvents] = useState<VizEvent[]>(undefined)
 
   useEffect(()=>{
-    let url = `https://ginko.uni-graz.at/illurk/api/factoids?personId=illurk:P_Radulfus_Down_1328`
+    let url = `https://ginko.uni-graz.at/illurk/api/factoids`
     axios.get(url)
       .then(response => {
         console.log(response.data)
@@ -118,7 +118,15 @@ const MapApp: React.FC<Props> = ({ vizEvents = undefined }) => {
   }
 
   const handleSearch = () => {
-
+    let url = `https://ginko.uni-graz.at/illurk/api/factoids?personId=${personQuery}`
+    axios.get(url)
+      .then(response => {
+        console.log(response.data)
+        setProsopApiFactoids(response.data.factoids)
+      })
+      .catch(error => {
+        alert('Ajax Call failed. Bitte versuchen Sie eine andere ID.')
+      })
   }
 
   return (
@@ -136,7 +144,7 @@ const MapApp: React.FC<Props> = ({ vizEvents = undefined }) => {
           crossorigin=""
         ></script>
       </Helmet>
-      {genVizEvents ? <VizController vizEvents={genVizEvents} handleQueryBuilding={handleQueryBuilding}></VizController> : null}
+      {genVizEvents ? <VizController handleSearch={handleSearch} vizEvents={genVizEvents} handleQueryBuilding={handleQueryBuilding}></VizController> : null}
     </>
   )
 }
