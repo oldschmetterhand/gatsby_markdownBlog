@@ -22,7 +22,7 @@ export interface VizEvent {
 export interface FactoidCore {
   '@id': string,
   createdBy: string,
-  createdWhen: 'string'
+  createdWhen: string
 }
 
 export interface FactoidSource extends FactoidCore {
@@ -30,7 +30,7 @@ export interface FactoidSource extends FactoidCore {
 }
 
 export interface FactoidPerson extends FactoidCore {
-  label: string
+  label?: string
 }
 
 export interface FactoidStatement extends FactoidCore {
@@ -40,14 +40,14 @@ export interface FactoidStatement extends FactoidCore {
     },
     place?: Array<{
       label:string,
-      x: string,
-      y: string
+      x?: string,
+      y?: string
     }>,
     role?: {
       label: string,
       uri: string
     },
-    statementContent?: string
+  statmentContent?: string
 }
 
 export interface ProsopApiFactoid extends FactoidCore {
