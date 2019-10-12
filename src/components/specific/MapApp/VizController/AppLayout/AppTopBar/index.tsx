@@ -4,15 +4,15 @@ import styles from "./styles.module.scss"
 
 const AppTopBar = () => {
 
-    return <section className="hero">
-    <div className={["hero-body", styles.appTopBar].join(" ")}>
-      <div className="container">
+    return <div className={["columns is-gapless", styles.appTopBar].join(" ")}>
+      <div className={["column is-3", styles.is3].join(" ")}>
         <h1 className="is-size-5">
             Prosop |Viz
         </h1>
       </div>
+      <div className={["column", styles.column].join(" ")}></div>
     </div>
-  </section>
+  
 
 }
 

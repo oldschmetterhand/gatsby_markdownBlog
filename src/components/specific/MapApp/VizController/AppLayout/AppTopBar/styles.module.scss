@@ -2,9 +2,18 @@
 
 .appTopBar {
     height:5em;
-    border-left: 2vw solid #41b7d8;
-    border-bottom: 2em solid whitesmoke;
+    //border-left: 2vw solid #41b7d8;
+    border-bottom: .1em solid grey;
+    
     h1 {
+        padding-top: 1em;
         padding-left: .5em;
+    }
+    .is-3 {
+        border-left: 2vw solid #41b7d8;
+        border-bottom: 1em solid whitesmoke;
+    }
+    .column {
+        //border-bottom: .5em solid whitesmoke;
     }
 }
