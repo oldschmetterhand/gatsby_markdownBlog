@@ -34,9 +34,7 @@ const Tabs: React.FC<Props> = ({tabs, tellTabSelected, tabActive = 0}) => {
   return (
     <div className="tabs is-boxed">
       <ul>
-        {tabs.map((tabName, index)=>{
-            renderTab(tabName, index)
-        })}
+        {tabs.map((tabName, index) => renderTab(tabName, index))}
       </ul>
     </div>
   )
