@@ -72,6 +72,7 @@ interface Props {
 
 const MapApp: React.FC<Props> = ({ vizEvents = undefined }) => {
 
+  const [personQuery, setPersonQuery] = useState<string | undefined>(undefined)
   const [prosopApiFactoids, setProsopApiFactoids] = useState<ProsopApiFactoid[]>(undefined)
   const [genVizEvents, setGenVizEvents] = useState<VizEvent[]>(undefined)
 
@@ -112,6 +113,14 @@ const MapApp: React.FC<Props> = ({ vizEvents = undefined }) => {
     setGenVizEvents(vizEvents)
   },[prosopApiFactoids]);
 
+  const handleQueryBuilding = (query: string) => {
+    setPersonQuery(query)
+  }
+
+  const handleSearch = () => {
+
+  }
+
   return (
     <>
       <Helmet>
@@ -127,7 +136,7 @@ const MapApp: React.FC<Props> = ({ vizEvents = undefined }) => {
           crossorigin=""
         ></script>
       </Helmet>
-      {genVizEvents ? <VizController vizEvents={genVizEvents}></VizController> : null}
+      {genVizEvents ? <VizController vizEvents={genVizEvents} handleQueryBuilding={handleQueryBuilding}></VizController> : null}
     </>
   )
 }

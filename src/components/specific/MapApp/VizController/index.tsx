@@ -46,9 +46,10 @@ const dummyData: VizEvent[] = [
 
 interface Props {
   vizEvents?: VizEvent[]
+  handleQueryBuilding?: (string) => void
 }
 
-const VizController: React.FC<Props> = ({ vizEvents = dummyData }) => {
+const VizController: React.FC<Props> = ({ vizEvents = dummyData,handleQueryBuilding = undefined }) => {
   const [leafletInitialized, setLeafletInitialized] = useState<boolean>(false)
   const [selVizEvent, setSelVizEvent] = useState<VizEvent | undefined>(
     undefined
@@ -159,7 +160,7 @@ const VizController: React.FC<Props> = ({ vizEvents = dummyData }) => {
   return (
     <>
       <AppLayout
-        leftCol={<SearchNView vizEvent={selVizEvent}></SearchNView>}
+        leftCol={<SearchNView handleQueryBuilding={handleQueryBuilding} vizEvent={selVizEvent}></SearchNView>}
         middleCol={
           <LeafletMap
             onMapClick={handleSelVizEvent}
