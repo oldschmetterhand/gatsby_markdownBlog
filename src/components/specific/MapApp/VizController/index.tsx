@@ -179,7 +179,7 @@ const VizController: React.FC<Props> = ({ vizEvents = dummyData,handleQueryBuild
           ></TimeLine>
           
         }
-        botLeftCol={<FactoidList vizEvents={vizEvents}></FactoidList>}
+        botLeftCol={<FactoidList vizEvents={vizEvents} selected={selVizEvent}></FactoidList>}
         botRightCol={undefined}
       ></AppLayout>
     </>

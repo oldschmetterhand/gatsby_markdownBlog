@@ -2,12 +2,13 @@ import React from "react"
 import { VizEvent } from "../../index"
 
 interface Props {
-  vizEvents?: VizEvent[]
+  vizEvents?: VizEvent[],
+  selected?: VizEvent
 }
 
-const FactoidList: React.FC<Props> = ({ vizEvents = undefined }) => {
+const FactoidList: React.FC<Props> = ({ vizEvents = undefined, selected = undefined }) => {
   const listItems = vizEvents ? <>{vizEvents.map((vizEvent: VizEvent) => {
-    return <a className="list-item">ID: {vizEvent.factoid["@id"]}</a>
+    return <a className={`list-item ${selected ? ((vizEvent.factoid["@id"] === selected.factoid["@id"]) ? 'is-active' : '' ) : ''}`}>ID: {vizEvent.factoid["@id"]}</a>
   })}</> : null
 
   return (
