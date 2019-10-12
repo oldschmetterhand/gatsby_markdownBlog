@@ -1,7 +1,7 @@
 
 import { ProsopApiResponse } from "../components/specific/MapApp"
 
-export const factoidList: ProsopApiResponse = {
+export const factoidResponse: ProsopApiResponse = {
     "factoids": [
       {
         "@id": "FpersonBischoefeAblaesse.0-name0",
