@@ -9,6 +9,7 @@ interface Props {
 
 const FactoidList: React.FC<Props> = ({ vizEvents = undefined, selected = undefined, handleVizSelection = undefined }) => {
   const listItems = vizEvents ? <>{vizEvents.map((vizEvent: VizEvent) => {
+    if(!vizEvent.factoid["@id"])return <a className="list-item">no id</a>
     return <a onClick={()=>handleVizSelection(vizEvent)} className={`list-item ${selected ? ((vizEvent.factoid["@id"] === selected.factoid["@id"]) ? 'is-active' : '' ) : ''}`}>ID: {vizEvent.factoid["@id"]}</a>
   })}</> : null
 
