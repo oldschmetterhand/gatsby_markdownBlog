@@ -907,3 +907,72 @@ export const factoidResponse: ProsopApiResponse = {
       "totalHits": 898
     }
   }
+
+export const singlePersonResponse: ProsopApiResponse = {
+  "factoids": [
+    {
+      "@id": "FpersonBischoefeAblaesse.111-name0",
+      "createdBy": "IlluminierteUrkunden@gmail.com",
+      "createdWhen": "2015-08-25T18:30:29.181+02:00",
+      "person": {
+        "@id": "illurk:P_Radulfus_Down_1328",
+        "createdBy": "IlluminierteUrkunden@gmail.com",
+        "createdWhen": "2015-08-25T18:30:29.181+02:00"
+      },
+      "source": {
+        "@id": "S_personBischoefeAblaesse",
+        "createdBy": "IlluminierteUrkunden@gmail.com",
+        "createdWhen": "2015-08-25T18:30:29.181+02:00",
+        "label": "Eubel, Hierarchia 1, 1913, S. 231"
+      },
+      "statement": {
+        "@id": "StpersonBischoefeAblaesse.111-name0",
+        "createdBy": "IlluminierteUrkunden@gmail.com",
+        "createdWhen": "2015-08-25T18:30:29.181+02:00",
+        "name": "Radulfus,"
+      }
+    },
+    {
+      "@id": "FpersonBischoefeAblaesse.111-occupation0",
+      "createdBy": "IlluminierteUrkunden@gmail.com",
+      "createdWhen": "2015-08-25T18:30:29.181+02:00",
+      "person": {
+        "@id": "illurk:P_Radulfus_Down_1328",
+        "createdBy": "IlluminierteUrkunden@gmail.com",
+        "createdWhen": "2015-08-25T18:30:29.181+02:00"
+      },
+      "source": {
+        "@id": "S_personBischoefeAblaesse",
+        "createdBy": "IlluminierteUrkunden@gmail.com",
+        "createdWhen": "2015-08-25T18:30:29.181+02:00",
+        "label": "Eubel, Hierarchia 1, 1913, S. 231"
+      },
+      "statement": {
+        "@id": "StpersonBischoefeAblaesse.111-occupation0",
+        "createdBy": "IlluminierteUrkunden@gmail.com",
+        "createdWhen": "2015-08-25T18:30:29.181+02:00",
+        "date": {
+          "label": "1328\u20131353"
+        },
+        "place": [
+          {
+            "label": "Down (Irland, Dunensis)"
+          },
+          {
+            "label": "Dunensis"
+          }
+        ],
+        "role": {
+          "label": "Bischof von",
+          "uri": "illurk:Bischof"
+        },
+        "statmentContent": "Bischof von Down (Irland, Dunensis)1328\u20131353Eubel, Hierarchia 1, 1913, S. 231"
+      }
+    }
+  ],
+  "protocol": {
+    "page": 1,
+    "size": 30,
+    "totalHits": 2
+  }
+}
