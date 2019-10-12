@@ -1,6 +1,7 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
 import VizController from "./VizController"
 import Helmet from "react-helmet"
+import { factoidResponse } from "../../../data/factoid"
 
 export interface LeafletMarker {
   x: number
@@ -13,10 +14,10 @@ export interface LeafletMarker {
 
 export interface VizEvent {
   title: string
-  date: string | undefined
-  lMarker: LeafletMarker | undefined
-  primSource: string
-  secSource: string
+  date?: string
+  lMarker?: LeafletMarker
+  primSource?: string
+  secSource?: string
 }
 
 export interface FactoidCore {
@@ -70,6 +71,21 @@ interface Props {
 }
 
 const MapApp: React.FC<Props> = ({ vizEvents = undefined }) => {
+
+  const [genVizEvents, setGenVizEvents] = useState<VizEvent[]>(undefined)
+
+  useEffect(()=>{
+    let factoids = factoidResponse.factoids;
+    let vizEvents: VizEvent[] = factoids.map((factoid: ProsopApiFactoid)=>{
+      let vizEvent: VizEvent = {
+        title: factoid['@id'],
+      }
+      return vizEvent
+    });
+
+    setGenVizEvents(vizEvents)
+  },[]);
+
   return (
     <>
       <Helmet>
@@ -85,7 +101,7 @@ const MapApp: React.FC<Props> = ({ vizEvents = undefined }) => {
           crossorigin=""
         ></script>
       </Helmet>
-      <VizController></VizController>
+      <VizController vizEvents={genVizEvents}></VizController>
     </>
   )
 }
