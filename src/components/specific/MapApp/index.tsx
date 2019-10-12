@@ -78,11 +78,11 @@ const MapApp: React.FC<Props> = ({ vizEvents = undefined }) => {
     let factoids = factoidResponse.factoids;
     let vizEvents: VizEvent[] = []; 
     factoids.forEach((factoid: ProsopApiFactoid)=>{
-      if(!factoid.statement || factoid.statement.place)return;
+      if(!factoid.statement || !factoid.statement.place)return;
 
       let vizEvent: VizEvent = {
         title: factoid.statement.statmentContent ? factoid.statement.statmentContent : factoid.statement["@id"],
-        date: factoid.statement.date ? factoid.statement.date.label : undefined,
+        date: factoid.statement.date ? factoid.statement.date.label : 'Kein Datum vorhanden',
         lMarker: {
           x: Math.random()*50 - Math.random()*10,
           y: Math.random()*50 - Math.random()*10,
