@@ -1,9 +1,13 @@
 .mainContainer {
-  border-right: 0.25em solid lightgrey;
-  min-height: 85vh;
+  //border-right: 0.25em solid whitesmoke;
+  border-top: 1em solid whitesmoke;
+  min-height: 75vh;
   .mainContent {
     padding: 3em;
     overflow-y: scroll;
     min-height: 75vh;
+  }
+  ul {
+      background: whitesmoke;
   }
 }
