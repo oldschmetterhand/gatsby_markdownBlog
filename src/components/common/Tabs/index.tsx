@@ -1,11 +1,12 @@
 import React, {useState} from "react"
 
 interface Props {
+  tabs: string[],
   tellTabSelected?: Function
   tabActive?: number
 }
 
-const Tabs: React.FC<Props> = ({tellTabSelected, tabActive = 0}) => {
+const Tabs: React.FC<Props> = ({tabs, tellTabSelected, tabActive = 0}) => {
 
   const [selectedTab, setSelectedTab] = useState<number>(tabActive)
 
@@ -22,29 +23,20 @@ const Tabs: React.FC<Props> = ({tellTabSelected, tabActive = 0}) => {
     }
   }
 
+  const renderTab = (tabName: string, index: number) => (
+    <li className={`${selectedTab === index ? 'is-active' : ''}`}>
+      <a onClick={handleTabSelect} data-tabindex={index}>
+      <span>{tabName}</span>
+      </a>
+    </li>
+  )
+
   return (
     <div className="tabs is-boxed">
       <ul>
-        <li className={`${selectedTab === 0 ? 'is-active' : ''}`}>
-          <a onClick={handleTabSelect} data-tabindex="0">
-            <span>I. Dateingabe</span>
-          </a>
-        </li>
-        <li className={`${selectedTab === 1 ? 'is-active' : ''}`}>
-          <a onClick={handleTabSelect} data-tabindex="1">
-            <span>II. Validierung</span>
-          </a>
-        </li>
-        <li className={`${selectedTab === 2 ? 'is-active' : ''}`}>
-          <a onClick={handleTabSelect} data-tabindex="2">
-            <span>III. Restrukturierung</span>
-          </a>
-        </li>
-        <li className={`${selectedTab === 3 ? 'is-active' : ''}`}>
-          <a onClick={handleTabSelect} data-tabindex="3">
-            <span>IV. Karte</span>
-          </a>
-        </li>
+        {tabs.map((tabName, index)=>{
+            renderTab(tabName, index)
+        })}
       </ul>
     </div>
   )
