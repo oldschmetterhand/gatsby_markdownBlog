@@ -16,7 +16,7 @@ const MAppLayout: React.FC<Props> = ({
   topBar = undefined
 }) => {
   return (
-    <>
+    <section className={styles.appContainer}>
       <div>
         <AppTopBar></AppTopBar>
       </div>
@@ -25,7 +25,7 @@ const MAppLayout: React.FC<Props> = ({
         <div className={["column",styles.middleCol].join(" ")}>{middleCol}</div>
         <div className="column is-2">{rightCol}</div>
       </div>
-    </>
+    </section>
   )
 }
 
