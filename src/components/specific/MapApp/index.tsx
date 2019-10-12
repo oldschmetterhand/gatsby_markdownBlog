@@ -56,6 +56,15 @@ export interface ProsopApiFactoid extends FactoidCore {
   statement: FactoidStatement
 }
 
+export interface ProsopApiResponse  {
+  factoids: ProsopApiFactoid[],
+  protocol: {
+    page: number,
+    size: number,
+    totalHits: number
+  }
+}
+
 const x: ProsopApiFactoid = {}
 console.log(x)
 
