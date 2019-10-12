@@ -8,7 +8,7 @@ import { VizEvent, LeafletMarker } from "../index"
 const dummyData: VizEvent[] = [
   {
     title: "test01",
-    date: undefined,
+    date: "04.05.2019",
     lMarker: {
       x: 1,
       y: 2,
@@ -20,7 +20,7 @@ const dummyData: VizEvent[] = [
   },
   {
     title: "test02",
-    date: undefined,
+    date: "06.05.2019",
     lMarker: {
       x: 4,
       y: 5,
@@ -32,7 +32,7 @@ const dummyData: VizEvent[] = [
   },
   {
     title: "test03",
-    date: undefined,
+    date: "08.05.2019",
     lMarker: {
       x: 6,
       y: 8,
