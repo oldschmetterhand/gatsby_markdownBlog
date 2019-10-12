@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react"
 import VizController from "./VizController"
 import Helmet from "react-helmet"
-import { singlePersonResponse } from "../../../data/factoid"
+import axios from "axios"
 
 export interface LeafletMarker {
   x: number
@@ -72,10 +72,26 @@ interface Props {
 
 const MapApp: React.FC<Props> = ({ vizEvents = undefined }) => {
 
+  const [prosopApiFactoids, setProsopApiFactoids] = useState<ProsopApiFactoid[]>(undefined)
   const [genVizEvents, setGenVizEvents] = useState<VizEvent[]>(undefined)
 
   useEffect(()=>{
-    let factoids = singlePersonResponse.factoids;
+    let url = `https://ginko.uni-graz.at/illurk/api/factoids?personId=illurk:P_Radulfus_Down_1328`
+    axios.get(url)
+      .then(response => {
+        console.log(response.data)
+        setProsopApiFactoids(response.data.factoids)
+      })
+      .catch(error => {
+        console.error(`Ajax call to ginko failed at: ${url}`)
+        console.error(error)
+      })
+  },[]);
+
+  useEffect(()=>{
+    if(!prosopApiFactoids)return;
+
+    let factoids = prosopApiFactoids;
     let vizEvents: VizEvent[] = []; 
     factoids.forEach((factoid: ProsopApiFactoid)=>{
       if(!factoid.statement)return;
@@ -94,7 +110,7 @@ const MapApp: React.FC<Props> = ({ vizEvents = undefined }) => {
     });
 
     setGenVizEvents(vizEvents)
-  },[]);
+  },[prosopApiFactoids]);
 
   return (
     <>
@@ -111,7 +127,7 @@ const MapApp: React.FC<Props> = ({ vizEvents = undefined }) => {
           crossorigin=""
         ></script>
       </Helmet>
-      <VizController vizEvents={genVizEvents}></VizController>
+      {genVizEvents ? <VizController vizEvents={genVizEvents}></VizController> : null}
     </>
   )
 }
