@@ -1,5 +1,6 @@
 import React from "react"
 import { VizEvent } from "../../index"
+import styles from "./styles.module.scss"
 
 interface Props {
   vizEvents?: VizEvent[],
@@ -10,16 +11,16 @@ interface Props {
 const FactoidList: React.FC<Props> = ({ vizEvents = undefined, selected = undefined, handleVizSelection = undefined }) => {
   const listItems = vizEvents ? <>{vizEvents.map((vizEvent: VizEvent) => {
     if(!vizEvent.factoid["@id"])return <a className="list-item">no id</a>
-    return <a onClick={()=>handleVizSelection(vizEvent)} className={`list-item ${selected ? ((vizEvent.factoid["@id"] === selected.factoid["@id"]) ? 'is-active' : '' ) : ''}`}>ID: {vizEvent.factoid["@id"]}</a>
+    return <a key={vizEvent.factoid["@id"]} onClick={()=>handleVizSelection(vizEvent)} className={`list-item ${selected ? ((vizEvent.factoid["@id"] === selected.factoid["@id"]) ? 'is-active' : '' ) : ''}`}>ID: {vizEvent.factoid["@id"]}</a>
   })}</> : null
 
   return (
-    <>
+    <div className={styles.mainContainer}>
       <h2 className="is-size-5">Linked Factoids</h2>
       <div className="list is-hoverable">
         {listItems}
       </div>
-    </>
+    </div>
   )
 }
 
