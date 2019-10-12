@@ -61,10 +61,8 @@ export const Timeline: React.FC<Props> = ({
     if(!div)return;
     if(lastSelected){
       lastSelected.style.borderLeft = ''
-      lastSelected.style.background = ''
     }
     div.style.borderLeft = '1em solid #f36'
-    div.style.background = 'whitesmoke'
     setLastSelected(div);
   }
 
@@ -78,7 +76,7 @@ export const Timeline: React.FC<Props> = ({
               date-is={TLEvent.date}
               onClick={(evt) => eventClick(evt, handleClickSelection)}
               data-arraypos={index}
-              style={TLEvent.date ? {backgroundColor:'#cafad8'} : null}
+              style={TLEvent.date ? {background:'#cafad8'} : null}
             >
               <p>
                 {index + 1} - {TLEvent.title}
