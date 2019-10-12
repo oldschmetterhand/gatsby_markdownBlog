@@ -12,7 +12,7 @@ const Summary: React.FC<Props> = ({
 }) => {
   const summary = (
     <div className={styles.summaryContent}>
-      <h2 className="is-size-4">Ereignis Details</h2>
+      <h2 className="is-size-6">Ereignis Details</h2>
       <br></br>
       {vizEvent && vizEvent.title ? (
         <>

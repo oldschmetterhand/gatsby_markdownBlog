@@ -3,6 +3,7 @@ import Tabs from "../../../../common/Tabs"
 import styles from "./styles.module.scss"
 import Summary from "./Summary"
 import Search from "./Search"
+import FactoidList from "./FactoidList"
 import { VizEvent } from "../.."
 
 interface Props {
@@ -19,12 +20,13 @@ const SearchNView:React.FC<Props> = ({vizEvent = undefined}) => {
   return (
     <div className={["container", styles.mainContainer].join(" ")}>
       <Tabs
-        tabs={["Search", "Result Details"]}
+        tabs={["Search", "Result Details", "Factoids"]}
         tellTabSelected={handleTabChange}
       ></Tabs>
       <div className={styles.mainContent}>
         {selectedTab === 0 ? <Search></Search> : null}
         {selectedTab === 1 ? <Summary vizEvent={vizEvent}></Summary> : null}
+        {selectedTab === 2 ? <Summary vizEvent={vizEvent}></Summary> : null}
       </div>
     </div>
   )

@@ -19,6 +19,46 @@ export interface VizEvent {
   secSource: string
 }
 
+export interface FactoidCore {
+  '@id': string,
+  createdBy: string,
+  createdWhen: 'string'
+}
+
+export interface FactoidSource extends FactoidCore {
+  label?:string
+}
+
+export interface FactoidPerson extends FactoidCore {
+  label: string
+}
+
+export interface FactoidStatement extends FactoidCore {
+  name?: string,
+    date?: {
+      label: string
+    },
+    place?: Array<{
+      label:string,
+      x: string,
+      y: string
+    }>,
+    role?: {
+      label: string,
+      uri: string
+    },
+    statementContent?: string
+}
+
+export interface ProsopApiFactoid extends FactoidCore {
+  person:  FactoidPerson,
+  source: FactoidSource,
+  statement: FactoidStatement
+}
+
+const x: ProsopApiFactoid = {}
+console.log(x)
+
 interface Props {
   vizEvents?: VizEvent[]
 }
