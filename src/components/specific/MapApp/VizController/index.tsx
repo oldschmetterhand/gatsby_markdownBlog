@@ -4,7 +4,7 @@ import LeafletMap from "./LeafletMap"
 import AppLayout from "./AppLayout"
 import SearchNView from "./SearchNView"
 import FactoidList from "./FactoidList"
-import { VizEvent, LeafletMarker } from "../index"
+import { VizEvent, LeafletMarker, ProsopApiFactoid } from "../index"
 
 const dummyData: VizEvent[] = [
   {
@@ -51,7 +51,7 @@ interface Props {
   handleSearch?: () => void
 }
 
-const VizController: React.FC<Props> = ({ vizEvents = dummyData,handleQueryBuilding = undefined, handleSearch=undefined }) => {
+const VizController: React.FC<Props> = ({ vizEvents = dummyData,handleQueryBuilding = undefined, handleSearch=undefined, originalFactoids=undefined }) => {
   const [leafletInitialized, setLeafletInitialized] = useState<boolean>(false)
   const [selVizEvent, setSelVizEvent] = useState<VizEvent | undefined>(
     undefined
@@ -179,7 +179,7 @@ const VizController: React.FC<Props> = ({ vizEvents = dummyData,handleQueryBuild
           ></TimeLine>
           
         }
-        botLeftCol={<FactoidList></FactoidList>}
+        botLeftCol={<FactoidList vizEvents={vizEvents}></FactoidList>}
         botRightCol={undefined}
       ></AppLayout>
     </>
