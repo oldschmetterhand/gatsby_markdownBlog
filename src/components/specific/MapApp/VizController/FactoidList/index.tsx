@@ -3,12 +3,13 @@ import { VizEvent } from "../../index"
 
 interface Props {
   vizEvents?: VizEvent[],
-  selected?: VizEvent
+  selected?: VizEvent,
+  handleVizSelection: (vizEvent: VizEvent) => void
 }
 
-const FactoidList: React.FC<Props> = ({ vizEvents = undefined, selected = undefined }) => {
+const FactoidList: React.FC<Props> = ({ vizEvents = undefined, selected = undefined, handleVizSelection = undefined }) => {
   const listItems = vizEvents ? <>{vizEvents.map((vizEvent: VizEvent) => {
-    return <a className={`list-item ${selected ? ((vizEvent.factoid["@id"] === selected.factoid["@id"]) ? 'is-active' : '' ) : ''}`}>ID: {vizEvent.factoid["@id"]}</a>
+    return <a onClick={()=>handleVizSelection(vizEvent)} className={`list-item ${selected ? ((vizEvent.factoid["@id"] === selected.factoid["@id"]) ? 'is-active' : '' ) : ''}`}>ID: {vizEvent.factoid["@id"]}</a>
   })}</> : null
 
   return (
