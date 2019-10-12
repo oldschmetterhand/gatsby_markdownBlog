@@ -65,9 +65,6 @@ export interface ProsopApiResponse  {
   }
 }
 
-const x: ProsopApiFactoid = {}
-console.log(x)
-
 interface Props {
   vizEvents?: VizEvent[]
 }
