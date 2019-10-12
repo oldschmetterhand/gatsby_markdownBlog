@@ -76,7 +76,7 @@ export const Timeline: React.FC<Props> = ({
               date-is={TLEvent.date}
               onClick={(evt) => eventClick(evt, handleClickSelection)}
               data-arraypos={index}
-              style={TLEvent.date ? {background:'#cafad8'} : null}
+              style={TLEvent.lMarker ? {background:'#cafad8'} : null}
             >
               <p>
                 {index + 1} - {TLEvent.title}
