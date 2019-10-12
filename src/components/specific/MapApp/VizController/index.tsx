@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import TimeLine from "./Timeline"
 import LeafletMap from "./LeafletMap"
 import AppLayout from "./AppLayout"
-import Summary from "./Summary"
+import SearchNView from "./SearchNView"
 import { VizEvent, LeafletMarker } from "../index"
 
 const dummyData: VizEvent[] = [
@@ -159,11 +159,7 @@ const VizController: React.FC<Props> = ({ vizEvents = dummyData }) => {
   return (
     <>
       <AppLayout
-        leftCol={
-          <Summary
-            vizEvent={selVizEvent}
-          ></Summary>
-        }
+        leftCol={<SearchNView vizEvent={selVizEvent}></SearchNView>}
         middleCol={
           <LeafletMap
             onMapClick={handleSelVizEvent}
