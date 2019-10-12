@@ -2,12 +2,16 @@
 .summaryContainer {
     border-right: .25em solid lightgrey;
     min-height: 85vh;
+    em {
+        font-weight: 500;
+    }
     h2 {
         border-bottom: 2px solid #f36;
     }
     .summaryContent {
-        padding: 5em;
+        padding: 3em;
         overflow-y: scroll;
+        min-height: 75vh;
     }
 }
 
