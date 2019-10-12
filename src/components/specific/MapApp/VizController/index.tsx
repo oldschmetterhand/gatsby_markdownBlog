@@ -172,7 +172,7 @@ const VizController: React.FC<Props> = ({ vizEvents = dummyData }) => {
             selected={selVizEvent}
             TLEvents={vizEvents}
             handleClickSelection={handleSelVizEvent}
-            TLStyle={{fontSize:'.75em', borderLeft: '1em solid whitesmoke', minHeight:'85vh'}}
+            TLStyle={{fontSize:'.75em', borderLeft: '1em solid whitesmoke', minHeight:'90vh',maxHeight:'90vh', overflow:'scroll'}}
           ></TimeLine>
           
         }
