@@ -7,7 +7,7 @@ export interface LeafletMarker {
   x: number
   y: number
   popUpContent: string
-  group: string
+  group?: string
   boundTo?: VizEvent
   lMarkerRef?: any
 }
@@ -79,6 +79,12 @@ const MapApp: React.FC<Props> = ({ vizEvents = undefined }) => {
     let vizEvents: VizEvent[] = factoids.map((factoid: ProsopApiFactoid)=>{
       let vizEvent: VizEvent = {
         title: factoid['@id'],
+        date: factoid.createdWhen ? factoid.createdWhen : undefined,
+        lMarker: factoid.statement.place ? {
+          x: Math.random()*10,
+          y: Math.random()*10,
+          popUpContent: factoid["@id"]
+        } : undefined
       }
       return vizEvent
     });
