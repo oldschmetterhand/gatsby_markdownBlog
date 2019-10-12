@@ -4,6 +4,7 @@ import LeafletMap from "./LeafletMap"
 import AppLayout from "./AppLayout"
 import SearchNView from "./SearchNView"
 import FactoidList from "./FactoidList"
+import LinkedFullText from "./LinkedFullText"
 import { VizEvent, LeafletMarker, ProsopApiFactoid } from "../index"
 
 const dummyData: VizEvent[] = [
@@ -180,7 +181,7 @@ const VizController: React.FC<Props> = ({ vizEvents = dummyData,handleQueryBuild
           
         }
         botLeftCol={<FactoidList handleVizSelection={handleSelVizEvent} vizEvents={vizEvents} selected={selVizEvent}></FactoidList>}
-        botRightCol={undefined}
+        botRightCol={<LinkedFullText></LinkedFullText>}
       ></AppLayout>
     </>
   )

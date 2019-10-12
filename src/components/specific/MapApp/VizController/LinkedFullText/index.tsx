@@ -2,7 +2,7 @@ import React from "react";
 
 const LinkedFulltext = () => {
 
-    return <div></div>
+    return <div>FullText Component</div>
 
 }
 
