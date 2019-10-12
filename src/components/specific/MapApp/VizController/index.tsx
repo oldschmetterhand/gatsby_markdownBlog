@@ -160,12 +160,9 @@ const VizController: React.FC<Props> = ({ vizEvents = dummyData }) => {
     <>
       <AppLayout
         leftCol={
-          <TimeLine
-            selected={selVizEvent}
-            TLEvents={vizEvents}
-            handleClickSelection={handleSelVizEvent}
-            TLStyle={{fontSize:'.75em', marginLeft:'5em', borderLeft: '1em solid whitesmoke',borderRight: '.25em solid lightgrey', minHeight:'85vh'}}
-          ></TimeLine>
+          <Summary
+            vizEvent={selVizEvent}
+          ></Summary>
         }
         middleCol={
           <LeafletMap
@@ -175,9 +172,13 @@ const VizController: React.FC<Props> = ({ vizEvents = dummyData }) => {
           ></LeafletMap>
         }
         rightCol={
-          <Summary
-            vizEvent={selVizEvent}
-          ></Summary>
+          <TimeLine
+            selected={selVizEvent}
+            TLEvents={vizEvents}
+            handleClickSelection={handleSelVizEvent}
+            TLStyle={{fontSize:'.75em', borderLeft: '1em solid whitesmoke', minHeight:'85vh'}}
+          ></TimeLine>
+          
         }
       ></AppLayout>
     </>

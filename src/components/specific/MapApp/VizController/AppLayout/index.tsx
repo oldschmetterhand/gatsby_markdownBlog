@@ -20,9 +20,9 @@ const MAppLayout: React.FC<Props> = ({
         <AppTopBar></AppTopBar>
       </div>
       <div className="columns is-gapless">
-        <div className="column is-2">{leftCol}</div>
+        <div className="column is-3">{leftCol}</div>
         <div className="column">{middleCol}</div>
-        <div className="column is-3">{rightCol}</div>
+        <div className="column is-2">{rightCol}</div>
       </div>
     </>
   )
