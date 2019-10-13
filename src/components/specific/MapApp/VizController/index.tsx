@@ -165,6 +165,7 @@ const VizController: React.FC<Props> = ({ vizEvents = dummyData,handleQueryBuild
         leftCol={<SearchNView handleVizSelection={handleSelVizEvent} vizEvents={vizEvents} handleQueryBuilding={handleQueryBuilding} selVizEvent={selVizEvent} handleSearch={handleSearch}></SearchNView>}
         middleCol={
           <LeafletMap
+            selVizEvent={selVizEvent}
             onMapClick={handleSelVizEvent}
             layerToDraw={layer}
             tellLStatus={getLeafletStatus}

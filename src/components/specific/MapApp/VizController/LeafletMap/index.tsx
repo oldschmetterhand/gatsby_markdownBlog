@@ -5,12 +5,15 @@ interface Props {
   layerToDraw?: any,
   tellLStatus?: (mapInitialized: boolean, dataLoaded: boolean) => void, 
   onMapClick?: (evt: any) => void | undefined
+  selVizEvent?: VizEvent,
+  onSelVizEventChange?: () => void
 }
 
 const LeafletMap: React.FC<Props> = ({
   onMapClick = undefined,
   tellLStatus = undefined,
-  layerToDraw = undefined
+  layerToDraw = undefined,
+  selVizEvent = undefined
 }) => {
   const [laefletMap, setLeafletMap] = useState<any | undefined>(undefined)
   const [dataLoaded, setDataLoaded] = useState<boolean>(false)
@@ -44,6 +47,11 @@ const LeafletMap: React.FC<Props> = ({
     }
   }, [layerToDraw])  // run once map is initialized -> if data was given intially
                                     // AND when leafletMarkers were changed.
+
+  useEffect(()=>{
+    if(!layerToDraw || !laefletMap)return;
+    laefletMap.closePopup();
+  }, [selVizEvent])
 
   const initMap = map => {
     console.info("Leaflet initializing the map")
