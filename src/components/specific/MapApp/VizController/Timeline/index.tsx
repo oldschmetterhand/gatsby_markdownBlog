@@ -58,7 +58,7 @@ export const Timeline: React.FC<Props> = ({
   }
 
   const handleSelDiv = (div: HTMLDivElement) => {
-    if(!div)return;
+    if(!div)return lastSelected ? (lastSelected.style.borderLeft = '') : null;
     if(lastSelected){
       lastSelected.style.borderLeft = ''
     }
