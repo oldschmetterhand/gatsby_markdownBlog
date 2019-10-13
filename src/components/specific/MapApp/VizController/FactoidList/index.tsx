@@ -17,6 +17,11 @@ const FactoidList: React.FC<Props> = ({ vizEvents = undefined, selected = undefi
   return (
     <div className={styles.mainContainer}>
       <h2 className="is-size-6">Linked Factoids</h2>
+      <p>In dieser Liste werden alle zum Ereignis zugehörigen Faktoide angezeigt.</p>
+      <p>Die jeweils aktive "Faktoid-Quelle" wird markiert. Genauso kann das zusammengehörige verortete Ereignis angezeigt werden. </p>
+      <br></br>
+      <br></br>
+      <h2 className="is-size-6">Faktoid-Liste</h2>
       <div className="is-hoverable">
         {listItems}
       </div>
