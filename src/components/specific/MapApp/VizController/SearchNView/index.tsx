@@ -3,15 +3,18 @@ import Tabs from "../../../../common/Tabs"
 import styles from "./styles.module.scss"
 import Summary from "./Summary"
 import Search from "./Search"
+import FactoidList from "../FactoidList"
 import { VizEvent } from "../.."
 
 interface Props {
-    vizEvent: VizEvent
+    vizEvents: VizEvent[]
+    selVizEvent: VizEvent
     handleQueryBuilding?: (query: string) => void
-    handleSearch?: () => void
+    handleSearch?: () => void,
+    handleVizSelection?: (vizEvent: VizEvent) => void
 }
 
-const SearchNView:React.FC<Props> = ({vizEvent = undefined, handleQueryBuilding = undefined, handleSearch = undefined}) => {
+const SearchNView:React.FC<Props> = ({selVizEvent = undefined, handleQueryBuilding = undefined, handleSearch = undefined, vizEvents = undefined, handleVizSelection = undefined}) => {
   const [selectedTab, setSelectedTab] = useState<number>(0)
 
   const handleTabChange = (tabIndex: number): void => {
@@ -21,12 +24,13 @@ const SearchNView:React.FC<Props> = ({vizEvent = undefined, handleQueryBuilding 
   return (
     <div className={["container", styles.mainContainer].join(" ")}>
       <Tabs
-        tabs={["Search", "Result Details", "About", "Help"]}
+        tabs={["Search", "Result Details", "Factoids", "Help"]}
         tellTabSelected={handleTabChange}
       ></Tabs>
       <div className={styles.mainContent}>
         {selectedTab === 0 ? <Search handleQueryBuilding={handleQueryBuilding} handleSearch={handleSearch}></Search> : null}
-        {selectedTab === 1 ? <Summary vizEvent={vizEvent}></Summary> : null}
+        {selectedTab === 1 ? <Summary vizEvent={selVizEvent}></Summary> : null}
+        {selectedTab === 2 ? <FactoidList selected={selVizEvent} handleVizSelection={handleVizSelection} vizEvents={vizEvents}></FactoidList> : null}
       </div>
     </div>
   )

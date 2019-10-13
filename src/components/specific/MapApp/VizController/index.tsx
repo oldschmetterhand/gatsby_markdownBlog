@@ -3,8 +3,6 @@ import TimeLine from "./Timeline"
 import LeafletMap from "./LeafletMap"
 import AppLayout from "./AppLayout"
 import SearchNView from "./SearchNView"
-import FactoidList from "./FactoidList"
-import LinkedFullText from "./LinkedFullText"
 import { VizEvent, LeafletMarker, ProsopApiFactoid } from "../index"
 
 const dummyData: VizEvent[] = [
@@ -142,7 +140,7 @@ const VizController: React.FC<Props> = ({ vizEvents = dummyData,handleQueryBuild
   /**
    * Handler function to set currently displayed VizEvent Object
    */
-  const handleSelVizEvent = (vizEvent: VizEvent) => {
+  const handleSelVizEvent = (vizEvent: VizEvent): void => {
     if(!vizEvent)setSelVizEvent(undefined);
     setSelVizEvent(vizEvent)
   }
@@ -164,7 +162,7 @@ const VizController: React.FC<Props> = ({ vizEvents = dummyData,handleQueryBuild
   return (
     <>
       <AppLayout
-        leftCol={<SearchNView handleQueryBuilding={handleQueryBuilding} vizEvent={selVizEvent} handleSearch={handleSearch}></SearchNView>}
+        leftCol={<SearchNView handleVizSelection={handleSelVizEvent} vizEvents={vizEvents} handleQueryBuilding={handleQueryBuilding} selVizEvent={selVizEvent} handleSearch={handleSearch}></SearchNView>}
         middleCol={
           <LeafletMap
             onMapClick={handleSelVizEvent}
@@ -181,8 +179,8 @@ const VizController: React.FC<Props> = ({ vizEvents = dummyData,handleQueryBuild
           ></TimeLine>
           
         }
-        botLeftCol={<FactoidList handleVizSelection={handleSelVizEvent} vizEvents={vizEvents} selected={selVizEvent}></FactoidList>}
-        botRightCol={<LinkedFullText></LinkedFullText>}
+        botLeftCol={undefined}
+        botRightCol={undefined}
       ></AppLayout>
     </>
   )
