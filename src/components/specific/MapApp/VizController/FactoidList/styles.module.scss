@@ -1,7 +1,22 @@
 
 
 .mainContainer {
-  //border-top: 0.5em solid whitesmoke;
-  //border-right: 0.5em solid whitesmoke;
-  //padding: 3em;
+  font-size: .85em;
+  h2 {
+    border-bottom: 2px solid #f36;
+    margin-bottom: 1em;
+  }
+  div {
+    a {
+      background: white;
+      border: 2px solid whitesmoke;
+      color: black;
+    }
+  }
+  .is-active {
+    //border-left: 2px solid #f36;
+    //border-bottom: 2px solid #f36;
+    background-color: #41b7d8;
+  }
+
 }
