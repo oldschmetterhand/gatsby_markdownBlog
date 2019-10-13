@@ -175,7 +175,7 @@ const VizController: React.FC<Props> = ({ vizEvents = dummyData,handleQueryBuild
             selected={selVizEvent}
             TLEvents={vizEvents}
             handleClickSelection={handleSelVizEvent}
-            TLStyle={{fontSize:'.75em', borderLeft: '1em solid whitesmoke', minHeight:'90vh',maxHeight:'90vh', overflow:'scroll'}}
+            TLStyle={{fontSize:'.75em', borderLeft: '1em solid whitesmoke', minHeight:'80vh',maxHeight:'88vh', overflow:'scroll'}}
           ></TimeLine>
           
         }
