@@ -63,6 +63,7 @@ export const Timeline: React.FC<Props> = ({
       lastSelected.style.borderLeft = ''
     }
     div.style.borderLeft = '1em solid #f36'
+    div.scrollIntoView({behavior:'smooth', block:"center"})
     setLastSelected(div);
   }
 
