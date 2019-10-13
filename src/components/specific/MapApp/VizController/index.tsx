@@ -159,6 +159,10 @@ const VizController: React.FC<Props> = ({ vizEvents = dummyData,handleQueryBuild
     }
   }
 
+  const handlePopupClose = (lMap: any) => {
+    lMap.closePopup();
+  }
+
   return (
     <>
       <AppLayout
@@ -167,6 +171,7 @@ const VizController: React.FC<Props> = ({ vizEvents = dummyData,handleQueryBuild
           <LeafletMap
             selVizEvent={selVizEvent}
             onMapClick={handleSelVizEvent}
+            onSelVizEventChange={handlePopupClose}
             layerToDraw={layer}
             tellLStatus={getLeafletStatus}
           ></LeafletMap>

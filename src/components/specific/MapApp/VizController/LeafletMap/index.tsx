@@ -6,14 +6,15 @@ interface Props {
   tellLStatus?: (mapInitialized: boolean, dataLoaded: boolean) => void, 
   onMapClick?: (evt: any) => void | undefined
   selVizEvent?: VizEvent,
-  onSelVizEventChange?: () => void
+  onSelVizEventChange?: (lMap: any) => void
 }
 
 const LeafletMap: React.FC<Props> = ({
   onMapClick = undefined,
   tellLStatus = undefined,
   layerToDraw = undefined,
-  selVizEvent = undefined
+  selVizEvent = undefined,
+  onSelVizEventChange = undefined
 }) => {
   const [laefletMap, setLeafletMap] = useState<any | undefined>(undefined)
   const [dataLoaded, setDataLoaded] = useState<boolean>(false)
@@ -49,8 +50,8 @@ const LeafletMap: React.FC<Props> = ({
                                     // AND when leafletMarkers were changed.
 
   useEffect(()=>{
-    if(!layerToDraw || !laefletMap)return;
-    laefletMap.closePopup();
+    if(!layerToDraw || !laefletMap || !onSelVizEventChange)return;
+    onSelVizEventChange(laefletMap);
   }, [selVizEvent])
 
   const initMap = map => {
