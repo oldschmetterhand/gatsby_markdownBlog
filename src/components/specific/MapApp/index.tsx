@@ -26,7 +26,7 @@ export interface Factoid {
   '@id': string,
   createdBy: string,
   createdWhen: string,
-  derivedFrom: string,
+  derivedFrom?: string,
   modifiedBy?: string,
   modifiedWhen?: string,
   person: Person,
@@ -55,9 +55,9 @@ export interface Source {
    createdBy?: string,
    createdWhen?: string,
    label?: string,
-   modifiedBy: string,
-   modfiedWhen: string,
-   uris: Array<string> 
+   modifiedBy?: string,
+   modfiedWhen?: string,
+   uris?: Array<string> 
 }
 export interface Person {
   '@id': string,
@@ -70,7 +70,7 @@ export interface Person {
 
 export interface Date {
   label?: string,
-  sortDate?: string
+  sortdate?: string
 }
 
 export interface MemberOf {
@@ -87,8 +87,8 @@ export interface Statement {
   modifiedBy?: string,
   modifiedWhen?: string,
   name?: string,
-  places?:any,        //CHANGE TO GEOJSON STUFF!
-  relatesToPersons?: Array<{label: string, uri: string}>,
+  places?:Array<{label?: string, uri?: string, geometry?: any}>,        //CHANGE TO GEOJSON STUFF!
+  relatedToPersons?: Array<{label?: string, uri?: string}>,
   role?: {label?: string, uri?: string},
   statementContent?: string,
   statementType?: {label?: string, uri?: string},
