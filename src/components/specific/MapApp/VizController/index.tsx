@@ -96,9 +96,9 @@ const VizController: React.FC<Props> = ({ vizEvents = dummyData,handleQueryBuild
   const generateMapLayer = () => {
     let layer = window.L.layerGroup()
 
-    vizEvents.forEach((vizEvent: VizEvent, index) => {
+    vizEvents.forEach((vizEvent: VizEvent, index: number) => {
       try {
-        let leafletMarker = generateLMarker(vizEvent)
+        let leafletMarker = generateLMarker(vizEvent, index+1)
 
         //setting references -> will not trigger state updates
         vizEvent.lMarker.lMarkerRef = leafletMarker
@@ -120,9 +120,15 @@ const VizController: React.FC<Props> = ({ vizEvents = dummyData,handleQueryBuild
    * Own function for generating the Leaflet Markers. Drawing is handled
    * in LeafletMap component. This will just create instances without display.
    */
-  const generateLMarker = (vizEvent: VizEvent): any => {
+  const generateLMarker = (vizEvent: VizEvent, markerNumber: number): any => {
     let marker = vizEvent.lMarker
-    let leafletMarker = window.L.marker([marker.x, marker.y]).bindPopup(
+
+    let customMarker = {icon: window.L.divIcon({
+      className: 'my-custom-icon',
+      html: `<div style='width: 24px !important; height: 24px !important; margin-left: -6px;margin-top: 6px;border-radius: 18px;border: 2px solid #3F51B5;text-align: center;color: #3F51B5;background-color: #fff;font-size: 16px; font-size:1em; padding:.2em'>${markerNumber}</div>`
+  })}
+
+    let leafletMarker = window.L.marker([marker.x, marker.y], customMarker).bindPopup(
       `<em>Kurztitel</em>: ${marker.popUpContent}.<br>Gruppe: ${
         marker.group
       }<hr> (Verwendete Koordinaten: Längengrad: ${marker.x.toString()}, Breitengrad: ${marker.y.toString()})`
@@ -133,7 +139,6 @@ const VizController: React.FC<Props> = ({ vizEvents = dummyData,handleQueryBuild
       //console.log(evt.sourceTarget.boundTo);
       handleSelVizEvent(selVizEvent)
     })
-
     return leafletMarker
   }
 
