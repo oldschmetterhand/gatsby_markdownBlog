@@ -129,8 +129,8 @@ const VizController: React.FC<Props> = ({ vizEvents = dummyData,handleQueryBuild
   })}
 
     let leafletMarker = window.L.marker([marker.x, marker.y], customMarker).bindPopup(
-      `<em>Kurztitel</em>: ${marker.popUpContent}.<br>Gruppe: ${
-        marker.group
+      `<em></em> ${vizEvent.title}.<br>Datum: ${
+        vizEvent.date
       }<hr> (Verwendete Koordinaten: Längengrad: ${marker.x.toString()}, Breitengrad: ${marker.y.toString()})`
     )
 

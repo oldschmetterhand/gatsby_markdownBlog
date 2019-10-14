@@ -200,8 +200,8 @@ const MapApp: React.FC<Props> = ({ vizEvents = undefined }) => {
       //if(!factoid.statement.places)return;
 
       let vizEvent: VizEvent = {
-        title: factoid.statement.statementContent ? factoid.statement.statementContent : factoid.statement["@id"],
-        date: factoid.statement.date ? factoid.statement.date.label : 'Kein Datum vorhanden',
+        title: factoid.statement.statementContent ? `${(factoid.statement.places ? factoid.statement.places[0].label.toUpperCase() + ' |': '')} ${factoid.statement.statementContent}` : factoid.statement["@id"],
+        date: factoid.statement.date ? factoid.statement.date.sortdate : 'Kein Datum vorhanden',
         factoid:factoid,
         lMarker: factoid.statement.places ? {
           x: factoid.statement.places[0].geometry.coordinates[0],
