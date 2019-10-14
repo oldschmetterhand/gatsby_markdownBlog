@@ -197,15 +197,15 @@ const MapApp: React.FC<Props> = ({ vizEvents = undefined }) => {
     let vizEvents: VizEvent[] = []; 
     factoids.forEach((factoid: Factoid)=>{
       if(!factoid.statement)return;
-      if(!factoid.statement.places)return;
+      //if(!factoid.statement.places)return;
 
       let vizEvent: VizEvent = {
         title: factoid.statement.statementContent ? factoid.statement.statementContent : factoid.statement["@id"],
         date: factoid.statement.date ? factoid.statement.date.label : 'Kein Datum vorhanden',
         factoid:factoid,
         lMarker: factoid.statement.places ? {
-          x: Math.random()*50 - Math.random()*10,
-          y: Math.random()*50 - Math.random()*10,
+          x: factoid.statement.places[0].geometry.coordinates[0],
+          y: factoid.statement.places[0].geometry.coordinates[1],
           popUpContent: factoid.statement.statementContent ? factoid.statement.statementContent : factoid.statement["@id"]
         } : undefined,
         primSource: factoid.source.label ? factoid.source.label : factoid.source["@id"]  
