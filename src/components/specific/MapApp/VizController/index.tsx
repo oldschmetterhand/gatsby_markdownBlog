@@ -3,7 +3,7 @@ import TimeLine from "./Timeline"
 import LeafletMap from "./LeafletMap"
 import AppLayout from "./AppLayout"
 import SearchNView from "./SearchNView"
-import { VizEvent, LeafletMarker, ProsopApiFactoid } from "../index"
+import { VizEvent, LeafletMarker } from "../index"
 
 const dummyData: VizEvent[] = [
   {

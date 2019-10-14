@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react"
 import VizController from "./VizController"
 import Helmet from "react-helmet"
 import axios from "axios"
+import { gFactoidsResponse } from "../../../data/factoid"
 
 export interface LeafletMarker {
   x: number
@@ -16,7 +17,7 @@ export interface VizEvent {
   title: string
   date?: string
   lMarker?: LeafletMarker
-  factoid?: ProsopApiFactoid
+  factoid?: Factoid
   primSource?: string
   secSource?: string
 }
@@ -125,45 +126,45 @@ export interface FactoidCore {
   createdWhen: string
 }
 
-export interface FactoidSource extends FactoidCore {
-  label?:string
-}
+// export interface FactoidSource extends FactoidCore {
+//   label?:string
+// }
 
-export interface FactoidPerson extends FactoidCore {
-  label?: string
-}
+// export interface FactoidPerson extends FactoidCore {
+//   label?: string
+// }
 
-export interface FactoidStatement extends FactoidCore {
-  name?: string,
-    date?: {
-      label: string
-    },
-    place?: Array<{
-      label:string,
-      x?: string,
-      y?: string
-    }>,
-    role?: {
-      label: string,
-      uri: string
-    },
-  statmentContent?: string
-}
+// export interface FactoidStatement extends FactoidCore {
+//   name?: string,
+//     date?: {
+//       label: string
+//     },
+//     place?: Array<{
+//       label:string,
+//       x?: string,
+//       y?: string
+//     }>,
+//     role?: {
+//       label: string,
+//       uri: string
+//     },
+//   statmentContent?: string
+// }
 
-export interface ProsopApiFactoid extends FactoidCore {
-  person:  FactoidPerson,
-  source: FactoidSource,
-  statement: FactoidStatement
-}
+// export interface ProsopApiFactoid extends FactoidCore {
+//   person:  FactoidPerson,
+//   source: FactoidSource,
+//   statement: FactoidStatement
+// }
 
-export interface ProsopApiResponse  {
-  factoids: ProsopApiFactoid[],
-  protocol: {
-    page: number,
-    size: number,
-    totalHits: number
-  }
-}
+// export interface ProsopApiResponse  {
+//   factoids: ProsopApiFactoid[],
+//   protocol: {
+//     page: number,
+//     size: number,
+//     totalHits: number
+//   }
+// }
 
 interface Props {
   vizEvents?: VizEvent[]
@@ -172,10 +173,11 @@ interface Props {
 const MapApp: React.FC<Props> = ({ vizEvents = undefined }) => {
 
   const [personQuery, setPersonQuery] = useState<string | undefined>(undefined)
-  const [prosopApiFactoids, setProsopApiFactoids] = useState<ProsopApiFactoid[]>(undefined)
+  const [prosopApiFactoids, setProsopApiFactoids] = useState<Factoid[]>(undefined)
   const [genVizEvents, setGenVizEvents] = useState<VizEvent[]>(undefined)
 
   useEffect(()=>{
+    if(gFactoidsResponse)return setProsopApiFactoids(gFactoidsResponse.factoids)
     let url = `https://ginko.uni-graz.at/illurk/api/factoids`
     axios.get(url)
       .then(response => {
@@ -193,17 +195,18 @@ const MapApp: React.FC<Props> = ({ vizEvents = undefined }) => {
 
     let factoids = prosopApiFactoids;
     let vizEvents: VizEvent[] = []; 
-    factoids.forEach((factoid: ProsopApiFactoid)=>{
+    factoids.forEach((factoid: Factoid)=>{
       if(!factoid.statement)return;
+      if(!factoid.statement.places)return;
 
       let vizEvent: VizEvent = {
-        title: factoid.statement.statmentContent ? factoid.statement.statmentContent : factoid.statement["@id"],
+        title: factoid.statement.statementContent ? factoid.statement.statementContent : factoid.statement["@id"],
         date: factoid.statement.date ? factoid.statement.date.label : 'Kein Datum vorhanden',
         factoid:factoid,
-        lMarker: factoid.statement.place ? {
+        lMarker: factoid.statement.places ? {
           x: Math.random()*50 - Math.random()*10,
           y: Math.random()*50 - Math.random()*10,
-          popUpContent: factoid.statement.statmentContent ? factoid.statement.statmentContent : factoid.statement["@id"]
+          popUpContent: factoid.statement.statementContent ? factoid.statement.statementContent : factoid.statement["@id"]
         } : undefined,
         primSource: factoid.source.label ? factoid.source.label : factoid.source["@id"]  
       }

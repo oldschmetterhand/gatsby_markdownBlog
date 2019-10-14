@@ -927,7 +927,7 @@ export const georgFactoidResponse: FactoidsResponse = {
   },
 }
 
-export const gFactoids: FactoidsResponse = {
+export const gFactoidsResponse: FactoidsResponse = {
   factoids: [
     {
       "@id": "Factoidd1e5",
