@@ -1,7 +1,7 @@
 
-import { ProsopApiResponse } from "../components/specific/MapApp"
+import { FactoidsResponse, Factoid } from "../components/specific/MapApp"
 
-export const factoidResponse: ProsopApiResponse = {
+export const georgFactoidResponse: FactoidsResponse = {
     "factoids": [
       {
         "@id": "FpersonBischoefeAblaesse.0-name0",
@@ -47,7 +47,7 @@ export const factoidResponse: ProsopApiResponse = {
           "date": {
             "label": "1332\u20131344"
           },
-          "place": [
+          "places": [
             {
               "label": "Accia (Korsika,Acciensis/Aciensis)"
             },
@@ -109,7 +109,7 @@ export const factoidResponse: ProsopApiResponse = {
           "date": {
             "label": "1344-1348"
           },
-          "place": [
+          "places": [
             {
               "label": "Accia (Korsika, Acciensis/Aciensis)"
             },
@@ -171,7 +171,7 @@ export const factoidResponse: ProsopApiResponse = {
           "date": {
             "label": "1316\u20131363"
           },
-          "place": [
+          "places": [
             {
               "label": "Alatri (Italien,Alatrini)"
             },
@@ -230,7 +230,7 @@ export const factoidResponse: ProsopApiResponse = {
           "date": {
             "label": "1364"
           },
-          "place": [
+          "places": [
             {
               "label": "Colombo (Sri Lanka, ehemals Ceylon, Columbensis)"
             },
@@ -289,7 +289,7 @@ export const factoidResponse: ProsopApiResponse = {
           "date": {
             "label": "1323\u20131326.Laut Eubel bereits 1324 in Avignon gestorben, jedoch erscheint er in Avignoner Urkunden noch im Jahr 1326. Eubel, Hierarchia 1, 1913, S. 202"
           },
-          "place": [
+          "places": [
             {
               "label": "Connor (Irland, Connerensis)"
             },
@@ -348,7 +348,7 @@ export const factoidResponse: ProsopApiResponse = {
           "date": {
             "label": "1321.Vorkommen in den untersuchten Avignoner Urkunden."
           },
-          "place": [
+          "places": [
             {
               "label": "Colossi (Griechenland, Colacensis)"
             },
@@ -407,7 +407,7 @@ export const factoidResponse: ProsopApiResponse = {
           "date": {
             "label": "1321\u20131327.Im untersuchten Material ein Mal, n\u00e4mlich 1324 Dezember 5, nachzuweisen."
           },
-          "place": [
+          "places": [
             {
               "label": "Cork (Irland, Corkagensis)"
             },
@@ -466,7 +466,7 @@ export const factoidResponse: ProsopApiResponse = {
           "date": {
             "label": "1324\u20131330"
           },
-          "place": [
+          "places": [
             {
               "label": "Coron (Griechenland, Coronensis)"
             },
@@ -525,7 +525,7 @@ export const factoidResponse: ProsopApiResponse = {
           "date": {
             "label": "1318/1320"
           },
-          "place": [
+          "places": [
             {
               "label": "Croja (Epirus, Crohensis)"
             },
@@ -584,7 +584,7 @@ export const factoidResponse: ProsopApiResponse = {
           "date": {
             "label": "1333\u20131346.Ist in den ersten Jahren seiner Amtszeit bis inklusive 1339 regelm\u00e4\u00dfig in Avignoner Urkunden nachweisbar."
           },
-          "place": [
+          "places": [
             {
               "label": "Coron (Griechenland, Coronensis)"
             },
@@ -643,7 +643,7 @@ export const factoidResponse: ProsopApiResponse = {
           "date": {
             "label": "1327\u20131331.In jedem Jahr seiner Amtszeit in Avignoner Urkunden als Aussteller vorzufinden."
           },
-          "place": [
+          "places": [
             {
               "label": "Cyzicus (Griechenland, Cyriquensis/ Siriquensis)"
             },
@@ -705,7 +705,7 @@ export const factoidResponse: ProsopApiResponse = {
           "date": {
             "label": "1346-1362."
           },
-          "place": [
+          "places": [
             {
               "label": "Destillarien (Griechenland, Distillariensis)"
             },
@@ -764,7 +764,7 @@ export const factoidResponse: ProsopApiResponse = {
           "date": {
             "label": "1353.Wurde zwar zum Bischof von Down ernannt, jedoch war Radulfus noch nicht gestorben, weswegen seine Wahl nicht g\u00fcltig war."
           },
-          "place": [
+          "places": [
             {
               "label": "Down (Irland, Dunensis)"
             },
@@ -823,7 +823,7 @@ export const factoidResponse: ProsopApiResponse = {
           "date": {
             "label": "1330\u20131342"
           },
-          "place": [
+          "places": [
             {
               "label": "Aleria (Korsika,Aleriensis/Laveriensis)"
             },
@@ -885,7 +885,7 @@ export const factoidResponse: ProsopApiResponse = {
           "date": {
             "label": "1317-1319"
           },
-          "place": [
+          "places": [
             {
               "label": "Domokos (Griechenland, Domocensis)"
             },
@@ -908,71 +908,663 @@ export const factoidResponse: ProsopApiResponse = {
     }
   }
 
-export const singlePersonResponse: ProsopApiResponse = {
-  "factoids": [
-    {
-      "@id": "FpersonBischoefeAblaesse.111-name0",
-      "createdBy": "IlluminierteUrkunden@gmail.com",
-      "createdWhen": "2015-08-25T18:30:29.181+02:00",
-      "person": {
-        "@id": "illurk:P_Radulfus_Down_1328",
-        "createdBy": "IlluminierteUrkunden@gmail.com",
-        "createdWhen": "2015-08-25T18:30:29.181+02:00"
-      },
-      "source": {
-        "@id": "S_personBischoefeAblaesse",
-        "createdBy": "IlluminierteUrkunden@gmail.com",
-        "createdWhen": "2015-08-25T18:30:29.181+02:00",
-        "label": "Eubel, Hierarchia 1, 1913, S. 231"
-      },
-      "statement": {
-        "@id": "StpersonBischoefeAblaesse.111-name0",
-        "createdBy": "IlluminierteUrkunden@gmail.com",
-        "createdWhen": "2015-08-25T18:30:29.181+02:00",
-        "name": "Radulfus,"
-      }
+export const gFactoids: Factoid[] = [{
+  "@id": "Factoidd1e5",
+  "createdBy": "Geog Vogeler",
+  "createdWhen": "2019-10-13",
+  "person": {
+    "@id": "88324",
+    "uris": [
+      "https://viaf.org/viaf/71579513/",
+      "https://d-nb.info/gnd/11862119X"
+    ]
+  },
+  "source": {
+    "@id": "SourceTelemannAutobiographie",
+    "label": "Telemanns Autobiografie von 1729, https://commons.wikimedia.org/wiki/Category:Telemann_Autobiografien"
+  },
+  "statement": {
+    "@id": "Statementd1e5",
+    "statementContent": "Magdeburg, von einem Pre- diger in der Heil. Geist Kirche, Henrico, ge- zeuget, Ao 1681.",
+    "role": {
+      "label": "birth"
     },
-    {
-      "@id": "FpersonBischoefeAblaesse.111-occupation0",
-      "createdBy": "IlluminierteUrkunden@gmail.com",
-      "createdWhen": "2015-08-25T18:30:29.181+02:00",
-      "person": {
-        "@id": "illurk:P_Radulfus_Down_1328",
-        "createdBy": "IlluminierteUrkunden@gmail.com",
-        "createdWhen": "2015-08-25T18:30:29.181+02:00"
-      },
-      "source": {
-        "@id": "S_personBischoefeAblaesse",
-        "createdBy": "IlluminierteUrkunden@gmail.com",
-        "createdWhen": "2015-08-25T18:30:29.181+02:00",
-        "label": "Eubel, Hierarchia 1, 1913, S. 231"
-      },
-      "statement": {
-        "@id": "StpersonBischoefeAblaesse.111-occupation0",
-        "createdBy": "IlluminierteUrkunden@gmail.com",
-        "createdWhen": "2015-08-25T18:30:29.181+02:00",
-        "date": {
-          "label": "1328\u20131353"
-        },
-        "place": [
-          {
-            "label": "Down (Irland, Dunensis)"
-          },
-          {
-            "label": "Dunensis"
-          }
-        ],
-        "role": {
-          "label": "Bischof von",
-          "uri": "illurk:Bischof"
-        },
-        "statmentContent": "Bischof von Down (Irland, Dunensis)1328\u20131353Eubel, Hierarchia 1, 1913, S. 231"
+
+    "places": [{
+      "label": "Magdeburg",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [52.12773, 11.62916]
       }
+    }],
+
+    "date": {
+
+      "label": "1681",
+      "sortdate": "1681"
+
     }
-  ],
-  "protocol": {
-    "page": 1,
-    "size": 30,
-    "totalHits": 2
+
+  }
+},
+{
+  "@id": "Factoidd1e13",
+  "createdBy": "Geog Vogeler",
+  "createdWhen": "2019-10-13",
+  "person": {
+    "@id": "88324",
+    "uris": [
+      "https://viaf.org/viaf/71579513/",
+      "https://d-nb.info/gnd/11862119X"
+    ]
+  },
+  "source": {
+    "@id": "SourceTelemannAutobiographie",
+    "label": "Telemanns Autobiografie von 1729, https://commons.wikimedia.org/wiki/Category:Telemann_Autobiografien"
+  },
+  "statement": {
+    "@id": "Statementd1e13",
+    "statementContent": "?Meine Schulen sind gewesen: In Magdebg. die Alt-Städter",
+    "role": {
+      "label": "education"
+    },
+
+    "places": [{
+      "label": "Magdebg",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [52.12773, 11.62916]
+      }
+    }],
+
+    "date": {
+
+      "label": "?",
+      "sortdate": "1691"
+
+    }
+
+  }
+},
+{
+  "@id": "Factoidd1e23",
+  "createdBy": "Geog Vogeler",
+  "createdWhen": "2019-10-13",
+  "person": {
+    "@id": "88324",
+    "uris": [
+      "https://viaf.org/viaf/71579513/",
+      "https://d-nb.info/gnd/11862119X"
+    ]
+  },
+  "source": {
+    "@id": "SourceTelemannAutobiographie",
+    "label": "Telemanns Autobiografie von 1729, https://commons.wikimedia.org/wiki/Category:Telemann_Autobiografien"
+  },
+  "statement": {
+    "@id": "Statementd1e23",
+    "statementContent": "hernach die Dohm- Schule",
+    "role": {
+      "label": "education"
+    },
+
+    "date": {
+
+      "label": "hernach",
+      "sortdate": "1692"
+
+    }
+
+  }
+},
+{
+  "@id": "Factoidd1e30",
+  "createdBy": "Geog Vogeler",
+  "createdWhen": "2019-10-13",
+  "person": {
+    "@id": "88324",
+    "uris": [
+      "https://viaf.org/viaf/71579513/",
+      "https://d-nb.info/gnd/11862119X"
+    ]
+  },
+  "source": {
+    "@id": "SourceTelemannAutobiographie",
+    "label": "Telemanns Autobiografie von 1729, https://commons.wikimedia.org/wiki/Category:Telemann_Autobiografien"
+  },
+  "statement": {
+    "@id": "Statementd1e30",
+    "statementContent": "hierauf die auf dem Zeller- felde auf dem Harze",
+    "role": {
+      "label": "education"
+    },
+
+    "places": [{
+      "label": "Zeller- felde auf dem Harze",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [51.81846, 10.33532]
+      }
+    }],
+
+    "date": {
+
+      "label": "hierauf",
+      "sortdate": "1694-01-01"
+
+    }
+
+  }
+},
+{
+  "@id": "Factoidd1e37",
+  "createdBy": "Geog Vogeler",
+  "createdWhen": "2019-10-13",
+  "person": {
+    "@id": "88324",
+    "uris": [
+      "https://viaf.org/viaf/71579513/",
+      "https://d-nb.info/gnd/11862119X"
+    ]
+  },
+  "source": {
+    "@id": "SourceTelemannAutobiographie",
+    "label": "Telemanns Autobiografie von 1729, https://commons.wikimedia.org/wiki/Category:Telemann_Autobiografien"
+  },
+  "statement": {
+    "@id": "Statementd1e37",
+    "statementContent": "endlich das Gymnasium zu Hildesheim",
+    "role": {
+      "label": "education"
+    },
+
+    "places": [{
+      "label": "Hildesheim",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [52.15077, 9.95112]
+      }
+    }],
+
+    "date": {
+
+      "label": "endlich",
+      "sortdate": "1697"
+
+    }
+
+  }
+},
+{
+  "@id": "Factoidd1e47",
+  "createdBy": "Geog Vogeler",
+  "createdWhen": "2019-10-13",
+  "person": {
+    "@id": "88324",
+    "uris": [
+      "https://viaf.org/viaf/71579513/",
+      "https://d-nb.info/gnd/11862119X"
+    ]
+  },
+  "source": {
+    "@id": "SourceTelemannAutobiographie",
+    "label": "Telemanns Autobiografie von 1729, https://commons.wikimedia.org/wiki/Category:Telemann_Autobiografien"
+  },
+  "statement": {
+    "@id": "Statementd1e47",
+    "statementContent": "Die Universität war Leipzig, wo ich 4. Jahre gewesen.",
+    "role": {
+      "label": "education"
+    },
+
+    "places": [{
+      "label": "Leipzig",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [51.33962, 12.37129]
+      }
+    }],
+
+    "date": {
+
+      "label": "ich 4. Jahre gewesen",
+      "sortdate": "1701"
+
+    }
+
+  }
+},
+{
+  "@id": "Factoidd1e58",
+  "createdBy": "Geog Vogeler",
+  "createdWhen": "2019-10-13",
+  "person": {
+    "@id": "88324",
+    "uris": [
+      "https://viaf.org/viaf/71579513/",
+      "https://d-nb.info/gnd/11862119X"
+    ]
+  },
+  "source": {
+    "@id": "SourceTelemannAutobiographie",
+    "label": "Telemanns Autobiografie von 1729, https://commons.wikimedia.org/wiki/Category:Telemann_Autobiografien"
+  },
+  "statement": {
+    "@id": "Statementd1e58",
+    "statementContent": "schon im 11.ten oder 12.ten Jahre eine Oper, so auch in Magdebg. aufgeführet worden, verfertiget,",
+    "role": {
+      "label": "created"
+    },
+
+    "places": [{
+      "label": "Magdebg.",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [52.12773, 11.62916]
+      }
+    }],
+
+    "date": {
+
+      "label": "11.ten oder 12.ten Jahre",
+      "sortdate": "1693-01-01"
+
+    }
+
+  }
+},
+{
+  "@id": "Factoidd1e67",
+  "createdBy": "Geog Vogeler",
+  "createdWhen": "2019-10-13",
+  "person": {
+    "@id": "88324",
+    "uris": [
+      "https://viaf.org/viaf/71579513/",
+      "https://d-nb.info/gnd/11862119X"
+    ]
+  },
+  "source": {
+    "@id": "SourceTelemannAutobiographie",
+    "label": "Telemanns Autobiografie von 1729, https://commons.wikimedia.org/wiki/Category:Telemann_Autobiografien"
+  },
+  "statement": {
+    "@id": "Statementd1e67",
+    "statementContent": "Meine Bedienungen betreffend, so diri- girte ich schon in Hildesheim die Music in der Godehardiner Kirche, mit Genehmhaltung des dortigen luther. Superintend. Riemers.",
+    "role": {
+      "label": "occupation"
+    },
+
+    "statementType": {
+      "label": "diri- girte"
+    },
+
+    "places": [{
+      "label": "Hildesheim",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [52.15077, 9.95112]
+      }
+    }],
+
+    "relatedToPersons": [{
+      "label": "luther. Superintend. Riemers"
+    }],
+
+    "date": {
+
+      "label": "schon",
+      "sortdate": "1691"
+
+    }
+
+  }
+},
+{
+  "@id": "Factoidd1e85",
+  "createdBy": "Geog Vogeler",
+  "createdWhen": "2019-10-13",
+  "person": {
+    "@id": "88324",
+    "uris": [
+      "https://viaf.org/viaf/71579513/",
+      "https://d-nb.info/gnd/11862119X"
+    ]
+  },
+  "source": {
+    "@id": "SourceTelemannAutobiographie",
+    "label": "Telemanns Autobiografie von 1729, https://commons.wikimedia.org/wiki/Category:Telemann_Autobiografien"
+  },
+  "statement": {
+    "@id": "Statementd1e85",
+    "statementContent": "In Leipzig war ich Direct: Mus: u. Organist in der neuen Kirche",
+    "role": {
+      "label": "occupation"
+    },
+
+    "statementType": {
+      "label": "Direct: Mus: u. Organist"
+    },
+
+    "places": [{
+      "label": "Leipzig",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [51.33962, 12.37129]
+      }
+    }],
+
+    "date": {
+
+      "sortdate": "1704"
+
+    }
+
+  }
+},
+{
+  "@id": "Factoidd1e97",
+  "createdBy": "Geog Vogeler",
+  "createdWhen": "2019-10-13",
+  "person": {
+    "@id": "88324",
+    "uris": [
+      "https://viaf.org/viaf/71579513/",
+      "https://d-nb.info/gnd/11862119X"
+    ]
+  },
+  "source": {
+    "@id": "SourceTelemannAutobiographie",
+    "label": "Telemanns Autobiografie von 1729, https://commons.wikimedia.org/wiki/Category:Telemann_Autobiografien"
+  },
+  "statement": {
+    "@id": "Statementd1e97",
+    "statementContent": "hierauf Capellmeister beym Grafen von Promnitz,",
+    "role": {
+      "label": "occupation"
+    },
+
+    "statementType": {
+      "label": "Capellmeister"
+    },
+
+    "relatedToPersons": [{
+      "label": "Grafen von Promnitz"
+    }],
+
+    "date": {
+
+      "label": "hierauf",
+      "sortdate": "1704"
+
+    }
+
+  }
+},
+{
+  "@id": "Factoidd1e112",
+  "createdBy": "Geog Vogeler",
+  "createdWhen": "2019-10-13",
+  "person": {
+    "@id": "88324",
+    "uris": [
+      "https://viaf.org/viaf/71579513/",
+      "https://d-nb.info/gnd/11862119X"
+    ]
+  },
+  "source": {
+    "@id": "SourceTelemannAutobiographie",
+    "label": "Telemanns Autobiografie von 1729, https://commons.wikimedia.org/wiki/Category:Telemann_Autobiografien"
+  },
+  "statement": {
+    "@id": "Statementd1e112",
+    "statementContent": "Concert- und bald hernach Capell- Meister, wie auch Secretarius, in Eise- nach",
+    "role": {
+      "label": "occupation"
+    },
+
+    "statementType": {
+      "label": "Concert- und bald hernach Capell- Meister, wie auch Secretarius"
+    },
+
+    "places": [{
+      "label": "Eise- nach",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [50.9807, 10.31522]
+      }
+    }]
+  }
+},
+{
+  "@id": "Factoidd1e119",
+  "createdBy": "Geog Vogeler",
+  "createdWhen": "2019-10-13",
+  "person": {
+    "@id": "88324",
+    "uris": [
+      "https://viaf.org/viaf/71579513/",
+      "https://d-nb.info/gnd/11862119X"
+    ]
+  },
+  "source": {
+    "@id": "SourceTelemannAutobiographie",
+    "label": "Telemanns Autobiografie von 1729, https://commons.wikimedia.org/wiki/Category:Telemann_Autobiografien"
+  },
+  "statement": {
+    "@id": "Statementd1e119",
+    "statementContent": "von da ging ich, als Capellmeister, nach Frankfurth am Mayn,",
+    "role": {
+      "label": "occupation"
+    },
+
+    "statementType": {
+      "label": "Capellmeister"
+    },
+
+    "places": [{
+      "label": "Frankfurth am Mayn",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [50.11552, 8.68417]
+      }
+    }],
+
+    "date": {
+
+      "label": "von da",
+      "sortdate": "1712-02"
+
+    }
+
+  }
+},
+{
+  "@id": "Factoidd1e130",
+  "createdBy": "Geog Vogeler",
+  "createdWhen": "2019-10-13",
+  "person": {
+    "@id": "88324",
+    "uris": [
+      "https://viaf.org/viaf/71579513/",
+      "https://d-nb.info/gnd/11862119X"
+    ]
+  },
+  "source": {
+    "@id": "SourceTelemannAutobiographie",
+    "label": "Telemanns Autobiografie von 1729, https://commons.wikimedia.org/wiki/Category:Telemann_Autobiografien"
+  },
+  "statement": {
+    "@id": "Statementd1e130",
+    "statementContent": "wo ich zugleich die Verwaltung des Kayserl. Palais zum Frauenstein, mit welcher eine Rechnung über mehr als 100000 M. verknüpfet war",
+    "role": {
+      "label": "occupation"
+    },
+
+    "statementType": {
+      "label": "Verwaltung"
+    },
+
+    "date": {
+
+      "label": "zugleich",
+      "sortdate": "1712"
+
+    }
+
+  }
+},
+{
+  "@id": "Factoidd1e139",
+  "createdBy": "Geog Vogeler",
+  "createdWhen": "2019-10-13",
+  "person": {
+    "@id": "88324",
+    "uris": [
+      "https://viaf.org/viaf/71579513/",
+      "https://d-nb.info/gnd/11862119X"
+    ]
+  },
+  "source": {
+    "@id": "SourceTelemannAutobiographie",
+    "label": "Telemanns Autobiografie von 1729, https://commons.wikimedia.org/wiki/Category:Telemann_Autobiografien"
+  },
+  "statement": {
+    "@id": "Statementd1e139",
+    "statementContent": "wo mir von neuem die Capell-Meister- Stelle von Haus-aus aus Eisenach, nebst einer Besoldung, übergeben ward",
+    "role": {
+      "label": "occupation"
+    },
+
+    "statementType": {
+      "label": "Capell-Meister- Stelle von Haus-aus"
+    },
+
+    "places": [{
+      "label": "Eisenach",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [50.9807, 10.31522]
+      }
+    }],
+
+    "date": {
+
+      "label": "von neuem",
+      "sortdate": "1712"
+
+    }
+
+  }
+},
+{
+  "@id": "Factoidd1e151",
+  "createdBy": "Geog Vogeler",
+  "createdWhen": "2019-10-13",
+  "person": {
+    "@id": "88324",
+    "uris": [
+      "https://viaf.org/viaf/71579513/",
+      "https://d-nb.info/gnd/11862119X"
+    ]
+  },
+  "source": {
+    "@id": "SourceTelemannAutobiographie",
+    "label": "Telemanns Autobiografie von 1729, https://commons.wikimedia.org/wiki/Category:Telemann_Autobiografien"
+  },
+  "statement": {
+    "@id": "Statementd1e151",
+    "statementContent": "endlich bin ich itzo Director Mus: in Hamburg",
+    "role": {
+      "label": "occupation"
+    },
+
+    "statementType": {
+      "label": "Director Mus:"
+    },
+
+    "places": [{
+      "label": "Hamburg",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [53.57532, 10.01534]
+      }
+    }],
+
+    "date": {
+
+      "label": "itzo",
+      "sortdate": "1721"
+
+    }
+
+  }
+},
+{
+  "@id": "Factoidd1e162",
+  "createdBy": "Geog Vogeler",
+  "createdWhen": "2019-10-13",
+  "person": {
+    "@id": "88324",
+    "uris": [
+      "https://viaf.org/viaf/71579513/",
+      "https://d-nb.info/gnd/11862119X"
+    ]
+  },
+  "source": {
+    "@id": "SourceTelemannAutobiographie",
+    "label": "Telemanns Autobiografie von 1729, https://commons.wikimedia.org/wiki/Category:Telemann_Autobiografien"
+  },
+  "statement": {
+    "@id": "Statementd1e162",
+    "statementContent": "bin annoch in Eisenachischen Diensten, wie vorhin, wie auch Correspondent",
+    "role": {
+      "label": "occupation"
+    }
+
+  }
+},
+{
+  "@id": "Factoidd1e169",
+  "createdBy": "Geog Vogeler",
+  "createdWhen": "2019-10-13",
+  "person": {
+    "@id": "88324",
+    "uris": [
+      "https://viaf.org/viaf/71579513/",
+      "https://d-nb.info/gnd/11862119X"
+    ]
+  },
+  "source": {
+    "@id": "SourceTelemannAutobiographie",
+    "label": "Telemanns Autobiografie von 1729, https://commons.wikimedia.org/wiki/Category:Telemann_Autobiografien"
+  },
+  "statement": {
+    "@id": "Statementd1e169",
+    "statementContent": "alhier ward ich auch vor 4. Jahren Capell-Meister von Haus-aus in Bayreuth, nebst einer Besoldung, welche zwar bey der itzigen Re- gierung weggefallen.",
+    "role": {
+      "label": "occupation"
+    },
+
+    "statementType": {
+      "label": "Capell-Meister von Haus-aus"
+    },
+
+    "places": [{
+      "label": "Bayreuth",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [49.94782, 11.57893]
+      }
+    }],
+
+    "date": {
+
+      "label": "vor 4. Jahren",
+      "sortdate": "1725"
+
+    }
+
   }
 }
+]
