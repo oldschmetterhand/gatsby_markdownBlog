@@ -28,7 +28,7 @@ const OlMap: React.FC<Props> = () => {
               })
             ],
             view: new View({
-              center: fromLonLat([0, 0]),
+              center: fromLonLat([0, 0],'EPSG:3857'),   //Transformation to Web Mercator
               zoom: 2
             })
           });
