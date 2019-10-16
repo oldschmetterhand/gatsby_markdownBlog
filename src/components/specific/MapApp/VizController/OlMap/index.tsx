@@ -4,6 +4,7 @@ import Map from 'ol/Map';
 import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
+import { fromLonLat } from 'ol/proj'
 
 interface Props {
     vizEvents: VizEvent[]
@@ -27,7 +28,7 @@ const OlMap: React.FC<Props> = () => {
               })
             ],
             view: new View({
-              center: [0, 0],
+              center: fromLonLat([0, 0]),
               zoom: 2
             })
           });
