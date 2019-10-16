@@ -1,12 +1,12 @@
 import React from "react"
 import Layout from "../components/specific/Layout"
 import SEO from "../components/Blog/SEO"
+import OlMap from "../components/specific/MapApp/VizController/OlMap"
 
 const SecondPage: React.FC = () => (
-  <Layout>
+  <Layout showHeader={false}>
     <SEO title="about" />
-    <h1>About</h1>
-    <p>Short Description here --- about Project / Documentatione etc.</p>
+    <OlMap></OlMap>
   </Layout>
 )
 
