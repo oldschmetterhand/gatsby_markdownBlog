@@ -17,15 +17,16 @@ interface Props {
 }
 
 
-const OlMap: React.FC<Props> = () => {
+const OlMap: React.FC<Props> = ({vizEvents = undefined}) => {
 
     const [olMap, setOlMap] = useState<undefined | Map>(undefined);
+    const [features, setFeatures] = useState<undefined|Feature[]>(undefined);
 
     // ref used to pass in reference to div id="map" internally.
     const olMapRef = useRef(undefined) 
 
     useEffect(()=>{
-        if(olMap)return;
+        if(olMap || !vizEvents)return;
 
         let map = new Map({
             target: olMapRef.current,
@@ -55,7 +56,7 @@ const OlMap: React.FC<Props> = () => {
           });
 
           setOlMap(map);
-    },[])
+    },[vizEvents])
 
     return <div ref={olMapRef} id="map" className="map" style={{width:'100%', height:'400px'}}></div>
 }
