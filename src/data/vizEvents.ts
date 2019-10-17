@@ -7,8 +7,8 @@ export const dummyData: VizEvent[] = [
       title: "test01",
       date: "04.05.2019",
       lMarker: {
-        x: 1,
-        y: 2,
+        x: 15.439363,
+        y: 47.054842,
         popUpContent: "hi",
         group: "deserteure",
       },
