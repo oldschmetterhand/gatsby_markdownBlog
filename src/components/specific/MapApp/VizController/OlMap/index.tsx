@@ -14,6 +14,10 @@ import Feature from 'ol/Feature';
 import VectorSource from 'ol/source/Vector';
 import VectorLayer from 'ol/layer/Vector';
 
+//For Styling
+import {Icon, Style} from 'ol/style';
+import logoPath from "../../../../../images/free-map-marker-icon-dark.png"
+
 interface Props {
     vizEvents: VizEvent[]
 }
@@ -50,15 +54,29 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
 
     useEffect(()=>{
       if(!olMap || !vizEvents)return;
-
       //remove old layer
       if(drawnVLayer)olMap.removeLayer(drawnVLayer)
 
+      // setting style for the feature display
+      let featureStyle =  new Style({
+        image: new Icon({
+          anchor: [0.5, 470],             // anchor = where location is marked with icon.
+          anchorXUnits: "fraction",       // fraction = x value in array above means percentage.
+          anchorYUnits: "pixels",         // pixels = y value in array are pixels.
+          src: logoPath,
+          scale:.075
+        })
+      });
+
+      //generating the feature array
       let features: Feature[] = vizEvents.map((vizEvent)=> {
         let feature = new Feature({
           geometry: new Point(fromLonLat([vizEvent.lMarker.x, vizEvent.lMarker.y])),
           label: vizEvent.title
         })
+        // after generating feature setting the style
+        feature.setStyle(featureStyle)
+
         return feature; 
       })
 
@@ -74,7 +92,9 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
 
     },[vizEvents, olMap])
 
-    return <div ref={olMapRef} id="map" className="map" style={{width:'100%', height:'400px'}}></div>
+
+
+    return <><div ref={olMapRef} id="map" className="map" style={{width:'100%', height:'90vh'}}></div></>
 }
 
 export default OlMap;
