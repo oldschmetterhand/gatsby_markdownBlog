@@ -1,5 +1,7 @@
 import React, {useRef, useState, useEffect} from "react"
 import { VizEvent } from "../../index"
+import { dummyData } from "../../../../../data/vizEvents"
+
 import Map from 'ol/Map';
 import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';
@@ -17,10 +19,11 @@ interface Props {
 }
 
 
-const OlMap: React.FC<Props> = ({vizEvents = undefined}) => {
+const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
 
     const [olMap, setOlMap] = useState<undefined | Map>(undefined);
-    const [features, setFeatures] = useState<undefined|Feature[]>(undefined);
+    const [drawnVLayer, setDrawnVLayer] = useState<undefined | VectorLayer>(undefined)
+    const [olFeatures, setOlFeatures] = useState<undefined| Feature[]>(undefined);
 
     // ref used to pass in reference to div id="map" internally.
     const olMapRef = useRef(undefined) 
@@ -35,18 +38,6 @@ const OlMap: React.FC<Props> = ({vizEvents = undefined}) => {
                 source: new XYZ({
                   url: 'https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png'
                 })
-              }),
-              new VectorLayer({
-                source: new VectorSource({
-                  features:[
-                    new Feature({
-                      geometry: new Point(fromLonLat([4.35247, 50.84673])),
-                      //can add property as needed
-                      label:'Somewhere in Belgium'
-                      
-                    })
-                  ]
-                })
               })
             ],
             view: new View({
@@ -54,9 +45,34 @@ const OlMap: React.FC<Props> = ({vizEvents = undefined}) => {
               zoom: 2
             })
           });
-
           setOlMap(map);
     },[vizEvents])
+
+    useEffect(()=>{
+      if(!olMap || !vizEvents)return;
+
+      //remove old layer
+      if(drawnVLayer)olMap.removeLayer(drawnVLayer)
+
+      let features: Feature[] = vizEvents.map((vizEvent)=> {
+        let feature = new Feature({
+          geometry: new Point(fromLonLat([vizEvent.lMarker.x, vizEvent.lMarker.y])),
+          label: vizEvent.title
+        })
+        return feature; 
+      })
+
+
+      let layer = new VectorLayer({
+        source: new VectorSource({
+          features:features
+        })
+      })
+
+      olMap.addLayer(layer);
+      setDrawnVLayer(layer)
+
+    },[vizEvents, olMap])
 
     return <div ref={olMapRef} id="map" className="map" style={{width:'100%', height:'400px'}}></div>
 }
