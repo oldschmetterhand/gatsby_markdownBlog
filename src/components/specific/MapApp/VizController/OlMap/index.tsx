@@ -13,6 +13,8 @@ interface Props {
 
 const OlMap: React.FC<Props> = () => {
 
+    const [olMap, setOlMap] = useState<undefined | any>(undefined)
+
     // ref used to pass in reference to div id="map" internally.
     const olMapRef = useRef(undefined) 
 
