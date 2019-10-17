@@ -3,7 +3,7 @@ import { VizEvent } from "../../index"
 import Map from 'ol/Map';
 import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';
-import OSM from 'ol/source/OSM';
+import XYZ from 'ol/source/XYZ';
 import { fromLonLat } from 'ol/proj'
 
 interface Props {
@@ -22,7 +22,7 @@ const OlMap: React.FC<Props> = () => {
             target: olMapRef.current,
             layers: [
               new TileLayer({
-                source: new OSM({
+                source: new XYZ({
                   url: 'https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png'
                 })
               })
