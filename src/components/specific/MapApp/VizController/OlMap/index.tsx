@@ -19,8 +19,9 @@ const OlMap: React.FC<Props> = () => {
     const olMapRef = useRef(undefined) 
 
     useEffect(()=>{
-
-        new Map({
+        if(olMap)return;
+        
+        let map = new Map({
             target: olMapRef.current,
             layers: [
               new TileLayer({
@@ -35,7 +36,7 @@ const OlMap: React.FC<Props> = () => {
             })
           });
 
-
+          setOlMap(map);
     },[])
 
     return <div ref={olMapRef} id="map" className="map" style={{width:'100%', height:'400px'}}></div>
