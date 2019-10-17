@@ -14,8 +14,8 @@ import Feature from 'ol/Feature';
 import VectorSource from 'ol/source/Vector';
 import VectorLayer from 'ol/layer/Vector';
 
-//For Styling
-import {Icon, Style, Text} from 'ol/style';
+//For Styling GeoFeatures (like Points, Multilines etc.) - assigning Text, and image (=marker) etc.
+import {Icon, Style, Text, Fill, Stroke} from 'ol/style';
 import logoPath from "../../../../../images/marker_red.png"
 
 interface Props {
@@ -58,6 +58,7 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
       if(drawnVLayer)olMap.removeLayer(drawnVLayer)
 
       // setting style for the feature display
+      // means assigning an image / text / custom style to a geo - feature (like point, polyline etc.)
       let featureStyle =  new Style({
         image: new Icon({
           anchor: [0.5, 24],             // anchor = where location is marked with icon.
@@ -66,9 +67,7 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
           src: logoPath
         }),
         text: new Text({
-          text: 'lasldasddasdsd',
-          textBaseline: 'Bottom',
-          offsetY:100
+          text: 'Deserteur',
         })
       });
 
@@ -78,9 +77,8 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
           geometry: new Point(fromLonLat([vizEvent.lMarker.x, vizEvent.lMarker.y])),
           label: vizEvent.title
         })
-        // after generating feature setting the style
+        // after generating feature assigning the style object.
         feature.setStyle(featureStyle)
-
         return feature; 
       })
 
