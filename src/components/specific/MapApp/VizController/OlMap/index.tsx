@@ -96,7 +96,7 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
 
 
 
-    return <><img src={logoPath} ></img><div ref={olMapRef} id="map" className="map" style={{width:'100%', height:'90vh'}}></div></>
+    return <><div ref={olMapRef} id="map" className="map" style={{width:'100%', height:'90vh'}}></div></>
 }
 
 export default OlMap;
