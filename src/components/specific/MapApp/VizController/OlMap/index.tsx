@@ -26,7 +26,7 @@ import VectorLayer from 'ol/layer/Vector';
 import {Icon, Style, Text, Fill, Stroke} from 'ol/style';
 
 //marker -> just src image paths
-import blueMarker from "../../../../../images/marker_darkblue_32_32.png"
+import blackMarker from "../../../../../images/marker_black_32_32.png"
 import orangeMarker from "../../../../../images/marker_orange_32_32.png"
 
 interface Props {
@@ -76,7 +76,7 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
           anchor: [0.5, 36],             // anchor = where location is marked with icon.
           anchorXUnits: "fraction",       // fraction = x value in array above means percentage.
           anchorYUnits: "pixels",         // pixels = y value in array are pixels.
-          src: blueMarker
+          src: blackMarker
         }),
         text: new Text({
           text: 'Deserteur',
@@ -158,7 +158,7 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
           anchor: [0.5, 36],             // anchor = where location is marked with icon.
           anchorXUnits: "fraction",       // fraction = x value in array above means percentage.
           anchorYUnits: "pixels",         // pixels = y value in array are pixels.
-          src: blueMarker
+          src: blackMarker
         }),
         text: new Text({
           text: 'Deserteure',
