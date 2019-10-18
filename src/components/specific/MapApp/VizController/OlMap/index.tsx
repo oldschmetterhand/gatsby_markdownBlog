@@ -12,6 +12,9 @@ import { fromLonLat, toLonLat } from 'ol/proj'
 import Overlay from "ol/Overlay"
 import {toStringHDMS} from 'ol/coordinate';
 
+//for select interaction
+import Select from 'ol/interaction/Select.js';
+
 //Classes for drawing Markers on the the ol map.
 import Point from "ol/geom/Point"
 import Feature from 'ol/Feature';
@@ -95,6 +98,16 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
       })
 
       olMap.addLayer(layer);
+
+
+      /* let select = new Select()
+      olMap.addInteraction(select);
+      select.on('select', () =>{
+        console.log("selected new:");
+      }); */
+      
+
+      
       applyFeaturePopup();
       setDrawnVLayer(layer)
 
@@ -120,12 +133,14 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
 
       olMap.addOverlay(popup);
 
-      olMap.on('singleclick', function(evt) {
+      olMap.on('click', function(evt) {
         evt.preventDefault();
         olMap.forEachFeatureAtPixel(evt.pixel, (feat, layer) => {
           if(feat){
             popup.setPosition(feat.getProperties().geometry.flatCoordinates)
+            return feat;
           }
+          return false;
         })
       });
     }
