@@ -110,6 +110,7 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
 
       
       applyFeaturePopup();
+      applyFeatureHoverEffect();
       setDrawnVLayer(layer)
 
     },[vizEvents, olMap])
@@ -144,6 +145,9 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
           return false;
         })
       });
+    }
+
+    const applyFeatureHoverEffect = () => {
 
       let lastFeature: Feature;
       let baseStyle =  new Style({
@@ -185,6 +189,7 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
           }
         })
       })
+
 
     }
 
