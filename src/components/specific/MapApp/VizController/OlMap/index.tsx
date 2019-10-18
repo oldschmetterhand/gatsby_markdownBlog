@@ -6,7 +6,11 @@ import Map from 'ol/Map';
 import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';
 import XYZ from 'ol/source/XYZ';
-import { fromLonLat } from 'ol/proj'
+import { fromLonLat, toLonLat } from 'ol/proj'
+
+//for the popup
+import Overlay from "ol/Overlay"
+import {toStringHDMS} from 'ol/coordinate';
 
 //Classes for drawing Markers on the the ol map.
 import Point from "ol/geom/Point"
@@ -31,11 +35,12 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
 
     // ref used to pass in reference to div id="map" internally.
     const olMapRef = useRef(undefined) 
+    const popupOverlay = useRef(undefined)
 
     useEffect(()=>{
         if(olMap || !vizEvents)return;
-
         let map = new Map({
+            //overlays:[popup],               //assigned later on!
             target: olMapRef.current,
             layers: [
               new TileLayer({
@@ -90,13 +95,52 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
       })
 
       olMap.addLayer(layer);
+      applyFeaturePopup();
       setDrawnVLayer(layer)
 
     },[vizEvents, olMap])
 
 
+    const createOverlay = (): Overlay => {
+      let overlay = new Overlay({
+        element: popupOverlay.current,  //ref assigning
+        //autoPan: true,
+        positioning:"top-left",
+        offset:[-24,10],
+        autoPanAnimation: {
+          duration: 250
+        }
+      });
+      return overlay;
+    }
 
-    return <><div ref={olMapRef} id="map" className="map" style={{width:'100%', height:'90vh'}}></div></>
+    const applyFeaturePopup = () => {
+      if(!olMap)return console.error("Can only apply popups after the OL-Map was rendered! (not before)");
+      let popup = createOverlay();
+
+      olMap.addOverlay(popup);
+
+      olMap.on('singleclick', function(evt) {
+        evt.preventDefault();
+        olMap.forEachFeatureAtPixel(evt.pixel, (feat, layer) => {
+          if(feat){
+            popup.setPosition(feat.getProperties().geometry.flatCoordinates)
+          }
+        })
+      });
+    }
+
+    return (<>
+      <div ref={popupOverlay} id="popup" className="ol-popup" style={{maxWidth:"250px", background:'white', border:'1.5px solid tomato', padding:'.5em'}}>
+        <a href="#" id="popup-closer" className="ol-popup-closer"></a>
+        <div id="popup-content">
+          <p>Gruppe: Deserteure</p>
+          <p>Text: Some Sample content is the best content I could possibly imagine. My life is grey. Hello World.</p>
+        </div>
+      </div>
+
+      <div ref={olMapRef} id="map" className="map" style={{width:'100%', height:'90vh'}}></div>
+      </>)
 }
 
 export default OlMap;
