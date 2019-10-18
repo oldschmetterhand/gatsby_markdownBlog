@@ -24,7 +24,7 @@ import VectorLayer from 'ol/layer/Vector';
 
 //For Styling GeoFeatures (like Points, Multilines etc.) - assigning Text, and image (=marker) etc.
 import {Icon, Style, Text, Fill, Stroke} from 'ol/style';
-import logoPath from "../../../../../images/marker_darkblue_32_32.png"
+import blueMarker from "../../../../../images/marker_darkblue_32_32.png"
 
 interface Props {
     vizEvents: VizEvent[]
@@ -73,7 +73,7 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
           anchor: [0.5, 36],             // anchor = where location is marked with icon.
           anchorXUnits: "fraction",       // fraction = x value in array above means percentage.
           anchorYUnits: "pixels",         // pixels = y value in array are pixels.
-          src: logoPath
+          src: blueMarker
         }),
         text: new Text({
           text: 'Deserteur',
@@ -155,7 +155,7 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
           anchor: [0.5, 36],             // anchor = where location is marked with icon.
           anchorXUnits: "fraction",       // fraction = x value in array above means percentage.
           anchorYUnits: "pixels",         // pixels = y value in array are pixels.
-          src: logoPath
+          src: blueMarker
         }),
         text: new Text({
           text: 'Deserteure',
@@ -177,7 +177,7 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
                 anchor: [0.5, 36],             // anchor = where location is marked with icon.
                 anchorXUnits: "fraction",       // fraction = x value in array above means percentage.
                 anchorYUnits: "pixels",         // pixels = y value in array are pixels.
-                src: logoPath,
+                src: blueMarker,
                 scale:1.25
               }),
               text: new Text({
