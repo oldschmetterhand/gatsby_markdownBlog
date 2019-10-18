@@ -24,7 +24,10 @@ import VectorLayer from 'ol/layer/Vector';
 
 //For Styling GeoFeatures (like Points, Multilines etc.) - assigning Text, and image (=marker) etc.
 import {Icon, Style, Text, Fill, Stroke} from 'ol/style';
+
+//marker -> just src image paths
 import blueMarker from "../../../../../images/marker_darkblue_32_32.png"
+import orangeMarker from "../../../../../images/marker_orange_32_32.png"
 
 interface Props {
     vizEvents: VizEvent[]
@@ -177,8 +180,8 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
                 anchor: [0.5, 36],             // anchor = where location is marked with icon.
                 anchorXUnits: "fraction",       // fraction = x value in array above means percentage.
                 anchorYUnits: "pixels",         // pixels = y value in array are pixels.
-                src: blueMarker,
-                scale:1.25
+                src: orangeMarker,
+                scale:1.05
               }),
               text: new Text({
                 text: 'hover',
