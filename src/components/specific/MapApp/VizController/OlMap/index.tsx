@@ -24,7 +24,7 @@ import VectorLayer from 'ol/layer/Vector';
 
 //For Styling GeoFeatures (like Points, Multilines etc.) - assigning Text, and image (=marker) etc.
 import {Icon, Style, Text, Fill, Stroke} from 'ol/style';
-import logoPath from "../../../../../images/marker_red.png"
+import logoPath from "../../../../../images/marker_darkblue_32_32.png"
 
 interface Props {
     vizEvents: VizEvent[]
@@ -70,7 +70,7 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
       // means assigning an image / text / custom style to a geo - feature (like point, polyline etc.)
       let featureStyle =  new Style({
         image: new Icon({
-          anchor: [0.5, 24],             // anchor = where location is marked with icon.
+          anchor: [0.5, 36],             // anchor = where location is marked with icon.
           anchorXUnits: "fraction",       // fraction = x value in array above means percentage.
           anchorYUnits: "pixels",         // pixels = y value in array are pixels.
           src: logoPath
@@ -152,7 +152,7 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
       let lastFeature: Feature;
       let baseStyle =  new Style({
         image: new Icon({
-          anchor: [0.5, 24],             // anchor = where location is marked with icon.
+          anchor: [0.5, 36],             // anchor = where location is marked with icon.
           anchorXUnits: "fraction",       // fraction = x value in array above means percentage.
           anchorYUnits: "pixels",         // pixels = y value in array are pixels.
           src: logoPath
@@ -174,7 +174,7 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
             //popup.setPosition(feat.getProperties().geometry.flatCoordinates)
             let featureStyle =  new Style({
               image: new Icon({
-                anchor: [0.5, 24],             // anchor = where location is marked with icon.
+                anchor: [0.5, 36],             // anchor = where location is marked with icon.
                 anchorXUnits: "fraction",       // fraction = x value in array above means percentage.
                 anchorYUnits: "pixels",         // pixels = y value in array are pixels.
                 src: logoPath,
