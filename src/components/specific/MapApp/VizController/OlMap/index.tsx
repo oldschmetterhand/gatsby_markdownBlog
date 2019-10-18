@@ -7,6 +7,7 @@ import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';
 import XYZ from 'ol/source/XYZ';
 import { fromLonLat, toLonLat } from 'ol/proj'
+import lodash from "lodash"
 
 //for the popup
 import Overlay from "ol/Overlay"
@@ -143,6 +144,48 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
           return false;
         })
       });
+
+      let lastFeature: Feature;
+      let baseStyle =  new Style({
+        image: new Icon({
+          anchor: [0.5, 24],             // anchor = where location is marked with icon.
+          anchorXUnits: "fraction",       // fraction = x value in array above means percentage.
+          anchorYUnits: "pixels",         // pixels = y value in array are pixels.
+          src: logoPath
+        }),
+        text: new Text({
+          text: 'Deserteure',
+        }),
+        stroke: new Stroke({
+          color: 'blue',
+          width: 10
+        })
+      });
+
+      olMap.on("pointermove", (evt) => {
+        //if(lastFeature)lastFeature.setStyle(baseStyle);
+        olMap.forEachFeatureAtPixel(evt.pixel, (feat: Feature, layer)=> {
+          if(lastFeature)lastFeature.setStyle(baseStyle);
+          if(feat){
+            //popup.setPosition(feat.getProperties().geometry.flatCoordinates)
+            let featureStyle =  new Style({
+              image: new Icon({
+                anchor: [0.5, 24],             // anchor = where location is marked with icon.
+                anchorXUnits: "fraction",       // fraction = x value in array above means percentage.
+                anchorYUnits: "pixels",         // pixels = y value in array are pixels.
+                src: logoPath,
+                scale:1.25
+              }),
+              text: new Text({
+                text: 'hover',
+              })
+            });
+            lastFeature = feat;
+            feat.setStyle(featureStyle);  
+          }
+        })
+      })
+
     }
 
     return (<>
