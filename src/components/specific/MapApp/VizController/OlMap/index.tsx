@@ -120,7 +120,7 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
         element: popupOverlay.current,  //ref assigning
         //autoPan: true,
         positioning:"top-left",
-        offset:[-24,10],
+        //offset:[-24,10],
         autoPanAnimation: {
           duration: 250
         }
