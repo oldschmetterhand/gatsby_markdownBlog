@@ -170,7 +170,14 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
       });
 
       olMap.on("pointermove", (evt) => {
-        //if(lastFeature)lastFeature.setStyle(baseStyle);
+
+        // for hovering -> changing cursor.
+        //let featureHover = olMap.hasFeatureAtPixel(evt.pixel);
+        //olMap.getViewport().style.cursor = featureHover ? 'pointer' : 'default'
+
+        hoverFeaturePointer(olMap, evt.pixel);
+
+        if(lastFeature)lastFeature.setStyle(baseStyle);
         olMap.forEachFeatureAtPixel(evt.pixel, (feat: Feature, layer)=> {
           if(lastFeature)lastFeature.setStyle(baseStyle);
           if(feat){
@@ -187,13 +194,23 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
                 text: 'hover',
               })
             });
+            
             lastFeature = feat;
             feat.setStyle(featureStyle);  
           }
         })
       })
+    }
 
-
+    /**
+     * Method must be called inside map.on('pointermove',callback(evt)) callback function and 
+     * needs the pixel of the current cursor movement as input (available as evt.pixel in the callback) 
+     * @param layersMap OpenLayers map displayed on page.
+     * @param pixel derived from evt.pixel from callback .on('pointermove',callback(evt)) 
+     */
+    const hoverFeaturePointer = (layersMap: Map, pixel: number[]) => {
+      let featureHover = layersMap.hasFeatureAtPixel(pixel);
+      layersMap.getViewport().style.cursor = featureHover ? 'pointer' : 'default'
     }
 
     return (<>
