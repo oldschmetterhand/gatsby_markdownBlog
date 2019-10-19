@@ -171,10 +171,6 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
 
       olMap.on("pointermove", (evt) => {
 
-        // for hovering -> changing cursor.
-        //let featureHover = olMap.hasFeatureAtPixel(evt.pixel);
-        //olMap.getViewport().style.cursor = featureHover ? 'pointer' : 'default'
-
         hoverFeaturePointer(olMap, evt.pixel);
 
         if(lastFeature)lastFeature.setStyle(baseStyle);
