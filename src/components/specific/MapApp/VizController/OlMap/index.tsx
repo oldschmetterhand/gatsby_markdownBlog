@@ -43,7 +43,7 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
 
     // ref used to pass in reference to div id="map" internally.
     const olMapRef = useRef(undefined) 
-    const popupOverlay = useRef(undefined)
+    const popupDiv = useRef(undefined)
 
     useEffect(()=>{
         if(olMap || !vizEvents)return;
@@ -122,7 +122,7 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
 
     const createOverlay = (): Overlay => {
       let overlay = new Overlay({
-        element: popupOverlay.current,  //ref assigning
+        element: popupDiv.current,  //ref assigning
         autoPan: true,
         positioning:"top-left",
         offset:[-1,-4],
@@ -149,6 +149,8 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
           return false;
         })
       });
+      
+
     }
 
     const applyFeatureHoverEffect = () => {
@@ -210,9 +212,16 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
       layersMap.getViewport().style.cursor = featureHover ? 'pointer' : 'default'
     }
 
+    /**
+     * 
+     */
+    const closePopup = () => {
+     //popupDiv.setPosition(undefined);
+    }
+
     return (<>
-      <div ref={popupOverlay} id="popup" className="ol-popup" style={{color:'black', borderLeft:'3px solid black', fontSize: '.75em',transition:'all 1s ease-in', maxWidth:"250px", background:'whitesmoke', borderRadius:'.5em', padding:'1em', boxShadow:'1px 1px 5px 1px grey'}}>
-        <div style={{color:'lightgrey', fontSize:'1.25em'}} className="is-pulled-right"><FaWindowClose></FaWindowClose></div>
+      <div ref={popupDiv} id="popup" className="ol-popup" style={{color:'black', borderLeft:'3px solid black', fontSize: '.75em',transition:'all 1s ease-in', maxWidth:"250px", background:'whitesmoke', borderRadius:'.5em', padding:'1em', boxShadow:'1px 1px 5px 1px grey'}}>
+        <div onClick={closePopup} style={{color:'lightgrey', fontSize:'1.25em'}} className="is-pulled-right"><FaWindowClose></FaWindowClose></div>
         <div id="popup-content">
           <p>Grabmahl für XYZ</p>
           <p>Gruppe: Deserteure</p>
