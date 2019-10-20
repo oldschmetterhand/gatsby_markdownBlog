@@ -212,7 +212,7 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
 
     return (<>
       <div ref={popupOverlay} id="popup" className="ol-popup" style={{color:'black', borderLeft:'3px solid black', fontSize: '.75em',transition:'all 1s ease-in', maxWidth:"250px", background:'whitesmoke', borderRadius:'.5em', padding:'1em', boxShadow:'1px 1px 5px 1px grey'}}>
-        <div style={{color:'lightgrey'}} className="is-pulled-right"><FaWindowClose></FaWindowClose></div>
+        <div style={{color:'lightgrey', fontSize:'1.25em'}} className="is-pulled-right"><FaWindowClose></FaWindowClose></div>
         <div id="popup-content">
           <p>Grabmahl für XYZ</p>
           <p>Gruppe: Deserteure</p>
