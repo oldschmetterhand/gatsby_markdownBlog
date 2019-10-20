@@ -39,7 +39,7 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
 
     const [olMap, setOlMap] = useState<undefined | Map>(undefined);
     const [drawnVLayer, setDrawnVLayer] = useState<undefined | VectorLayer>(undefined)
-    const [olFeatures, setOlFeatures] = useState<undefined| Feature[]>(undefined);
+    const [popupOverlay, setpopupOverlay] = useState<undefined| Overlay>(undefined);
 
     // ref used to pass in reference to div id="map" internally.
     const olMapRef = useRef(undefined) 
@@ -136,6 +136,7 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
     const applyFeaturePopup = () => {
       if(!olMap)return console.error("Can only apply popups after the OL-Map was rendered! (not before)");
       let popup = createOverlay();
+      setpopupOverlay(popup);
 
       olMap.addOverlay(popup);
 
@@ -216,7 +217,7 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
      * 
      */
     const closePopup = () => {
-     //popupDiv.setPosition(undefined);
+     popupOverlay.setPosition(undefined);
     }
 
     return (<>
