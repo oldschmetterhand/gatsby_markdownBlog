@@ -1,4 +1,4 @@
-import React, {useRef, useState, useEffect} from "react"
+import React, {useRef, useState, useEffect, useCallback} from "react"
 import { VizEvent } from "../../index"
 import { dummyData } from "../../../../../data/vizEvents"
 import { FaWindowClose } from "react-icons/fa"
@@ -37,13 +37,26 @@ interface Props {
 
 const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
 
+    ////
+    //State
     const [olMap, setOlMap] = useState<undefined | Map>(undefined);
     const [drawnVLayer, setDrawnVLayer] = useState<undefined | VectorLayer>(undefined)
     const [popupOverlay, setpopupOverlay] = useState<undefined| Overlay>(undefined);
 
-    // ref used to pass in reference to div id="map" internally.
-    const olMapRef = useRef(undefined) 
+    /////
+    //Refs
+    const olMapRef = useRef(undefined)  // ref used to pass in reference to div id="map" internally.
     const popupDiv = useRef(undefined)
+
+    ///
+    //React specific remembering of callback
+    const memoHandlePopupClose = useCallback(()=>{
+      // popupOverlay is undefined at the beginning -> will be created and 
+      // state changed -> therefore needs to be watched in array second param.
+      // (will regenerate )
+      closePopup(popupOverlay)
+    },[popupOverlay]);
+
 
     useEffect(()=>{
         if(olMap || !vizEvents)return;
@@ -214,15 +227,18 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
     }
 
     /**
-     * 
+     * Method needs to be assigned as onclick listener to the closing button
+     * of the specific popup. For example directly on an html element.
+     * Better way is to create a useCallback hook.
+     * @param popOverlay Overlay to be closed.
      */
-    const closePopup = () => {
-     popupOverlay.setPosition(undefined);
+    const closePopup = (popOverlay: Overlay) => {
+     popOverlay.setPosition(undefined);
     }
 
     return (<>
       <div ref={popupDiv} id="popup" className="ol-popup" style={{color:'black', borderLeft:'3px solid black', fontSize: '.75em',transition:'all 1s ease-in', maxWidth:"250px", background:'whitesmoke', borderRadius:'.5em', padding:'1em', boxShadow:'1px 1px 5px 1px grey'}}>
-        <div onClick={closePopup} style={{color:'lightgrey', fontSize:'1.25em'}} className="is-pulled-right"><FaWindowClose></FaWindowClose></div>
+        <div onClick={memoHandlePopupClose} style={{color:'lightgrey', fontSize:'1.25em'}} className="is-pulled-right"><FaWindowClose></FaWindowClose></div>
         <div id="popup-content">
           <p>Grabmahl für XYZ</p>
           <p>Gruppe: Deserteure</p>
