@@ -122,7 +122,7 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
     const createOverlay = (): Overlay => {
       let overlay = new Overlay({
         element: popupOverlay.current,  //ref assigning
-        //autoPan: true,
+        autoPan: true,
         positioning:"top-left",
         //offset:[-24,10],
         autoPanAnimation: {
@@ -210,9 +210,10 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
     }
 
     return (<>
-      <div ref={popupOverlay} id="popup" className="ol-popup" style={{maxWidth:"250px", background:'white', border:'1.5px solid tomato', padding:'.5em'}}>
+      <div ref={popupOverlay} id="popup" className="ol-popup" style={{fontSize: '.85em',transition:'all 1s ease-in', maxWidth:"250px", background:'whitesmoke', borderRadius:'.5em', padding:'1em', boxShadow:'1px 1px 10px 1px grey'}}>
         <a href="#" id="popup-closer" className="ol-popup-closer"></a>
         <div id="popup-content">
+          <p>Grabmahl für XYZ</p>
           <p>Gruppe: Deserteure</p>
           <p>Text: Some Sample content is the best content I could possibly imagine. My life is grey. Hello World.</p>
         </div>
