@@ -22,6 +22,7 @@ import Point from "ol/geom/Point"
 import Feature from 'ol/Feature';
 import VectorSource from 'ol/source/Vector';
 import VectorLayer from 'ol/layer/Vector';
+import ClusterSource from "ol/source/Cluster"
 
 //For Styling GeoFeatures (like Points, Multilines etc.) - assigning Text, and image (=marker) etc.
 import {Icon, Style, Text, Fill, Stroke} from 'ol/style';
@@ -29,6 +30,7 @@ import {Icon, Style, Text, Fill, Stroke} from 'ol/style';
 //marker -> just src image paths
 import blackMarker from "../../../../../images/marker_black_32_32.png"
 import orangeMarker from "../../../../../images/marker_orange_32_32.png"
+import multiMarker from "../../../../../images/multi_marker_32_32.png"
 
 interface Props {
     vizEvents: VizEvent[]
@@ -110,22 +112,27 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
 
 
       let layer = new VectorLayer({
-        source: new VectorSource({
-          features:features
-        })
+        source: new ClusterSource({
+          source: new VectorSource({
+            features:features
+          }),
+        }),
+        style: (feature: Feature) => {
+         if(isCluster(feature)){
+           return new Style({
+            image: new Icon({
+              anchor: [0.5, 36],             
+              anchorXUnits: "fraction",       
+              anchorYUnits: "pixels",         
+              src: multiMarker
+            })})
+         } else {
+          return featureStyle // use base featureStyle if not clustered
+         } 
+        }
       })
 
-      olMap.addLayer(layer);
-
-
-      /* let select = new Select()
-      olMap.addInteraction(select);
-      select.on('select', () =>{
-        console.log("selected new:");
-      }); */
-      
-
-      
+      olMap.addLayer(layer);      
       applyFeaturePopup();
       applyFeatureHoverEffect();
       setDrawnVLayer(layer)
@@ -234,6 +241,16 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
      */
     const closePopup = (popOverlay: Overlay) => {
      popOverlay.setPosition(undefined);
+    }
+
+    /**
+     * Checks if given feature consists of multiple features. If yes -> it might be 
+     * a cluster.
+     * @param feature Feature to analyze.
+     * @returns Boolean if Feature consists of multiple features and therefore might be a Cluster.
+     */
+    const isCluster = (feature: Feature): boolean => {
+      return feature.get('features').length > 1
     }
 
     return (<>
