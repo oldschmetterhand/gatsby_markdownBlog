@@ -31,6 +31,7 @@ import blackMarker from "../../../../../images/marker_black_32_32.png"
 import orangeMarker from "../../../../../images/marker_orange_32_32.png"
 import multiMarker from "../../../../../images/multi_marker_32_32.png"
 import blueMarker from "../../../../../images/marker_darkblue_32_32.png"
+import exclamMark from "../../../../../images/exclamation_32_32.png"
 import Layer from "ol/layer/Layer";
 
 interface Props {
@@ -121,6 +122,23 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
         }),
         style: (feature: Feature) => {
          if(isCluster(feature)){
+
+          if(isSameCoordsCluster(feature)){
+            return new Style({
+              image: new Icon({
+                anchor: [0.5, 36],             
+                anchorXUnits: "fraction",       
+                anchorYUnits: "pixels",         
+                src: exclamMark
+              }),
+              text: new Text({
+                text: `Same Coords!`
+              })
+            })
+          }
+
+
+
            return new Style({
             image: new Icon({
               anchor: [0.5, 36],             
@@ -282,6 +300,24 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
      */
     const isCluster = (feature: Feature): boolean => {
       return feature.get('features').length > 1
+    }
+
+    /**
+     * Checks if a feature contains other features with coordinates all the same.
+     * @param clusterFeature feature that contains other features inside feature.get('features')
+     * @returns boolean if the contained features have the same coordinates.
+     */
+    const isSameCoordsCluster = (clusterFeature: Feature): boolean => {
+      let features: Feature[] = clusterFeature.get('features');
+      let isSame: boolean = true;
+      let lastExtent:string;
+      features.forEach((feature, index)=>{
+        let curExtent = feature.getGeometry().getExtent().toString();
+        if(index===0)lastExtent=curExtent
+        if(curExtent!==lastExtent)return isSame = false;
+        lastExtent = curExtent;
+      })
+      return isSame
     }
 
     return (<>
