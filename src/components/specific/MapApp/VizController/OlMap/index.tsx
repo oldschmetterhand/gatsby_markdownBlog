@@ -30,6 +30,7 @@ import {Icon, Style, Text, Fill, Stroke} from 'ol/style';
 import blackMarker from "../../../../../images/marker_black_32_32.png"
 import orangeMarker from "../../../../../images/marker_orange_32_32.png"
 import multiMarker from "../../../../../images/multi_marker_32_32.png"
+import blueMarker from "../../../../../images/marker_darkblue_32_32.png"
 import Layer from "ol/layer/Layer";
 
 interface Props {
@@ -132,10 +133,25 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
             })
           })
          } else {
-            featureStyle.setText(new Text({
+            featureStyle.setText(new Text({  
             text: feature.values_.features[0].get('group')
           }))
 
+          if(feature.values_.features[0].get('group') === 'Gurke'){
+            featureStyle.setImage(new Icon({
+              anchor: [0.5, 36],             
+              anchorXUnits: "fraction",       
+              anchorYUnits: "pixels",         
+              src:blueMarker
+            })) 
+          } else {
+            featureStyle.setImage(new Icon({
+              anchor: [0.5, 36],             
+              anchorXUnits: "fraction",       
+              anchorYUnits: "pixels",         
+              src:blackMarker
+            }))
+          }
           return featureStyle // use base featureStyle if not clustered
          } 
         }
