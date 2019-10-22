@@ -31,6 +31,7 @@ import {Icon, Style, Text, Fill, Stroke} from 'ol/style';
 import blackMarker from "../../../../../images/marker_black_32_32.png"
 import orangeMarker from "../../../../../images/marker_orange_32_32.png"
 import multiMarker from "../../../../../images/multi_marker_32_32.png"
+import Layer from "ol/layer/Layer";
 
 interface Props {
     vizEvents: VizEvent[]
@@ -224,13 +225,19 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
 
     /**
      * Method must be called inside map.on('pointermove',callback(evt)) callback function and 
-     * needs the pixel of the current cursor movement as input (available as evt.pixel in the callback) 
+     * needs the pixel of the current cursor movement as input (available as evt.pixel in the callback).
+     * Uses olMap.forEachFeatureAtPixel() to change the cursor style to pointer when hovering over a valid feature.
+     * Clustered Features are ignored. 
      * @param layersMap OpenLayers map displayed on page.
      * @param pixel derived from evt.pixel from callback .on('pointermove',callback(evt)) 
      */
-    const hoverFeaturePointer = (layersMap: Map, pixel: number[]) => {
-      let featureHover = layersMap.hasFeatureAtPixel(pixel);
-      layersMap.getViewport().style.cursor = featureHover ? 'pointer' : 'default'
+    const hoverFeaturePointer = (layersMap: Map, pixel: number[]): void => {
+      let cursorStyle: 'default' | 'pointer' = 'default';
+      layersMap.forEachFeatureAtPixel(pixel, (detectedFeature: Feature, detectedLayer: Layer) => {
+        if(!detectedFeature)return;
+        cursorStyle = isCluster(detectedFeature) ? 'default' : 'pointer'  
+      })
+      layersMap.getViewport().style.cursor = cursorStyle;
     }
 
     /**
