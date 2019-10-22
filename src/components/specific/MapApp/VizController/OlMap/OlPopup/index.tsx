@@ -1,15 +1,18 @@
 import React, { useRef, useEffect, useCallback, useState } from "react"
+import { VizEvent } from "../../../../../../types/mapp"
 import { FaWindowClose } from "react-icons/fa"
 import styles from "./styles.module.scss"
 import Map from "ol/Map"
 import Overlay from "ol/Overlay"
 
+
 interface Props {
-  olMap: Map
+  olMap: Map,
+  chosenVizEvent?: VizEvent,
   title?: string
 }
 
-const OlPopup: React.FC<Props> = ({ olMap, title = undefined }) => {
+const OlPopup: React.FC<Props> = ({ olMap, chosenVizEvent = undefined, title = undefined }) => {
   //state
   const [popOverlay, setPopOverlay] = useState<undefined | Overlay>(undefined)
 
@@ -100,7 +103,7 @@ const OlPopup: React.FC<Props> = ({ olMap, title = undefined }) => {
           <FaWindowClose></FaWindowClose>
         </div>
         <div ref={contentRef} id="popup-content">
-          <p>Grabmahl für XYZ</p>
+          <h3>{ title }</h3>
           <p>Gruppe: Deserteure</p>
           <p>
             Text: Some Sample content is the best content I could possibly
