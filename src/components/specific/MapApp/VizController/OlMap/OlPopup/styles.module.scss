@@ -1,0 +1,21 @@
+.popupContainer {
+  color: black;
+  border-left: 3px solid black;
+  font-size: 0.75em;
+  transition: "all 1s ease-in";
+  min-width: 200px;
+  max-width: 250px;
+  background: whitesmoke;
+  border-radius: 0.5em;
+  padding: 1em;
+  box-shadow: 1px 1px 5px 1px grey;
+  .closerContainer {
+    color: lightgrey;
+    font-size: 1.25em;
+    transition: color cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
+    &:hover {
+        cursor: pointer;
+        color: black;
+    }
+  }
+}

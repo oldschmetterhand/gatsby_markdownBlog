@@ -1,17 +1,15 @@
 import React, { useRef, useEffect, useCallback, useState } from "react"
+import { FaWindowClose } from "react-icons/fa"
+import styles from "./styles.module.scss"
 import Map from "ol/Map"
 import Overlay from "ol/Overlay"
-import { FaWindowClose } from "react-icons/fa"
 
 interface Props {
   olMap: Map
   title?: string
 }
 
-const OlPopup: React.FC<Props> = ({
-  olMap,
-  title = undefined,
-}) => {
+const OlPopup: React.FC<Props> = ({ olMap, title = undefined }) => {
   //state
   const [popOverlay, setPopOverlay] = useState<undefined | Overlay>(undefined)
 
@@ -52,7 +50,7 @@ const OlPopup: React.FC<Props> = ({
   }
 
   /**
-   * Applies given Overlay as popup for the OpenLayers Map. Opens the popup 
+   * Applies given Overlay as popup for the OpenLayers Map. Opens the popup
    * when a feature was clicked and sets the position accordingly.
    * @param olMap: Map Object to which the overlay should be applied as popup.
    * @param htmlOverlay: Overlay with linked html element structure.
@@ -94,27 +92,10 @@ const OlPopup: React.FC<Props> = ({
 
   return (
     <>
-      <div
-        ref={containerRef}
-        id="popup"
-        className="ol-popup"
-        style={{
-          color: "black",
-          borderLeft: "3px solid black",
-          fontSize: ".75em",
-          transition: "all 1s ease-in",
-          minWidth: "200px",
-          maxWidth: "250px",
-          background: "whitesmoke",
-          borderRadius: ".5em",
-          padding: "1em",
-          boxShadow: "1px 1px 5px 1px grey",
-        }}
-      >
+      <div ref={containerRef} id="popup" className={styles.popupContainer}>
         <div
           onClick={handleClosePopup}
-          style={{ color: "lightgrey", fontSize: "1.25em" }}
-          className="is-pulled-right"
+          className={["is-pulled-right", styles.closerContainer].join(" ")}
         >
           <FaWindowClose></FaWindowClose>
         </div>
