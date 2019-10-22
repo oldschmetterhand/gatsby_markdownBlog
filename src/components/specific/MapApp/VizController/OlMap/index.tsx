@@ -1,20 +1,12 @@
 import React, {useRef, useState, useEffect, useCallback} from "react"
 import { VizEvent } from "../../index"
 import { dummyData } from "../../../../../data/vizEvents"
-import { FaWindowClose } from "react-icons/fa"
 
 import Map from 'ol/Map';
 import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';
 import XYZ from 'ol/source/XYZ';
 import { fromLonLat, toLonLat } from 'ol/proj'
-
-//for the popup
-import Overlay from "ol/Overlay"
-import {toStringHDMS} from 'ol/coordinate';
-
-//for select interaction
-import Select from 'ol/interaction/Select.js';
 
 //Classes for drawing Markers on the the ol map.
 import Point from "ol/geom/Point"
