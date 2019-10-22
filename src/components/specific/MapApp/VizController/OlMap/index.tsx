@@ -47,7 +47,6 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
     //State
     const [olMap, setOlMap] = useState<undefined | Map>(undefined);
     const [drawnVLayer, setDrawnVLayer] = useState<undefined | VectorLayer>(undefined)
-    const [popupOverlay, setpopupOverlay] = useState<undefined| Overlay>(undefined);
 
     /////
     //Refs
