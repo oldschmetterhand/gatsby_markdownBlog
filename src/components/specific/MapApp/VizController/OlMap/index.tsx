@@ -125,7 +125,11 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
               anchorXUnits: "fraction",       
               anchorYUnits: "pixels",         
               src: multiMarker
-            })})
+            }),
+            text: new Text({
+              text:'Cluster'
+            })
+          })
          } else {
           return featureStyle // use base featureStyle if not clustered
          } 
