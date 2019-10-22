@@ -34,6 +34,8 @@ import blueMarker from "../../../../../images/marker_darkblue_32_32.png"
 import exclamMark from "../../../../../images/exclamation_32_32.png"
 import Layer from "ol/layer/Layer";
 
+//OL Components
+import OlPopup from "./OlPopup";
 interface Props {
     vizEvents: VizEvent[]
 }
@@ -50,17 +52,6 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
     /////
     //Refs
     const olMapRef = useRef(undefined)  // ref used to pass in reference to div id="map" internally.
-    const popupDiv = useRef(undefined)
-    const popContentRef = useRef(undefined)
-
-    ///
-    //React specific remembering of callback
-    const memoHandlePopupClose = useCallback(()=>{
-      // popupOverlay is undefined at the beginning -> will be created and 
-      // state changed -> therefore needs to be watched in array second param.
-      // (will regenerate )
-      closePopup(popupOverlay)
-    },[popupOverlay]);
 
 
     useEffect(()=>{
@@ -177,54 +168,11 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
       })
 
       olMap.addLayer(layer);      
-      applyFeaturePopup();
+      //applyFeaturePopup();
       applyFeatureHoverEffect();
       setDrawnVLayer(layer)
 
     },[vizEvents, olMap])
-
-
-    const createOverlay = (): Overlay => {
-      let overlay = new Overlay({
-        element: popupDiv.current,  //ref assigning
-        autoPan: true,
-        positioning:"top-left",
-        offset:[-1,-4],
-        autoPanAnimation: {
-          duration: 250
-        }
-      });
-      return overlay;
-    }
-
-    const applyFeaturePopup = () => {
-      if(!olMap)return console.error("Can only apply popups after the OL-Map was rendered! (not before)");
-      let popup = createOverlay();
-      setpopupOverlay(popup);
-
-      olMap.addOverlay(popup);
-
-      olMap.on('click', function(evt) {
-        evt.preventDefault();
-        olMap.forEachFeatureAtPixel(evt.pixel, (feat, layer) => {
-          if(feat){
-            popup.setPosition(feat.getProperties().geometry.flatCoordinates)
-            let div: HTMLDivElement = popContentRef.current;
-            div.innerHTML="";
-            let p = document.createElement('p')
-            let p2 = document.createElement('p')
-            p2.innerHTML = `Gruppe: ${feat.values_.features[0].get('group')}`
-            p.innerHTML = `Titel: ${feat.values_.features[0].get('label')}`
-            div.appendChild(p)
-            div.appendChild(p2)
-            return feat;
-          }
-          return false;
-        })
-      });
-      
-
-    }
 
     const applyFeatureHoverEffect = () => {
 
@@ -292,16 +240,6 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
     }
 
     /**
-     * Method needs to be assigned as onclick listener to the closing button
-     * of the specific popup. For example directly on an html element.
-     * Better way is to create a useCallback hook.
-     * @param popOverlay Overlay to be closed.
-     */
-    const closePopup = (popOverlay: Overlay) => {
-     popOverlay.setPosition(undefined);
-    }
-
-    /**
      * Checks if given feature consists of multiple features. If yes -> it might be 
      * a cluster.
      * @param feature Feature to analyze.
@@ -325,15 +263,7 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
     }
 
     return (<>
-      <div ref={popupDiv} id="popup" className="ol-popup" style={{color:'black', borderLeft:'3px solid black', fontSize: '.75em',transition:'all 1s ease-in', minWidth:'200px', maxWidth:"250px", background:'whitesmoke', borderRadius:'.5em', padding:'1em', boxShadow:'1px 1px 5px 1px grey'}}>
-        <div onClick={memoHandlePopupClose} style={{color:'lightgrey', fontSize:'1.25em'}} className="is-pulled-right"><FaWindowClose></FaWindowClose></div>
-        <div ref={popContentRef} id="popup-content">
-          <p>Grabmahl für XYZ</p>
-          <p>Gruppe: Deserteure</p>
-          <p>Text: Some Sample content is the best content I could possibly imagine. My life is grey. Hello World.</p>
-        </div>
-      </div>
-
+      <OlPopup olMap={olMap}></OlPopup>
       <div ref={olMapRef} id="map" className="map" style={{width:'100%', height:'90vh'}}></div>
       </>)
 }
