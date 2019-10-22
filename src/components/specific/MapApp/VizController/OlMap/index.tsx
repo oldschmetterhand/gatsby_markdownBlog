@@ -200,7 +200,7 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
         if(lastFeature)lastFeature.setStyle(baseStyle);
         olMap.forEachFeatureAtPixel(evt.pixel, (feat: Feature, layer)=> {
           if(lastFeature)lastFeature.setStyle(baseStyle);
-          if(feat){
+          if(feat && !isCluster(feat)){
             //popup.setPosition(feat.getProperties().geometry.flatCoordinates)
             let featureStyle =  new Style({
               image: new Icon({
