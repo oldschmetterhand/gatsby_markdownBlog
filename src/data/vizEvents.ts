@@ -135,4 +135,28 @@ export const dummyData: VizEvent[] = [
       primSource: "Rudolf S.12",
       secSource: "Sack S.XYZ",
     },
+    {
+      title: "test12",
+      date: undefined,
+      lMarker: {
+        x: 35,
+        y: 31,
+        popUpContent: "This is the popupContetn",
+        group: "Gurke",
+      },
+      primSource: "Rudolf S.12",
+      secSource: "Sack S.XYZ",
+    },
+    {
+      title: "test13",
+      date: undefined,
+      lMarker: {
+        x: 36,
+        y: 31,
+        popUpContent: "This is the popupContetn",
+        group: "Gurke",
+      },
+      primSource: "Rudolf S.12",
+      secSource: "Sack S.XYZ",
+    },
   ]
