@@ -105,8 +105,9 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
           geometry: new Point(fromLonLat([vizEvent.lMarker.x, vizEvent.lMarker.y])),
           label: vizEvent.title
         })
-        // after generating feature assigning the style object.
-        feature.setStyle(featureStyle)
+        
+        // optional can set a custom property here via .set()
+        feature.set('group', vizEvent.lMarker.group)
         return feature; 
       })
 
@@ -127,10 +128,14 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
               src: multiMarker
             }),
             text: new Text({
-              text:'Cluster'
+              text: `${feature.get('features').length}`
             })
           })
          } else {
+            featureStyle.setText(new Text({
+            text: feature.values_.features[0].get('group')
+          }))
+
           return featureStyle // use base featureStyle if not clustered
          } 
         }
