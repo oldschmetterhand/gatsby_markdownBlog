@@ -8,7 +8,6 @@ import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';
 import XYZ from 'ol/source/XYZ';
 import { fromLonLat, toLonLat } from 'ol/proj'
-import lodash from "lodash"
 
 //for the popup
 import Overlay from "ol/Overlay"
