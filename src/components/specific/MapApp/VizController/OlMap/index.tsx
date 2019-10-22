@@ -51,6 +51,7 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
     //Refs
     const olMapRef = useRef(undefined)  // ref used to pass in reference to div id="map" internally.
     const popupDiv = useRef(undefined)
+    const popContentRef = useRef(undefined)
 
     ///
     //React specific remembering of callback
@@ -208,6 +209,14 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
         olMap.forEachFeatureAtPixel(evt.pixel, (feat, layer) => {
           if(feat){
             popup.setPosition(feat.getProperties().geometry.flatCoordinates)
+            let div: HTMLDivElement = popContentRef.current;
+            div.innerHTML="";
+            let p = document.createElement('p')
+            let p2 = document.createElement('p')
+            p2.innerHTML = `Gruppe: ${feat.values_.features[0].get('group')}`
+            p.innerHTML = `Titel: ${feat.values_.features[0].get('label')}`
+            div.appendChild(p)
+            div.appendChild(p2)
             return feat;
           }
           return false;
@@ -316,9 +325,9 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
     }
 
     return (<>
-      <div ref={popupDiv} id="popup" className="ol-popup" style={{color:'black', borderLeft:'3px solid black', fontSize: '.75em',transition:'all 1s ease-in', maxWidth:"250px", background:'whitesmoke', borderRadius:'.5em', padding:'1em', boxShadow:'1px 1px 5px 1px grey'}}>
+      <div ref={popupDiv} id="popup" className="ol-popup" style={{color:'black', borderLeft:'3px solid black', fontSize: '.75em',transition:'all 1s ease-in', minWidth:'200px', maxWidth:"250px", background:'whitesmoke', borderRadius:'.5em', padding:'1em', boxShadow:'1px 1px 5px 1px grey'}}>
         <div onClick={memoHandlePopupClose} style={{color:'lightgrey', fontSize:'1.25em'}} className="is-pulled-right"><FaWindowClose></FaWindowClose></div>
-        <div id="popup-content">
+        <div ref={popContentRef} id="popup-content">
           <p>Grabmahl für XYZ</p>
           <p>Gruppe: Deserteure</p>
           <p>Text: Some Sample content is the best content I could possibly imagine. My life is grey. Hello World.</p>
