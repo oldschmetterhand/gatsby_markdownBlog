@@ -3,16 +3,13 @@ import { Factoid } from './prosogrAPhI'
 
 export interface VizEvent {
   title: string,
+  category?: string,
   date?: string,
-  feature?: VizFeature,    // extended from OpenLayers
-  factoid?: VizFactoid,
-}
-
-export interface VizFeature extends Feature {
-  label: string,
-  category: string,
-}
-
-export interface VizFactoid extends Factoid {
-    //TODO add properties
+  lonLat: number[],
+  feature?: Feature,    //linked open layers map
+  geoJson?: any,
+  factoid?: Factoid,    //linked factoid if necessary
+  
+  primSource?: string,
+  secSource?: string,
 }

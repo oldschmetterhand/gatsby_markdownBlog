@@ -1,162 +1,110 @@
 
-import {VizEvent} from "../components/specific/MapApp"
+import {VizEvent} from "../types/mapp"
 
 
 export const dummyData: VizEvent[] = [
     {
       title: "test01",
       date: "04.05.2019",
-      lMarker: {
-        x: 15.439363,
-        y: 47.054842,
-        popUpContent: "hi",
-        group: "Deserteur",
-      },
+      category: 'Gurke',
+      lonLat:[15.439363,47.054842],
       primSource: "Augustus",
-      secSource: "Rostovzef",
+      secSource: "Rostovzef"
     },
     {
       title: "test02",
       date: "06.05.2019",
-      lMarker: {
-        x: 4,
-        y: 5,
-        popUpContent: "hi",
-        group: "Deserteur",
-      },
+      category: 'Gurke',
+      lonLat:[4,5],
       primSource: "Augustus",
-      secSource: "Rostovzef",
+      secSource: "Rostovzef"
     },
     {
       title: "test03",
       date: undefined,
-      lMarker: {
-        x: 6,
-        y: 8,
-        popUpContent: "hi",
-        group: "Deserteur",
-      },
+      category: 'Gurke',
+      lonLat:[6,8],
       primSource: "Augustus",
-      secSource: "Rostovzef",
+      secSource: "Rostovzef"
     },
     {
       title: "test04",
       date: undefined,
-      lMarker: {
-        x: 16,
-        y: 28,
-        popUpContent: "This is the popupContetn",
-        group: "Widerstand",
-      },
+      category: 'Gurke',
+      lonLat:[16,28],
       primSource: "Nikolaus",
-      secSource: "Knaas",
+      secSource: "Knaas"
     },
     {
       title: "test05",
       date: undefined,
-      lMarker: {
-        x: 12,
-        y: 28,
-        popUpContent: "This is the popupContetn",
-        group: "Widerstand",
-      },
+      category: 'Gurke',
+      lonLat:[12,28],
       primSource: "Rudolf",
-      secSource: "Sack",
+      secSource: "Sack"
     },
     {
       title: "test06",
       date: undefined,
-      lMarker: {
-        x: 12,
-        y: 28,
-        popUpContent: "This is the popupContetn",
-        group: "Widerstand",
-      },
+      category: 'Gurke',
+      lonLat:[12,28],
       primSource: "Rudolf S.12",
-      secSource: "Sack S.XYZ",
+      secSource: "Sack S.XYZ"
     },
     {
       title: "test07",
       date: undefined,
-      lMarker: {
-        x: 13,
-        y: 28,
-        popUpContent: "This is the popupContetn",
-        group: "Widerstand",
-      },
+      category: 'Deserteur',
+      lonLat:[13,28],
       primSource: "Rudolf S.12",
       secSource: "Sack S.XYZ",
     },
     {
       title: "test08",
       date: undefined,
-      lMarker: {
-        x: 23,
-        y: 28,
-        popUpContent: "This is the popupContetn",
-        group: "Gurke",
-      },
+      category: 'Deserteur',
+      lonLat:[23,28],
       primSource: "Rudolf S.12",
       secSource: "Sack S.XYZ",
     },
     {
       title: "test09",
       date: undefined,
-      lMarker: {
-        x: 25,
-        y: 27,
-        popUpContent: "This is the popupContetn",
-        group: "Gurke",
-      },
+      category: 'Deserteur',
+      lonLat:[25,27],
       primSource: "Rudolf S.12",
-      secSource: "Sack S.XYZ",
+      secSource: "Sack S.XYZ"
     },
     {
       title: "test10",
       date: undefined,
-      lMarker: {
-        x: 22.5,
-        y: 27,
-        popUpContent: "This is the popupContetn",
-        group: "Gurke",
-      },
+      category: 'Deserteur',
+      lonLat:[22.5,27],
       primSource: "Rudolf S.12",
-      secSource: "Sack S.XYZ",
+      secSource: "Sack S.XYZ"
     },
     {
       title: "test11",
       date: undefined,
-      lMarker: {
-        x: 25,
-        y: 31,
-        popUpContent: "This is the popupContetn",
-        group: "Gurke",
-      },
+      category: 'Widerstand',
+      lonLat:[25,31],
       primSource: "Rudolf S.12",
-      secSource: "Sack S.XYZ",
+      secSource: "Sack S.XYZ"
     },
     {
       title: "test12",
       date: undefined,
-      lMarker: {
-        x: 35,
-        y: 31,
-        popUpContent: "This is the popupContetn",
-        group: "Gurke",
-      },
+      category: 'Deserteur',
+      lonLat:[35,31],
       primSource: "Rudolf S.12",
-      secSource: "Sack S.XYZ",
+      secSource: "Sack S.XYZ"
     },
     {
       title: "test13",
       date: undefined,
-      lMarker: {
-        x: 36,
-        y: 31,
-        popUpContent: "This is the popupContetn",
-        group: "Gurke",
-      },
+      category: 'Deserteur',
+      lonLat:[36,31],
       primSource: "Rudolf S.12",
-      secSource: "Sack S.XYZ",
+      secSource: "Sack S.XYZ"
     },
   ]
