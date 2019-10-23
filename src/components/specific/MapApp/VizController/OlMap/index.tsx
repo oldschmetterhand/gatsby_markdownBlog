@@ -1,5 +1,5 @@
 import React, {useRef, useState, useEffect, useCallback} from "react"
-import { VizEvent } from "../../index"
+import { VizEvent } from "../../../../../types/mapp"
 import { dummyData } from "../../../../../data/vizEvents"
 
 import Map from 'ol/Map';
@@ -86,13 +86,19 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
 
       //generating the feature array
       let features: Feature[] = vizEvents.map((vizEvent)=> {
-        let feature = new Feature({
-          geometry: new Point(fromLonLat([vizEvent.lMarker.x, vizEvent.lMarker.y])),
-          label: vizEvent.title
-        })
-        
+        let feature: Feature = new Feature({
+          label: vizEvent.title,
+          category: vizEvent.date,
+          geometry: new Point(fromLonLat(vizEvent.lonLat)) 
+        });
         // optional can set a custom property here via .set()
-        feature.set('group', vizEvent.lMarker.group)
+        feature.set('group', vizEvent.category ? vizEvent.category : '')
+
+        //own mApp logic:
+        //create linked references 
+        vizEvent.feature = feature;
+        feature.set('vizEvent', vizEvent);
+
         return feature; 
       })
 
