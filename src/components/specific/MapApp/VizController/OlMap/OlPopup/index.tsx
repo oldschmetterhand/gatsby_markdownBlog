@@ -74,17 +74,6 @@ const OlPopup: React.FC<Props> = ({ olMap, chosenVizEvent = undefined, title = u
     }
     olMap.addOverlay(htmlOverlay)
 
-    /* olMap.on("click", function(evt) {
-      evt.preventDefault()
-      olMap.forEachFeatureAtPixel(evt.pixel, (feat, layer) => {
-        if (feat) {
-          htmlOverlay.setPosition(feat.getProperties().geometry.flatCoordinates)
-          return feat
-        }
-        return false
-      })
-    }) */
-
     let clickFunction = (evt) => {
       evt.preventDefault()
       olMap.forEachFeatureAtPixel(evt.pixel, (feat: Feature, layer) => {
