@@ -4,15 +4,18 @@ import { FaWindowClose } from "react-icons/fa"
 import styles from "./styles.module.scss"
 import Map from "ol/Map"
 import Overlay from "ol/Overlay"
+import { Feature } from "ol"
+import { isCluster } from "../../../../../../utils/ol"
 
 
 interface Props {
   olMap: Map,
+  registerPopupCall: (func: (evt: any) => void) => void,
   chosenVizEvent?: VizEvent,
   title?: string
 }
 
-const OlPopup: React.FC<Props> = ({ olMap, chosenVizEvent = undefined, title = undefined }) => {
+const OlPopup: React.FC<Props> = ({ olMap, chosenVizEvent = undefined, title = undefined, registerPopupCall }) => {
   //state
   const [popOverlay, setPopOverlay] = useState<undefined | Overlay>(undefined)
 
@@ -70,7 +73,8 @@ const OlPopup: React.FC<Props> = ({ olMap, chosenVizEvent = undefined, title = u
       return undefined
     }
     olMap.addOverlay(htmlOverlay)
-    olMap.on("click", function(evt) {
+
+    /* olMap.on("click", function(evt) {
       evt.preventDefault()
       olMap.forEachFeatureAtPixel(evt.pixel, (feat, layer) => {
         if (feat) {
@@ -79,7 +83,20 @@ const OlPopup: React.FC<Props> = ({ olMap, chosenVizEvent = undefined, title = u
         }
         return false
       })
-    })
+    }) */
+
+    let clickFunction = (evt) => {
+      evt.preventDefault()
+      olMap.forEachFeatureAtPixel(evt.pixel, (feat: Feature, layer) => {
+        if (feat && !isCluster(feat)) {
+          htmlOverlay.setPosition(feat.getProperties().geometry.flatCoordinates)
+          return feat
+        }
+        return false
+      })
+    }
+    registerPopupCall(clickFunction)
+
     return htmlOverlay
   }
 
@@ -103,11 +120,10 @@ const OlPopup: React.FC<Props> = ({ olMap, chosenVizEvent = undefined, title = u
           <FaWindowClose></FaWindowClose>
         </div>
         <div ref={contentRef} id="popup-content">
-          <h3>{ title }</h3>
-          <p>Gruppe: Deserteure</p>
+          <h3>{ chosenVizEvent ? chosenVizEvent.title : "" }</h3>
+          <p>{ chosenVizEvent ? chosenVizEvent.category : "" }</p>
           <p>
-            Text: Some Sample content is the best content I could possibly
-            imagine. My life is grey. Hello World.
+            {chosenVizEvent ? chosenVizEvent.lonLat : ''}
           </p>
         </div>
       </div>

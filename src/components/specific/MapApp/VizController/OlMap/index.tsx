@@ -8,6 +8,9 @@ import TileLayer from 'ol/layer/Tile';
 import XYZ from 'ol/source/XYZ';
 import { fromLonLat, toLonLat } from 'ol/proj'
 
+// my ol helper functions
+import { isCluster } from "../../../../../utils/ol"
+
 //Classes for drawing Markers on the the ol map.
 import Point from "ol/geom/Point"
 import Feature from 'ol/Feature';
@@ -39,6 +42,8 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
     //State
     const [olMap, setOlMap] = useState<undefined | Map>(undefined);
     const [drawnVLayer, setDrawnVLayer] = useState<undefined | VectorLayer>(undefined)
+    const [chosenVizEvent, setChosenVizEvent] = useState<undefined | VizEvent>(undefined)
+    const [clickFunctionRegister, setClickFunctionRegister] = useState<((evt: any)=>void)[] | []>([])
 
     /////
     //Refs
@@ -69,6 +74,8 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
       if(!olMap || !vizEvents)return;
       //remove old layer
       if(drawnVLayer)olMap.removeLayer(drawnVLayer)
+
+      handleClickRegistration(clickChooseFeatureState)
 
       // setting style for the feature display
       // means assigning an image / text / custom style to a geo - feature (like point, polyline etc.)
@@ -165,11 +172,23 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
       })
 
       olMap.addLayer(layer);      
-      //applyFeaturePopup();
       applyFeatureHoverEffect();
       setDrawnVLayer(layer)
+      
 
     },[vizEvents, olMap])
+
+    /**
+     * Everytime when an click function callback is added -> register new click events.
+     */
+    useEffect(()=>{
+      if(!olMap || !clickFunctionRegister)return;
+      olMap.on("click", (evt: any) => {
+        clickFunctionRegister.forEach((func: (evt: any)=>void)=>{
+          func(evt);
+        }); 
+      })
+    },[clickFunctionRegister])
 
     const applyFeatureHoverEffect = () => {
 
@@ -237,16 +256,6 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
     }
 
     /**
-     * Checks if given feature consists of multiple features. If yes -> it might be 
-     * a cluster.
-     * @param feature Feature to analyze.
-     * @returns Boolean if Feature consists of multiple features and therefore might be a Cluster.
-     */
-    const isCluster = (feature: Feature): boolean => {
-      return feature.get('features').length > 1
-    }
-
-    /**
      * Checks if a feature contains other features with coordinates all the same.
      * It investagites a programmatically generated cluster -- not the orginal data! (beware of bugs)
      * @param clusterFeature feature that contains other features inside feature.get('features')
@@ -255,12 +264,32 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
     const isSameCoordsCluster = (clusterFeature: Feature): boolean => {
       let features: Feature[] = clusterFeature.get('features');
       let coords = features.map((feature)=>feature.getGeometry().getExtent().toString())
-      return coords.every( (val, i, arr) => val === arr[0] );
-      
+      return coords.every( (val, i, arr) => val === arr[0] );  
     }
 
+    /**
+     * Sets chosenVizEvent state at click on a feature on the open layers map.
+     * @param evt OpenLayers click on map event.
+     */
+    const clickChooseFeatureState = (evt: any): void => {
+        evt.preventDefault()
+        olMap.forEachFeatureAtPixel(evt.pixel, (feat: Feature, layer )=> {
+          if(feat){
+            if(!isCluster(feat)){
+              let vizEvent: VizEvent =  feat.values_.features[0].get('vizEvent');
+              setChosenVizEvent(vizEvent);
+            }
+          }
+        });
+    }
+
+    const handleClickRegistration = (func: (evt: any) => void) => {
+      setClickFunctionRegister(clickFunctionRegister => [...clickFunctionRegister, func]);
+    }
+
+
     return (<>
-      <OlPopup olMap={olMap}></OlPopup>
+      <OlPopup olMap={olMap} registerPopupCall={handleClickRegistration} chosenVizEvent={chosenVizEvent}></OlPopup>
       <div ref={olMapRef} id="map" className="map" style={{width:'100%', height:'90vh'}}></div>
       </>)
 }
