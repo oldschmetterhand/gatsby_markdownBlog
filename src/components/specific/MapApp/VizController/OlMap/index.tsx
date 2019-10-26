@@ -297,7 +297,7 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData, getSelVizEvent, selVizEv
 
 
     return (<>
-      <OlPopup olMap={olMap} registerPopupCall={handleClickRegistration} chosenVizEvent={chosenVizEvent} position={selVizEvent}></OlPopup>
+      <OlPopup olMap={olMap} registerPopupCall={handleClickRegistration} chosenVizEvent={chosenVizEvent}></OlPopup>
       <div ref={olMapRef} id="map" className="map" style={{width:'100%', height:'90vh'}}></div>
       </>)
 }
