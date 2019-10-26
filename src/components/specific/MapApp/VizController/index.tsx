@@ -12,8 +12,6 @@ const dummyData: VizEvent[] = [
     date: "04.05.2019",
     lonLat:[1,2],
     lMarker: {
-      x: 1,
-      y: 2,
       popUpContent: "hi",
       group: "deserteure",
     },
@@ -25,8 +23,6 @@ const dummyData: VizEvent[] = [
     date: "06.05.2019",
     lonLat:[4,5],
     lMarker: {
-      x: 4,
-      y: 5,
       popUpContent: "hi",
       group: "deserteure",
     },
@@ -38,8 +34,6 @@ const dummyData: VizEvent[] = [
     date: undefined,
     lonLat:[6,8],
     lMarker: {
-      x: 6,
-      y: 8,
       popUpContent: "hi",
       group: "deserteure",
     },
