@@ -32,11 +32,12 @@ import Layer from "ol/layer/Layer";
 //OL Components
 import OlPopup from "./OlPopup";
 interface Props {
-    vizEvents: VizEvent[]
+    vizEvents: VizEvent[],
+    getSelVizEvent?: (vizEvent: VizEvent) => void
 }
 
 
-const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
+const OlMap: React.FC<Props> = ({vizEvents = dummyData, getSelVizEvent}) => {
 
     ////
     //State
@@ -191,6 +192,14 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
         }); 
       })
     },[clickFunctionRegister])
+
+    /**
+     * Communicates selection of a new chosenVizEvent.
+     */
+    useEffect(()=>{
+      if(!chosenVizEvent || !olMap || !getSelVizEvent)return;
+      getSelVizEvent(chosenVizEvent);
+    },[chosenVizEvent])
 
     const applyFeatureHoverEffect = () => {
 
