@@ -1,5 +1,5 @@
 import React from "react"
-import { VizEvent } from "../../index"
+import { VizEvent } from "../../../../../types/mapp"
 import styles from "./styles.module.scss"
 
 interface Props {
