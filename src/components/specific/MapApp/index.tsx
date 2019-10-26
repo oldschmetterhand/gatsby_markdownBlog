@@ -3,25 +3,7 @@ import VizController from "./VizController"
 import Helmet from "react-helmet"
 import axios from "axios"
 import { gFactoidsResponse } from "../../../data/factoid"
-
-export interface LeafletMarker {
-  x: number
-  y: number
-  popUpContent: string
-  group?: string
-  boundTo?: VizEvent
-  lMarkerRef?: any
-}
-
-export interface VizEvent {
-  title: string
-  date?: string
-  lMarker?: LeafletMarker
-  factoid?: Factoid
-  primSource?: string
-  secSource?: string
-}
-
+import { VizEvent } from "../../../types/mapp"
 
 export interface Factoid {
   '@id': string,
@@ -203,9 +185,8 @@ const MapApp: React.FC<Props> = ({ vizEvents = undefined }) => {
         title: factoid.statement.statementContent ? `${(factoid.statement.places ? factoid.statement.places[0].label.toUpperCase() + ' |': '')} ${factoid.statement.statementContent}` : factoid.statement["@id"],
         date: factoid.statement.date ? factoid.statement.date.sortdate : 'Kein Datum vorhanden',
         factoid:factoid,
+        lonLat:factoid.statement.places ? [factoid.statement.places[0].geometry.coordinates[0],factoid.statement.places[0].geometry.coordinates[1]]: undefined,
         lMarker: factoid.statement.places ? {
-          x: factoid.statement.places[0].geometry.coordinates[0],
-          y: factoid.statement.places[0].geometry.coordinates[1],
           popUpContent: factoid.statement.statementContent ? factoid.statement.statementContent : factoid.statement["@id"]
         } : undefined,
         primSource: factoid.source.label ? factoid.source.label : factoid.source["@id"]  
@@ -247,7 +228,7 @@ const MapApp: React.FC<Props> = ({ vizEvents = undefined }) => {
           crossorigin=""
         ></script>
       </Helmet>
-      {genVizEvents ? <VizController handleSearch={handleSearch} vizEvents={undefined} handleQueryBuilding={handleQueryBuilding}></VizController> : null}
+      {genVizEvents ? <VizController handleSearch={handleSearch} vizEvents={genVizEvents} handleQueryBuilding={handleQueryBuilding}></VizController> : null}
     </>
   )
 }
