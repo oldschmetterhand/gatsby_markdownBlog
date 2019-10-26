@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { VizEvent } from "../../.."
+import { VizEvent } from "../../../../../../types/mapp"
 import styles from "./styles.module.scss"
 import Tabs from "../../../../../common/Tabs"
 

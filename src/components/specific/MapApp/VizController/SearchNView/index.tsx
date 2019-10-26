@@ -4,7 +4,7 @@ import styles from "./styles.module.scss"
 import Summary from "./Summary"
 import Search from "./Search"
 import FactoidList from "../FactoidList"
-import { VizEvent } from "../.."
+import { VizEvent } from "../../../../../types/mapp"
 
 interface Props {
     vizEvents: VizEvent[]

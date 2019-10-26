@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { LeafletMarker, VizEvent } from "../../index"
+import { VizEvent } from "../../../../../types/mapp"
 
 interface Props {
   layerToDraw?: any,
