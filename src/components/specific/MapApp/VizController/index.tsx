@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react"
 import TimeLine from "./Timeline"
 import LeafletMap from "./LeafletMap"
+import OpenLayersMap from "./OlMap"
 import AppLayout from "./AppLayout"
 import SearchNView from "./SearchNView"
-import { VizEvent, LeafletMarker } from "../index"
+import { VizEvent } from "../../../../types/mapp"
 
 const dummyData: VizEvent[] = [
   {
     title: "test01",
     date: "04.05.2019",
+    lonLat:[1,2],
     lMarker: {
       x: 1,
       y: 2,
@@ -21,6 +23,7 @@ const dummyData: VizEvent[] = [
   {
     title: "test02",
     date: "06.05.2019",
+    lonLat:[4,5],
     lMarker: {
       x: 4,
       y: 5,
@@ -33,6 +36,7 @@ const dummyData: VizEvent[] = [
   {
     title: "test03",
     date: undefined,
+    lonLat:[6,8],
     lMarker: {
       x: 6,
       y: 8,
@@ -121,17 +125,15 @@ const VizController: React.FC<Props> = ({ vizEvents = dummyData,handleQueryBuild
    * in LeafletMap component. This will just create instances without display.
    */
   const generateLMarker = (vizEvent: VizEvent, markerNumber: number): any => {
-    let marker = vizEvent.lMarker
-
     let customMarker = {icon: window.L.divIcon({
       className: 'my-custom-icon',
       html: `<div style='width: 24px !important; height: 24px !important; margin-left: -6px;margin-top: 6px;border-radius: 18px;border: 2px solid #3F51B5;text-align: center;color: #3F51B5;background-color: #fff;font-size: 16px; font-size:1em; padding:.2em'>${markerNumber}</div>`
   })}
 
-    let leafletMarker = window.L.marker([marker.x, marker.y], customMarker).bindPopup(
+    let leafletMarker = window.L.marker(vizEvent.lonLat, customMarker).bindPopup(
       `<em></em> ${vizEvent.title}.<br>Datum: ${
         vizEvent.date
-      }<hr> (Verwendete Koordinaten: Längengrad: ${marker.x.toString()}, Breitengrad: ${marker.y.toString()})`
+      }<hr> (Verwendete Koordinaten: Längengrad: ${vizEvent.lonLat})`
     )
 
     leafletMarker.on("click", evt => {
@@ -173,13 +175,18 @@ const VizController: React.FC<Props> = ({ vizEvents = dummyData,handleQueryBuild
       <AppLayout
         leftCol={<SearchNView handleVizSelection={handleSelVizEvent} vizEvents={vizEvents} handleQueryBuilding={handleQueryBuilding} selVizEvent={selVizEvent} handleSearch={handleSearch}></SearchNView>}
         middleCol={
-          <LeafletMap
+          <>
+          {/* <LeafletMap
             selVizEvent={selVizEvent}
             onMapClick={handleSelVizEvent}
             onSelVizEventChange={handlePopupClose}
             layerToDraw={layer}
             tellLStatus={getLeafletStatus}
-          ></LeafletMap>
+          ></LeafletMap> */}
+          <OpenLayersMap
+            vizEvents={vizEvents}
+          ></OpenLayersMap>
+          </>
         }
         rightCol={
           <TimeLine
