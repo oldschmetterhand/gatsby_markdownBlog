@@ -170,17 +170,17 @@ const VizController: React.FC<Props> = ({ vizEvents = dummyData,handleQueryBuild
         leftCol={<SearchNView handleVizSelection={handleSelVizEvent} vizEvents={vizEvents} handleQueryBuilding={handleQueryBuilding} selVizEvent={selVizEvent} handleSearch={handleSearch}></SearchNView>}
         middleCol={
           <>
-          <LeafletMap
+          {/* <LeafletMap
             selVizEvent={selVizEvent}
             onMapClick={handleSelVizEvent}
             onSelVizEventChange={handlePopupClose}
             layerToDraw={layer}
             tellLStatus={getLeafletStatus}
-          ></LeafletMap>
-          {/* <OpenLayersMap
+          ></LeafletMap> */}
+          <OpenLayersMap
             vizEvents={vizEvents}
             getSelVizEvent={handleSelVizEvent}
-          ></OpenLayersMap> */}
+          ></OpenLayersMap>
           </>
         }
         rightCol={
