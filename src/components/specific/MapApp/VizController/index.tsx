@@ -151,12 +151,12 @@ const VizController: React.FC<Props> = ({ vizEvents = dummyData,handleQueryBuild
    * active Vizevent.
    */
   const syncDisplay = () => {
-    if (!selVizEvent.lMarker) return
-    let linkedLMarker = selVizEvent.lMarker.lMarkerRef
-    if (linkedLMarker) {
-      linkedLMarker.openPopup()
+    //if (!selVizEvent.lMarker) return
+    let linkedLMarker = selVizEvent.lMarker ? selVizEvent.lMarker : undefined
+    if (linkedLMarker && linkedLMarker.lMarkerRef) {
+      linkedLMarker.lMarkerRef.openPopup()
     } else {
-      alert(`Keine gültigen Geodaten vorhanden.`)
+      if(!selVizEvent.lonLat)alert(`Keine gültigen Geodaten vorhanden.`)
     }
   }
 
@@ -177,9 +177,10 @@ const VizController: React.FC<Props> = ({ vizEvents = dummyData,handleQueryBuild
             layerToDraw={layer}
             tellLStatus={getLeafletStatus}
           ></LeafletMap>
-          <OpenLayersMap
+          {/* <OpenLayersMap
             vizEvents={vizEvents}
-          ></OpenLayersMap>
+            getSelVizEvent={handleSelVizEvent}
+          ></OpenLayersMap> */}
           </>
         }
         rightCol={
