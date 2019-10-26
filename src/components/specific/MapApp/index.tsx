@@ -247,7 +247,7 @@ const MapApp: React.FC<Props> = ({ vizEvents = undefined }) => {
           crossorigin=""
         ></script>
       </Helmet>
-      {genVizEvents ? <VizController handleSearch={handleSearch} vizEvents={genVizEvents} handleQueryBuilding={handleQueryBuilding}></VizController> : null}
+      {genVizEvents ? <VizController handleSearch={handleSearch} vizEvents={undefined} handleQueryBuilding={handleQueryBuilding}></VizController> : null}
     </>
   )
 }
