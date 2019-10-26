@@ -2,8 +2,6 @@ import Feature from 'ol/Feature';
 import { Factoid } from './prosogrAPhI'
 
 export interface LeafletMarker {
-  x: number
-  y: number
   popUpContent: string
   group?: string
   boundTo?: VizEvent
@@ -20,6 +18,6 @@ export interface VizEvent {
   geoJson?: any,
   factoid?: Factoid,    //linked factoid if necessary
   
-  primSource?: string,
+  primSource?: string,  
   secSource?: string,
 }
