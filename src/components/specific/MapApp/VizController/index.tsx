@@ -180,6 +180,7 @@ const VizController: React.FC<Props> = ({ vizEvents = dummyData,handleQueryBuild
           <OpenLayersMap
             vizEvents={vizEvents}
             getSelVizEvent={handleSelVizEvent}
+            selVizEvent={selVizEvent}
           ></OpenLayersMap>
           </>
         }

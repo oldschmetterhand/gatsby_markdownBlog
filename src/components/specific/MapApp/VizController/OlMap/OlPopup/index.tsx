@@ -15,7 +15,7 @@ interface Props {
   title?: string
 }
 
-const OlPopup: React.FC<Props> = ({ olMap, chosenVizEvent = undefined, title = undefined, registerPopupCall }) => {
+const OlPopup: React.FC<Props> = ({ olMap, chosenVizEvent = undefined, title = undefined, registerPopupCall}) => {
   //state
   const [popOverlay, setPopOverlay] = useState<undefined | Overlay>(undefined)
 
@@ -26,6 +26,15 @@ const OlPopup: React.FC<Props> = ({ olMap, chosenVizEvent = undefined, title = u
     overlay = applyFeaturePopup(olMap, overlay)
     setPopOverlay(overlay)
   }, [olMap])
+
+  /**
+   * Sets the position of the popup according to the current chosen VizEvent.
+   */
+  useEffect(()=>{
+    if(!popOverlay || !chosenVizEvent)return;
+    if(!chosenVizEvent.feature)return;
+    popOverlay.setPosition(chosenVizEvent.feature.getProperties().geometry.flatCoordinates)
+  },[chosenVizEvent])
 
   //Refs needed for OpenLayers
   const containerRef = useRef<undefined | HTMLDivElement>(undefined)

@@ -33,17 +33,18 @@ import Layer from "ol/layer/Layer";
 import OlPopup from "./OlPopup";
 interface Props {
     vizEvents: VizEvent[],
+    selVizEvent: VizEvent,
     getSelVizEvent?: (vizEvent: VizEvent) => void
 }
 
 
-const OlMap: React.FC<Props> = ({vizEvents = dummyData, getSelVizEvent}) => {
+const OlMap: React.FC<Props> = ({vizEvents = dummyData, getSelVizEvent, selVizEvent}) => {
 
     ////
     //State
     const [olMap, setOlMap] = useState<undefined | Map>(undefined);
     const [drawnVLayer, setDrawnVLayer] = useState<undefined | VectorLayer>(undefined)
-    const [chosenVizEvent, setChosenVizEvent] = useState<undefined | VizEvent>(undefined)
+    const [chosenVizEvent, setChosenVizEvent] = useState<undefined | VizEvent>(selVizEvent)
     const [clickFunctionRegister, setClickFunctionRegister] = useState<((evt: any)=>void)[] | []>([])
 
     /////
@@ -201,6 +202,14 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData, getSelVizEvent}) => {
       getSelVizEvent(chosenVizEvent);
     },[chosenVizEvent])
 
+    /**
+     * Handles change of selection via props.
+     */
+    useEffect(()=>{
+      if(!selVizEvent || !olMap)return;
+      setChosenVizEvent(selVizEvent)
+    },[selVizEvent])
+
     const applyFeatureHoverEffect = () => {
 
       let lastFeature: Feature;
@@ -288,7 +297,7 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData, getSelVizEvent}) => {
 
 
     return (<>
-      <OlPopup olMap={olMap} registerPopupCall={handleClickRegistration} chosenVizEvent={chosenVizEvent}></OlPopup>
+      <OlPopup olMap={olMap} registerPopupCall={handleClickRegistration} chosenVizEvent={chosenVizEvent} position={selVizEvent}></OlPopup>
       <div ref={olMapRef} id="map" className="map" style={{width:'100%', height:'90vh'}}></div>
       </>)
 }
