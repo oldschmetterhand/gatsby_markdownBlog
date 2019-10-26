@@ -92,11 +92,13 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
       });
 
       //generating the feature array
-      let features: Feature[] = vizEvents.map((vizEvent)=> {
+      let features: Feature[] = []
+      vizEvents.forEach((vizEvent)=> {
+        if(!vizEvent.lonLat)return; 
         let feature: Feature = new Feature({
           label: vizEvent.title,
           category: vizEvent.date,
-          geometry: new Point(fromLonLat(vizEvent.lonLat)) 
+          geometry: new Point(fromLonLat([vizEvent.lonLat[1],vizEvent.lonLat[0]]))
         });
         // optional can set a custom property here via .set()
         feature.set('group', vizEvent.category ? vizEvent.category : '')
@@ -106,7 +108,7 @@ const OlMap: React.FC<Props> = ({vizEvents = dummyData}) => {
         vizEvent.feature = feature;
         feature.set('vizEvent', vizEvent);
 
-        return feature; 
+        features.push(feature)
       })
 
 
